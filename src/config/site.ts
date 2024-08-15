@@ -13,6 +13,10 @@ export const siteConfig = {
       label: "Ingresar",
       href: "/login",
     },
+    {
+      label: "Registrarse",
+      href: "/create-new-account",
+    },
   ],
   navMenuItems: [
     {
