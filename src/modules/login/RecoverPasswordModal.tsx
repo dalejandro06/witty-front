@@ -1,14 +1,7 @@
 "use client";
-import {
-  Button,
-  Link,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  useDisclosure,
-} from "@nextui-org/react";
+import { Link, useDisclosure } from "@nextui-org/react";
+
+import CustomModal from "@/src/components/CustomModal";
 
 function RecoverPasswordModal() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -22,40 +15,21 @@ function RecoverPasswordModal() {
         </Link>
       </p>
 
-      <Modal isOpen={isOpen} placement="center" onOpenChange={onOpenChange}>
-        <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalHeader className="flex justify-center gap-1 text-secondary-blue">
-                Recupera tu contraseña
-              </ModalHeader>
-              <ModalBody>
-                <p>
-                  Enviaremos una link al correo{" "}
-                  <strong className="text-secondary-blue">
-                    wittyapp@example.com
-                  </strong>{" "}
-                  para que puedas restablecer tu contraseña.
-                </p>
-              </ModalBody>
-              <ModalFooter className="justify-center">
-                <Button
-                  fullWidth
-                  color="primary"
-                  size="lg"
-                  variant="bordered"
-                  onPress={onClose}
-                >
-                  Cancelar
-                </Button>
-                <Button fullWidth color="primary" size="lg" onPress={onClose}>
-                  Enviar
-                </Button>
-              </ModalFooter>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
+      <CustomModal
+        body={
+          <p>
+            Enviaremos una link al correo{" "}
+            <strong className="text-secondary-blue">
+              wittyapp@example.com
+            </strong>{" "}
+            para que puedas restablecer tu contraseña.
+          </p>
+        }
+        isOpen={isOpen}
+        title="Recupera tu contraseña"
+        onConfirmBtn={() => {}}
+        onOpenChange={onOpenChange}
+      />
     </>
   );
 }

@@ -1,6 +1,6 @@
 import Credentials from "next-auth/providers/credentials";
 
-import { NEXTAUTH_SECRET } from "@/utils/getEnv";
+import { NEXTAUTH_SECRET } from "@/src/utils/getEnv";
 
 export const authOptions = {
   cookies: {
@@ -32,6 +32,6 @@ export const authOptions = {
   ],
   callbacks: {},
   pages: {
-    signIn: "/auth/login",
+    signIn: "/login",
   },
 };

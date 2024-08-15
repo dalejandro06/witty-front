@@ -4,7 +4,7 @@ import ColorText from "../modules/welcome/ColorText";
 import { welcomeWords } from "../modules/welcome/welcomeData";
 import FooterButton from "../modules/welcome/FooterButton";
 
-import Logo from "@/src/assets/logo.png";
+import Logo from "@/src/assets/Logo.svg";
 
 export default function Home() {
   return (

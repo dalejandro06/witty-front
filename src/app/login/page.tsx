@@ -4,9 +4,10 @@ import { Checkbox } from "@nextui-org/checkbox";
 import { Button } from "@nextui-org/button";
 import Image from "next/image";
 
-import Logo from "@/src/assets/logo.png";
+import Logo from "@/src/assets/Logo.svg";
 import InputPassword from "@/src/components/InputPassword";
 import RecoverPasswordModal from "@/src/modules/login/RecoverPasswordModal";
+import FooterLogin from "@/src/modules/login/FooterLogin";
 
 function Login() {
   return (
@@ -39,6 +40,7 @@ function Login() {
       </form>
       <div className="border-1 border-default-200 my-10" />
       <RecoverPasswordModal />
+      <FooterLogin isLogin />
     </div>
   );
 }
