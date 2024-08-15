@@ -11,6 +11,7 @@ function InputPassword() {
 
   return (
     <Input
+      required
       className="text-secondary-blue"
       endContent={
         <button

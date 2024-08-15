@@ -1,7 +1,7 @@
 import { Link } from "@nextui-org/link";
 
 type Props = {
-  isLogin: boolean;
+  isLogin?: boolean;
 };
 
 function FooterLogin({ isLogin }: Props) {
