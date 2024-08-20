@@ -1,27 +1,42 @@
-import Image from "next/image";
+import { Button } from "@nextui-org/button";
 
-import ColorText from "../modules/welcome/ColorText";
-import { welcomeWords } from "../modules/welcome/welcomeData";
-import FooterButton from "../modules/welcome/FooterButton";
+import { LogoImage, TextLogo } from "../components/icons";
 
-import Logo from "@/src/assets/Logo.svg";
+import Navbar from "@/src/components/Navbar";
 
 export default function Home() {
   return (
-    <section className="bg-blue-900 flex flex-col px-6 py-16 gap-4 w-100 h-screen">
-      <div className="flex justify-center">
-        <Image alt="Witty Logo" src={Logo} />
-      </div>
-      <div className="my-24 text-4xl text-left">
-        {welcomeWords.map((item) => (
-          <ColorText key={item} text={item} />
-        ))}
-      </div>
-
-      <div className="absolute bottom-0 flex w-full left-0">
-        <FooterButton link="/login" text="Ingresa" theme="secondaryDark" />
-        <FooterButton link="/login" text="Regístrate" theme="secondary" />
-      </div>
-    </section>
+    <>
+      <Navbar />
+      <section className="bg-primary-blue flex flex-col px-6 gap-4 w-100">
+        <div className="text-white pt-10">
+          <p className="font-bold text-3xl">
+            <span className="text-linear-gradient">BUSCA</span> TUS SERVICIOS EN{" "}
+            <TextLogo size={90} />
+          </p>
+          <p className="text-center font-light py-5">
+            Tu plataforma confiable para encontrar,{" "}
+            <strong>ofertar y reservar servicios</strong>
+            de calidad a tu alrededor. Conéctate con proveedores o se uno de
+            ellos y disfruta de una experiencia sin complicaciones. ¡Empieza
+            ahora y simplifica tu vida <strong>gratis!</strong>
+          </p>
+        </div>
+        <div className="text-center relative top-5">
+          <Button
+            className="text-black font-bold w-9/12 p-7"
+            color="secondary"
+            startContent={<LogoImage fill="black" size={17} />}
+          >
+            Accede
+          </Button>
+        </div>
+      </section>
+      <section className="bg-white py-16 px-6">
+        <div>
+          <p>Categorías</p>
+        </div>
+      </section>
+    </>
   );
 }

@@ -13,17 +13,12 @@ const config: Config = {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    colors: {
-      blue: {
-        900: "#02101E",
-        700: "#003366",
-        400: "#4A90E2",
-      },
-      "primary-blue": "#02101E",
-      "secondary-blue": "#003366",
-      "tertiary-blue": "#4A90E2",
-    },
     extend: {
+      colors: {
+        "primary-blue": "#02101E",
+        "secondary-blue": "#003366",
+        "tertiary-blue": "#4A90E2",
+      },
       fontFamily: {
         lato: ["Lato"],
       },
@@ -37,7 +32,7 @@ const config: Config = {
       themes: {
         light: {
           colors: {
-            // background: "#eeeeef",
+            background: "white",
             primary: {
               50: "#def3ff",
               100: "#b0d9ff",
@@ -68,7 +63,7 @@ const config: Config = {
         },
         dark: {
           colors: {
-            primary: "#003366",
+            background: "#02101E",
           },
         },
       },
