@@ -8,7 +8,6 @@ import {
   CardHeader,
   Chip,
   Divider,
-  Image,
   Link,
 } from "@nextui-org/react";
 
@@ -93,16 +92,12 @@ export default function Home() {
         <div className="pt-10 px-6">
           <Card className="max-w-[400px]">
             <CardHeader className="flex gap-3">
-              <Image
-                alt="nextui logo"
-                height={40}
-                radius="sm"
-                src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
-                width={40}
-              />
+              <div className="bg-secondary p-2 rounded-xl">
+                <FeatherIcon icon="tool" size={15} />
+              </div>
               <div className="flex flex-col">
-                <p className="text-md">NextUI</p>
-                <p className="text-small text-default-500">nextui.org</p>
+                <p className="text-md">Restauración de computadores</p>
+                <p className="text-small text-default-500">Restauracion</p>
               </div>
             </CardHeader>
             <CardBody>
@@ -111,12 +106,8 @@ export default function Home() {
               </p>
             </CardBody>
             <CardFooter>
-              <Link
-                isExternal
-                showAnchorIcon
-                href="https://github.com/nextui-org/nextui"
-              >
-                Visit source code on GitHub.
+              <Link showAnchorIcon href="/login">
+                Conoce todos los servicios
               </Link>
             </CardFooter>
           </Card>
