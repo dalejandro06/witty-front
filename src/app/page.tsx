@@ -1,4 +1,16 @@
+"use client";
 import { Button } from "@nextui-org/button";
+import FeatherIcon from "feather-icons-react";
+import {
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Chip,
+  Divider,
+  Image,
+  Link,
+} from "@nextui-org/react";
 
 import { LogoImage, TextLogo } from "../components/icons";
 
@@ -32,9 +44,82 @@ export default function Home() {
           </Button>
         </div>
       </section>
-      <section className="bg-white py-16 px-6">
-        <div>
-          <p>Categorías</p>
+      <section className="bg-white">
+        <div className="bg-gray-200 pt-10 px-6">
+          <p className="text-lg font-semibold">Categorías</p>
+          <div className="overflow-x-scroll my-5 bg">
+            <div className="flex gap-3">
+              {/* El servicio me trae starContent y color */}
+              <Chip
+                className="p-4"
+                color="secondary"
+                startContent={<FeatherIcon icon="tool" size={15} />}
+                variant="flat"
+              >
+                Categoria
+              </Chip>
+              <Chip
+                className="p-4"
+                startContent={<FeatherIcon icon="tool" size={15} />}
+                variant="bordered"
+              >
+                Categoria
+              </Chip>
+              <Chip
+                className="p-4"
+                startContent={<FeatherIcon icon="tool" size={15} />}
+                variant="bordered"
+              >
+                Categoria
+              </Chip>
+              <Chip
+                className="p-4"
+                startContent={<FeatherIcon icon="tool" size={15} />}
+                variant="bordered"
+              >
+                Categoria
+              </Chip>
+              <Chip
+                className="p-4"
+                startContent={<FeatherIcon icon="tool" size={15} />}
+                variant="bordered"
+              >
+                Categoria
+              </Chip>
+            </div>
+          </div>
+          <Divider className="my-5" />
+        </div>
+        <div className="pt-10 px-6">
+          <Card className="max-w-[400px]">
+            <CardHeader className="flex gap-3">
+              <Image
+                alt="nextui logo"
+                height={40}
+                radius="sm"
+                src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
+                width={40}
+              />
+              <div className="flex flex-col">
+                <p className="text-md">NextUI</p>
+                <p className="text-small text-default-500">nextui.org</p>
+              </div>
+            </CardHeader>
+            <CardBody>
+              <p>
+                Make beautiful websites regardless of your design experience.
+              </p>
+            </CardBody>
+            <CardFooter>
+              <Link
+                isExternal
+                showAnchorIcon
+                href="https://github.com/nextui-org/nextui"
+              >
+                Visit source code on GitHub.
+              </Link>
+            </CardFooter>
+          </Card>
         </div>
       </section>
     </>

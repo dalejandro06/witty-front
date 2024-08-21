@@ -27,7 +27,6 @@ const Navbar = () => {
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
         {/* <ThemeSwitch /> */}
-        {/* <NavbarMenuToggle className="sm:hidden text-white" /> */}
         <Button as={Link} className="bg-secondary font-bold" href="/welcome">
           Accede
         </Button>

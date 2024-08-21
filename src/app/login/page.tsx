@@ -17,8 +17,7 @@ function Login() {
           <Image alt="Witty Logo" src={Logo} />
         </div>
         <p className="text-secondary-blue dark:text-white text-xl font-bold text-center mt-5">
-          ¡Bienvenido de nuevo a Witty!, Sigue encontrando, agendando y
-          disfrutando de servicios.
+          ¡De vuelta en Witty! Disfruta y agenda tus servicios favoritos.
         </p>
       </div>
       <form className="flex flex-col gap-5 my-5">
