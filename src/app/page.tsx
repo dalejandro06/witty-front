@@ -13,7 +13,7 @@ import {
 
 import { LogoImage, TextLogo } from "../components/icons";
 
-import Navbar from "@/src/components/Navbar";
+import Navbar from "@/src/components/navbar";
 
 export default function Home() {
   return (
