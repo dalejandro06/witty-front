@@ -11,7 +11,7 @@ function ColorText({ text }: Props) {
   return (
     <div
       className="text-4xl text-white flex font-bold"
-      style={{ letterSpacing: "1.3rem" }}
+      style={{ letterSpacing: ".9rem" }}
     >
       <p>{firstLetter.toUpperCase()}</p>
       <p className="text-secondary">{rest.toUpperCase()}</p>

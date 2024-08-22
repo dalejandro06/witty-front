@@ -11,7 +11,7 @@ import FooterLogin from "@/src/modules/login/FooterLogin";
 
 function CreateNewAccount() {
   return (
-    <div className="pt-16 px-6">
+    <div className="pt-10 px-6">
       <div className="flex flex-col my-10 items-center">
         <div>
           <Image alt="Witty Logo" src={Logo} />

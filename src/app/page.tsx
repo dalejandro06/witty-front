@@ -35,15 +35,17 @@ export default function Home() {
         </div>
         <div className="text-center relative top-5">
           <Button
+            as={Link}
             className="text-black font-bold w-9/12 p-7"
             color="secondary"
+            href="/welcome"
             startContent={<LogoImage fill="black" size={17} />}
           >
             Accede
           </Button>
         </div>
       </section>
-      <section className="bg-white">
+      <section className="bg-white mb-10">
         <div className="bg-gray-200 pt-10 px-6">
           <p className="text-lg font-semibold">Categorías</p>
           <div className="overflow-x-scroll my-5 bg">
@@ -91,13 +93,18 @@ export default function Home() {
         </div>
         <div className="pt-10 px-6">
           <Card className="max-w-[400px]">
-            <CardHeader className="flex gap-3">
-              <div className="bg-secondary p-2 rounded-xl">
-                <FeatherIcon icon="tool" size={15} />
+            <CardHeader className="flex gap-3 justify-between">
+              <div className="flex items-center gap-2">
+                <div className="bg-secondary p-2 rounded-xl">
+                  <FeatherIcon icon="tool" size={15} />
+                </div>
+                <div className="flex flex-col">
+                  <p className="text-md">Restauración de computadores</p>
+                  <p className="text-small text-default-500">Restauracion</p>
+                </div>
               </div>
-              <div className="flex flex-col">
-                <p className="text-md">Restauración de computadores</p>
-                <p className="text-small text-default-500">Restauracion</p>
+              <div className="bg-base-blue py-1 px-2 rounded-full text-white text-sm">
+                +5
               </div>
             </CardHeader>
             <CardBody>
@@ -106,7 +113,7 @@ export default function Home() {
               </p>
             </CardBody>
             <CardFooter>
-              <Link showAnchorIcon href="/login">
+              <Link showAnchorIcon className="text-base-blue" href="/login">
                 Conoce todos los servicios
               </Link>
             </CardFooter>

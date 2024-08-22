@@ -18,6 +18,7 @@ const config: Config = {
         "primary-blue": "#02101E",
         "secondary-blue": "#003366",
         "tertiary-blue": "#4A90E2",
+        "base-blue": "#006FEE",
       },
       fontFamily: {
         lato: ["Lato"],
