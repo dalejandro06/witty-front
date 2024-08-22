@@ -1,17 +1,10 @@
 "use client";
 import { Button } from "@nextui-org/button";
 import FeatherIcon from "feather-icons-react";
-import {
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Chip,
-  Divider,
-  Link,
-} from "@nextui-org/react";
+import { Chip, Divider, Link } from "@nextui-org/react";
 
-import { LogoImage, TextLogo } from "../components/icons";
+import { LogoImage } from "../components/icons";
+import CategoryCard from "../modules/guest/CategoryCard";
 
 import Navbar from "@/src/components/navbar";
 
@@ -21,9 +14,9 @@ export default function Home() {
       <Navbar />
       <section className="bg-primary-blue flex flex-col px-6 gap-4 w-100">
         <div className="text-white pt-10">
-          <p className="font-bold text-3xl">
-            <span className="text-linear-gradient">BUSCA</span> TUS SERVICIOS EN{" "}
-            <TextLogo size={90} />
+          <p className="font-bold text-3xl text-center">
+            <span className="block text-linear-gradient">BUSCA</span>
+            <span>TUS SERVICIOS EN WITTY</span>
           </p>
           <p className="text-center font-light py-5">
             Tu plataforma confiable para encontrar,{" "}
@@ -91,33 +84,11 @@ export default function Home() {
           </div>
           <Divider className="my-5" />
         </div>
-        <div className="pt-10 px-6">
-          <Card className="max-w-[400px]">
-            <CardHeader className="flex gap-3 justify-between">
-              <div className="flex items-center gap-2">
-                <div className="bg-secondary p-2 rounded-xl">
-                  <FeatherIcon icon="tool" size={15} />
-                </div>
-                <div className="flex flex-col">
-                  <p className="text-md">Restauración de computadores</p>
-                  <p className="text-small text-default-500">Restauracion</p>
-                </div>
-              </div>
-              <div className="bg-base-blue py-1 px-2 rounded-full text-white text-sm">
-                +5
-              </div>
-            </CardHeader>
-            <CardBody>
-              <p>
-                Make beautiful websites regardless of your design experience.
-              </p>
-            </CardBody>
-            <CardFooter>
-              <Link showAnchorIcon className="text-base-blue" href="/login">
-                Conoce todos los servicios
-              </Link>
-            </CardFooter>
-          </Card>
+        <div className="pt-10 px-6 flex flex-col gap-5">
+          <CategoryCard />
+          <CategoryCard />
+          <CategoryCard />
+          <CategoryCard />
         </div>
       </section>
     </>
