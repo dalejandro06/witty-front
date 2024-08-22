@@ -8,7 +8,7 @@ function RecoverPasswordModal() {
 
   return (
     <>
-      <p className="text-center">
+      <p className="text-center mt-4">
         ¿Olvidaste tu contraseña?{" "}
         <Link className="font-bold" onPress={onOpen}>
           Recupérala
