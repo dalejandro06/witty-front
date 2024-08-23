@@ -91,6 +91,18 @@ export default function Home() {
           <CategoryCard />
         </div>
       </section>
+      <div className="bg-blue-900 p-3 flex gap-2 justify-evenly items-center">
+        <p className="text-white text-small underline">
+          Busca, agenda y vende tus servicios ahora! 🚀
+        </p>
+        <Button
+          className="bg-gradient-to-tr from-[#FFCC00] to-[#66CC99] shadow-lg text-black"
+          radius="full"
+          size="sm"
+        >
+          Gratis
+        </Button>
+      </div>
     </>
   );
 }
