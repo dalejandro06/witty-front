@@ -38,7 +38,7 @@ export default function Home() {
           </Button>
         </div>
       </section>
-      <section className="bg-white mb-10">
+      <section className="bg-white mb-20">
         <div className="bg-gray-200 pt-10 px-6">
           <p className="text-lg font-semibold">Categorías</p>
           <div className="overflow-x-scroll my-5 bg">
@@ -91,7 +91,7 @@ export default function Home() {
           <CategoryCard />
         </div>
       </section>
-      <div className="bg-blue-900 p-3 flex gap-2 justify-evenly items-center">
+      <div className="bg-blue-900 p-3 flex gap-2 justify-evenly items-center fixed bottom-0 w-full z-40">
         <p className="text-white text-small underline">
           Busca, agenda y vende tus servicios ahora! 🚀
         </p>
