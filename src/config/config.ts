@@ -1,1 +1,2 @@
-export const EXTERNAL_API_BASE = "http://localhost:8080";
+export const EXTERNAL_API_BASE =
+  "http://wittybackend-dev.us-east-2.elasticbeanstalk.com/api/";
