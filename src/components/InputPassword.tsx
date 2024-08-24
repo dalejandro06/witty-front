@@ -4,7 +4,12 @@ import { useState } from "react";
 
 import { EyeFilledIcon, EyeSlashFilledIcon } from "./icons";
 
-function InputPassword() {
+type Props = {
+  value: string;
+  setValue: (p: string) => void;
+};
+
+function InputPassword({ value, setValue }: Props) {
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => setIsVisible(!isVisible);
@@ -30,7 +35,9 @@ function InputPassword() {
       label="Contraseña"
       placeholder="Ingresa tu contraseña"
       type={isVisible ? "text" : "password"}
+      value={value}
       variant="bordered"
+      onChange={(e) => setValue(e.target.value)}
     />
   );
 }

@@ -1,15 +1,20 @@
-"use client";
-import { Input } from "@nextui-org/input";
-import { Checkbox } from "@nextui-org/checkbox";
-import { Button } from "@nextui-org/button";
 import Image from "next/image";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
 import Logo from "@/src/assets/Logo.svg";
-import InputPassword from "@/src/components/InputPassword";
 import RecoverPasswordModal from "@/src/modules/login/RecoverPasswordModal";
 import FooterLogin from "@/src/modules/login/FooterLogin";
+import { authOptions } from "@/src/utils/authOptions";
+import LoginForm from "@/src/modules/login/LoginForm";
 
-function Login() {
+async function Login() {
+  const session = await getServerSession(authOptions);
+
+  if (session) {
+    redirect("/");
+  }
+
   return (
     <>
       <div className="pt-10 pb-20 px-6">
@@ -21,24 +26,7 @@ function Login() {
             ¡De vuelta en Witty! Disfruta y agenda tus servicios favoritos.
           </p>
         </div>
-        <form className="flex flex-col gap-5 my-5">
-          <Input
-            required
-            label="Correo"
-            placeholder="Correo"
-            type="email"
-            variant="bordered"
-          />
-          <InputPassword />
-          <div>
-            <Checkbox defaultSelected className="mb-5">
-              Recordar tu contraseña
-            </Checkbox>
-          </div>
-          <Button color="primary" type="submit">
-            Ingresa
-          </Button>
-        </form>
+        <LoginForm />
         <div className="border-1 border-default-200 mt-10" />
         <RecoverPasswordModal />
       </div>

@@ -1,5 +1,7 @@
 import Credentials from "next-auth/providers/credentials";
 
+import { EXTERNAL_API_BASE } from "../config/config";
+
 import { NEXTAUTH_SECRET } from "@/src/utils/getEnv";
 
 export const authOptions = {
@@ -10,7 +12,6 @@ export const authOptions = {
         httpOnly: true,
         sameSite: "lax",
         path: "/",
-        // TODO: revisar
         maxAge: 3600,
         secure: true,
       },
@@ -26,7 +27,31 @@ export const authOptions = {
       type: "credentials",
       credentials: {},
       async authorize(credentials: any) {
-        return credentials;
+        const { email, password } = credentials;
+        const res = await fetch(
+          `${EXTERNAL_API_BASE}/v1/accounts/get-token-user/`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+          },
+        );
+
+        if (!res.ok) {
+          throw new Error("Credenciales inválidas");
+        }
+        const data = await res.json();
+
+        return {
+          id: data.user.id,
+          token: data.access,
+          username: data.user.username,
+          email: data.user.email,
+          first_name: data.user.first_name,
+          last_name: data.user.last_name,
+        };
       },
     }),
   ],
