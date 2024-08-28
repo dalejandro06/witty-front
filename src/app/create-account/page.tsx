@@ -28,12 +28,13 @@ function CreateNewAccount() {
           email: "",
           password: "",
         }}
-        onSubmit={(values) => {}}
+        onSubmit={() => {}}
       >
         {({ values, errors, setFieldValue, handleSubmit }) => (
-          <form className="flex flex-col gap-5 my-5">
+          <form className="flex flex-col gap-5 my-5" onSubmit={handleSubmit}>
             <Input
               required
+              errorMessage={errors.name}
               label="Nombre"
               placeholder="Nombre"
               type="text"
