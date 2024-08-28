@@ -1,14 +1,15 @@
-import React from "react";
 import { Divider } from "@nextui-org/react";
 
 import CategoryChips from "./CategoryChips";
 import CategoryCards from "./CategoryCards";
 
-import ApiRepository from "@/src/repositories/ApiRepository";
+import { Category } from "@/src/types/ApiTypes";
 
-async function CategorySection() {
-  const categories = await ApiRepository.getCategories();
+type Props = {
+  categories: Category[];
+};
 
+function CategorySection({ categories }: Props) {
   return (
     <section className="bg-white mb-20">
       <div className="bg-gray-200 pt-10 px-6">

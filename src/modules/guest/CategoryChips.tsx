@@ -16,23 +16,26 @@ function CategoryChips({ categories }: Props) {
 
   const isSelectedItem = (item: Category) => categorySelected.id === item.id;
 
-  // TODO: no se puede poner un bg custom ya que tailwind no arma la clase hasta despues de que llegue el servicio
-  return categories.map((item) => (
-    <Chip
-      key={item.id}
-      className="cursor-pointer"
-      startContent={<FeatherIcon icon={item.icon} size={15} />}
-      style={
-        isSelectedItem(item)
-          ? { backgroundColor: item.color }
-          : { border: `1px solid ${item.color}`, color: item.color }
-      }
-      variant={isSelectedItem(item) ? "flat" : "bordered"}
-      onClick={() => setCategorySelected(item)}
-    >
-      {item.title}
-    </Chip>
-  ));
+  return (
+    <>
+      {categories.map((item) => (
+        <Chip
+          key={item.id}
+          className="cursor-pointer"
+          startContent={<FeatherIcon icon={item.icon} size={15} />}
+          style={
+            isSelectedItem(item)
+              ? { backgroundColor: item.color }
+              : { border: `1px solid ${item.color}`, color: item.color }
+          }
+          variant={isSelectedItem(item) ? "flat" : "bordered"}
+          onClick={() => setCategorySelected(item)}
+        >
+          {item.title}
+        </Chip>
+      ))}
+    </>
+  );
 }
 
 export default CategoryChips;

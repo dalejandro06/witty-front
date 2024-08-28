@@ -68,7 +68,7 @@ function CreateNewAccount() {
               onChange={(e) => setFieldValue("email", e.target.value)}
             />
             <InputPassword
-              setValue={() => setFieldValue("password", "")}
+              setValue={(value) => setFieldValue("password", value)}
               value=""
             />
             <Button className="mt-5" color="primary" type="submit">

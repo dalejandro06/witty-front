@@ -10,7 +10,7 @@ function ScrambleWord() {
   const [displayedWord, setDisplayedWord] = useState("");
 
   const addWord = () => {
-    const timeout = setTimeout(() => {
+    const timeout: any = setTimeout(() => {
       setDisplayedWord(words[wordIndex].slice(0, displayedWord.length + 1));
     }, 150); // Tiempo entre cada letra
 
@@ -18,7 +18,7 @@ function ScrambleWord() {
   };
 
   useEffect(() => {
-    let timeout;
+    let timeout: any;
 
     if (displayedWord.length < words[wordIndex].length) {
       timeout = addWord();
