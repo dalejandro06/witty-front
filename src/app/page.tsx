@@ -1,8 +1,8 @@
-import ApiRepository from "@/src/repositories/ApiRepository";
-import CategorySection from "@/src/modules/guest/CategorySection";
-import FooterGuest from "@/src/modules/guest/FooterGuest";
-import Hero from "@/src/modules/guest/Hero";
-import Navbar from "@/src/components/navbar";
+import ApiRepository from "@/repositories/ApiRepository";
+import CategorySection from "@/modules/guest/CategorySection";
+import FooterGuest from "@/modules/guest/FooterGuest";
+import Hero from "@/modules/guest/Hero";
+import Navbar from "@/components/navbar";
 
 export default async function Home() {
   const categories = await ApiRepository.getCategories();

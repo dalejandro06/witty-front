@@ -1,11 +1,12 @@
-import "@/src/styles/globals.css";
+import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
 import clsx from "clsx";
 
 import { Providers } from "../Providers/providers";
+import AuthProvider from "../Providers/AuthProvider";
 
-import { siteConfig } from "@/src/config/site";
-import { fontLato } from "@/src/config/fonts";
+import { siteConfig } from "@/config/site";
+import { fontLato } from "@/config/fonts";
 
 export const metadata: Metadata = {
   title: {
@@ -40,11 +41,13 @@ export default function RootLayout({
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
-          <div className="relative flex flex-col">
-            <main className="container min-h-screen mx-auto max-w-7xl flex-grow">
-              {children}
-            </main>
-          </div>
+          <AuthProvider>
+            <div className="relative flex flex-col">
+              <main className="container min-h-screen mx-auto max-w-7xl flex-grow">
+                {children}
+              </main>
+            </div>
+          </AuthProvider>
         </Providers>
       </body>
     </html>

@@ -2,7 +2,7 @@ import Credentials from "next-auth/providers/credentials";
 
 import { EXTERNAL_API_BASE } from "../config/config";
 
-import { NEXTAUTH_SECRET } from "@/src/utils/getEnv";
+import { NEXTAUTH_SECRET } from "@/utils/getEnv";
 
 export const authOptions = {
   cookies: {
@@ -28,21 +28,21 @@ export const authOptions = {
       credentials: {},
       async authorize(credentials: any) {
         const { email, password } = credentials;
-        const res = await fetch(
-          `${EXTERNAL_API_BASE}/v1/accounts/get-token-user/`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email, password }),
+        const url = `${EXTERNAL_API_BASE}/v1/accounts/get-token-user/`;
+        const res = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
           },
-        );
+          body: JSON.stringify({ email, password }),
+        });
 
         if (!res.ok) {
           throw new Error("Credenciales inválidas");
         }
         const data = await res.json();
+
+        console.log("data", data);
 
         return {
           id: data.user.id,

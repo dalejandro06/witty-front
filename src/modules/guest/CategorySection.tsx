@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import CategoryChips from "./CategoryChips";
 import CategoryCards from "./CategoryCards";
 
-import { Category, SubCategory } from "@/src/types/ApiTypes";
-import ApiRepository from "@/src/repositories/ApiRepository";
-import { FetchStatus } from "@/src/types";
+import { Category, SubCategory } from "@/types/ApiTypes";
+import ApiRepository from "@/repositories/ApiRepository";
+import { FetchStatus } from "@/types";
 
 type Props = {
   categories: Category[];

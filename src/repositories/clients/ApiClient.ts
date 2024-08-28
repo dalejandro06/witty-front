@@ -1,6 +1,6 @@
 import axios, { InternalAxiosRequestConfig } from "axios";
 
-import { EXTERNAL_API_BASE } from "@/src/config/config";
+import { EXTERNAL_API_BASE } from "@/config/config";
 
 const ApiClient = axios.create({
   baseURL: EXTERNAL_API_BASE,

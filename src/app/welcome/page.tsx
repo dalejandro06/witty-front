@@ -1,9 +1,9 @@
 import Image from "next/image";
 
-import { welcomeWords } from "@/src/modules/welcome/welcomeData";
-import ColorText from "@/src/modules/welcome/ColorText";
-import Logo from "@/src/assets/Logo.svg";
-import FooterButton from "@/src/modules/welcome/FooterButton";
+import { welcomeWords } from "@/modules/welcome/welcomeData";
+import ColorText from "@/modules/welcome/ColorText";
+import Logo from "@/assets/Logo.svg";
+import FooterButton from "@/modules/welcome/FooterButton";
 
 export default function welcome() {
   return (
@@ -19,7 +19,11 @@ export default function welcome() {
 
       <div className="absolute bottom-0 flex w-full left-0 pt-20">
         <FooterButton link="/login" text="Ingresa" theme="secondaryDark" />
-        <FooterButton link="/login" text="Regístrate" theme="secondary" />
+        <FooterButton
+          link="/create-account"
+          text="Regístrate"
+          theme="secondary"
+        />
       </div>
     </section>
   );

@@ -2,7 +2,7 @@
 import { Chip } from "@nextui-org/react";
 import FeatherIcon from "feather-icons-react";
 
-import { Category } from "@/src/types/ApiTypes";
+import { Category } from "@/types/ApiTypes";
 
 type Props = {
   categories: Category[];

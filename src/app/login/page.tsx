@@ -2,11 +2,11 @@ import Image from "next/image";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
-import Logo from "@/src/assets/Logo.svg";
-import RecoverPasswordModal from "@/src/modules/login/RecoverPasswordModal";
-import FooterLogin from "@/src/modules/login/FooterLogin";
-import { authOptions } from "@/src/utils/authOptions";
-import LoginForm from "@/src/modules/login/LoginForm";
+import Logo from "@/assets/Logo.svg";
+import RecoverPasswordModal from "@/modules/login/RecoverPasswordModal";
+import FooterLogin from "@/modules/login/FooterLogin";
+import { authOptions } from "@/utils/authOptions";
+import LoginForm from "@/modules/login/LoginForm";
 
 async function Login() {
   const session = await getServerSession(authOptions);

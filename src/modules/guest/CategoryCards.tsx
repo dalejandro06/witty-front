@@ -9,7 +9,7 @@ import {
 } from "@nextui-org/react";
 import FeatherIcon from "feather-icons-react";
 
-import { SubCategory } from "@/src/types/ApiTypes";
+import { SubCategory } from "@/types/ApiTypes";
 
 type Props = {
   cards: SubCategory[];

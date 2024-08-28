@@ -1,10 +1,11 @@
+"use client";
 import React from "react";
 import { Button } from "@nextui-org/button";
 import { Link } from "@nextui-org/link";
 
 import ScrambleWord from "./ScrambleWord";
 
-import { LogoImage } from "@/src/components/icons";
+import { LogoImage } from "@/components/icons";
 
 function Hero() {
   return (

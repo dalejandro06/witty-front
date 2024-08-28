@@ -1,7 +1,7 @@
 "use client";
 import { Link, useDisclosure } from "@nextui-org/react";
 
-import CustomModal from "@/src/components/CustomModal";
+import CustomModal from "@/components/CustomModal";
 
 function RecoverPasswordModal() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();

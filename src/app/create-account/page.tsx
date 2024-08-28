@@ -5,9 +5,9 @@ import Image from "next/image";
 import { Link } from "@nextui-org/link";
 import { Formik } from "formik";
 
-import Logo from "@/src/assets/Logo.svg";
-import InputPassword from "@/src/components/InputPassword";
-import FooterLogin from "@/src/modules/login/FooterLogin";
+import Logo from "@/assets/Logo.svg";
+import InputPassword from "@/components/InputPassword";
+import FooterLogin from "@/modules/login/FooterLogin";
 
 function CreateNewAccount() {
   return (
