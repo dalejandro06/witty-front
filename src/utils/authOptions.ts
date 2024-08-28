@@ -42,8 +42,6 @@ export const authOptions = {
         }
         const data = await res.json();
 
-        console.log("data", data);
-
         return {
           id: data.user.id,
           token: data.access,
