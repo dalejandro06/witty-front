@@ -54,12 +54,12 @@ function CategoryCards({ cards, loading }: Props) {
           <CardHeader className="flex gap-3 justify-between">
             <div className="flex items-center gap-2">
               <div className="bg-secondary p-2 rounded-xl">
-                <FeatherIcon icon="tool" size={15} />
+                <FeatherIcon icon={item.category_line_item.icon} size={15} />
               </div>
               <div className="flex flex-col">
                 <p className="text-md">{item.title}</p>
                 <p className="text-small text-default-500">
-                  {item.category_line_item}
+                  {item.category_line_item.title}
                 </p>
               </div>
             </div>

@@ -10,5 +10,5 @@ export type SubCategory = {
   total_services: number;
   title: string;
   description: string;
-  category_line_item: number;
+  category_line_item: Category;
 };
