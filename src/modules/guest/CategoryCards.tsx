@@ -8,23 +8,16 @@ import {
   Skeleton,
 } from "@nextui-org/react";
 import FeatherIcon from "feather-icons-react";
-import { useEffect, useState } from "react";
 
-import ApiRepository from "@/src/repositories/ApiRepository";
 import { SubCategory } from "@/src/types/ApiTypes";
 
 type Props = {
-  id: number;
+  cards: SubCategory[];
+  loading: boolean;
 };
 
-function CategoryCards({ id }: Props) {
-  const [cards, setCards] = useState<SubCategory[]>([]);
-
-  useEffect(() => {
-    ApiRepository.getSubCategories({ category_line_item: id }).then(setCards);
-  }, []);
-
-  if (!cards.length)
+function CategoryCards({ cards, loading }: Props) {
+  if (loading || !cards.length)
     return (
       <>
         {[1, 2, 3, 4].map((id) => (

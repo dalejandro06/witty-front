@@ -1,20 +1,21 @@
 "use client";
 import { Chip } from "@nextui-org/react";
 import FeatherIcon from "feather-icons-react";
-import { useState } from "react";
 
 import { Category } from "@/src/types/ApiTypes";
 
 type Props = {
   categories: Category[];
+  selectedCategory: Category;
+  setSelectedCategory: (c: Category) => void;
 };
 
-function CategoryChips({ categories }: Props) {
-  const [categorySelected, setCategorySelected] = useState<Category>(
-    categories[0],
-  );
-
-  const isSelectedItem = (item: Category) => categorySelected.id === item.id;
+function CategoryChips({
+  categories,
+  selectedCategory,
+  setSelectedCategory,
+}: Props) {
+  const isSelectedItem = (item: Category) => selectedCategory.id === item.id;
 
   return (
     <>
@@ -29,7 +30,7 @@ function CategoryChips({ categories }: Props) {
               : { border: `1px solid ${item.color}`, color: item.color }
           }
           variant={isSelectedItem(item) ? "flat" : "bordered"}
-          onClick={() => setCategorySelected(item)}
+          onClick={() => setSelectedCategory(item)}
         >
           {item.title}
         </Chip>
