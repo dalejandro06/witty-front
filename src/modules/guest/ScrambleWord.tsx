@@ -3,18 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const words = [
-  "BUSCA",
-  "INVITA",
-  "ENCUENTRA",
-  "NOTIFICA",
-  "VENDE",
-  "EXPANDE",
-  "NEGOCIA",
-  "INNOVA",
-  "DISTINGUE",
-  "ORGANIZA",
-];
+const words = ["BUSCA", "AGENDA", "OFRECE", "VENDE"];
 
 function ScrambleWord() {
   const [wordIndex, setWordIndex] = useState(0);
