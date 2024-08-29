@@ -1,5 +1,4 @@
 import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
 import { PropsWithChildren } from "react";
 
 import Navbar from "@/components/navbar";
@@ -8,7 +7,7 @@ async function layout({ children }: PropsWithChildren) {
   const session = await getServerSession();
 
   if (!session) {
-    redirect("/login");
+    // redirect("/login");
   }
 
   return (
