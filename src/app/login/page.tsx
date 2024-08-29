@@ -12,7 +12,7 @@ async function Login() {
   const session = await getServerSession(authOptions);
 
   if (session) {
-    redirect("/");
+    redirect("/supplier");
   }
 
   return (

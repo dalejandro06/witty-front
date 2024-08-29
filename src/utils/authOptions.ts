@@ -1,10 +1,11 @@
 import Credentials from "next-auth/providers/credentials";
+import { AuthOptions } from "next-auth";
 
 import { EXTERNAL_API_BASE } from "../config/config";
 
 import { NEXTAUTH_SECRET } from "@/utils/getEnv";
 
-export const authOptions = {
+export const authOptions: AuthOptions = {
   cookies: {
     sessionToken: {
       name: "next-auth.session-token",
@@ -17,11 +18,10 @@ export const authOptions = {
       },
     },
   },
-  sesion: {
-    strategy: "jwt",
-    maxAge: 3600,
-  },
   secret: NEXTAUTH_SECRET,
+  session: {
+    strategy: "jwt",
+  },
   providers: [
     Credentials({
       type: "credentials",
@@ -45,15 +45,46 @@ export const authOptions = {
         return {
           id: data.user.id,
           token: data.access,
-          username: data.user.username,
+          refreshToken: data.refresh,
+          name: data.user.username,
           email: data.user.email,
-          first_name: data.user.first_name,
-          last_name: data.user.last_name,
+          firstName: data.user.first_name,
+          lastName: data.user.last_name,
         };
       },
     }),
   ],
-  callbacks: {},
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        return {
+          id: user.id,
+          token: user.token,
+          refreshToken: user.refreshToken,
+          name: user.name,
+          email: user.email,
+          firstName: user.firstName,
+          lastName: user.lastName,
+        };
+      }
+
+      return token;
+    },
+    session({ session, token }) {
+      return {
+        ...session,
+        user: {
+          id: token.id,
+          token: token.token,
+          refreshToken: token.refreshToken,
+          name: token.name,
+          firstName: token.firstName,
+          lastName: token.lastName,
+          email: token.email,
+        },
+      };
+    },
+  },
   pages: {
     signIn: "/login",
   },

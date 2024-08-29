@@ -16,8 +16,10 @@ function FooterButton({ text, theme, link }: Props) {
   const bgColor = background[theme];
 
   return (
-    <button className={`text-white w-full p-4 rounded-t-large ${bgColor}`}>
-      <Link href={link}>{text}</Link>
+    <button className={`text-white w-full rounded-t-large ${bgColor}`}>
+      <Link className="block h-full w-full p-4" href={link}>
+        {text}
+      </Link>
     </button>
   );
 }

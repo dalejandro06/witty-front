@@ -26,7 +26,7 @@ function LoginForm() {
       if (!res || res.error) {
         // return message.error("Error al iniciar sesion");
       }
-      router.replace("/");
+      router.replace("/supplier");
     } finally {
       setLoading(false);
     }
