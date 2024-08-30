@@ -63,7 +63,7 @@ function CategoryCards({ cards, loading }: Props) {
                 </p>
               </div>
             </div>
-            <div className="bg-base-blue py-1 px-2 rounded-full text-white text-sm">
+            <div className="bg-base-blue py-1 px-2 rounded-full text-white text-sm min-w-[27px] flex items-center justify-center">
               {item.total_services && `+${item.total_services}`}
             </div>
           </CardHeader>

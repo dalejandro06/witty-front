@@ -34,7 +34,7 @@ function CategorySection({ categories }: Props) {
     <section className="bg-white mb-20">
       <div className="bg-gray-200 pt-10 px-6">
         <p className="text-lg font-semibold">Categorías</p>
-        <div className="overflow-x-scroll my-5 bg">
+        <div className="overflow-x-scroll my-5 pb-4 bg">
           <div className="flex gap-3">
             <CategoryChips
               categories={categories}
