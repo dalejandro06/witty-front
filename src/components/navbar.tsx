@@ -10,14 +10,12 @@ import { Link } from "@nextui-org/link";
 import NextLink from "next/link";
 import Image from "next/image";
 import { Button } from "@nextui-org/button";
-import { signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 
 import { siteConfig } from "@/config/site";
 import LogoWhite from "@/assets/logo-white.svg";
 
 const Navbar = () => {
-  const session = useSession();
-
   return (
     <NextUINavbar className="bg-primary-blue" maxWidth="xl" position="sticky">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
@@ -30,7 +28,7 @@ const Navbar = () => {
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
         {/* <ThemeSwitch /> */}
-        {session.status === "authenticated" ? (
+        {false ? (
           <Button className="bg-secondary font-bold" onClick={() => signOut()}>
             Cerrar session
           </Button>

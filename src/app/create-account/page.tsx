@@ -7,7 +7,7 @@ import { Formik } from "formik";
 
 import Logo from "@/assets/Logo.svg";
 import InputPassword from "@/components/InputPassword";
-import FooterLogin from "@/modules/login/FooterLogin";
+import FooterLogin from "@/app/modules/login/FooterLogin";
 
 function CreateNewAccount() {
   return (
@@ -68,10 +68,7 @@ function CreateNewAccount() {
               variant="bordered"
               onChange={(e) => setFieldValue("email", e.target.value)}
             />
-            <InputPassword
-              setValue={(value) => setFieldValue("password", value)}
-              value=""
-            />
+            <InputPassword />
             <Button className="mt-5" color="primary" type="submit">
               Regístrate
             </Button>

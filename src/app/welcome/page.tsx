@@ -1,9 +1,9 @@
 import Image from "next/image";
 
-import { welcomeWords } from "@/modules/welcome/welcomeData";
-import ColorText from "@/modules/welcome/ColorText";
+import { welcomeWords } from "@/app/modules/welcome/welcomeData";
+import ColorText from "@/app/modules/welcome/ColorText";
 import Logo from "@/assets/Logo.svg";
-import FooterButton from "@/modules/welcome/FooterButton";
+import FooterButton from "@/app/modules/welcome/FooterButton";
 
 export default function welcome() {
   return (

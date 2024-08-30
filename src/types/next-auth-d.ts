@@ -1,9 +1,8 @@
 import { DefaultSession } from "next-auth";
+// eslint-disable-next-line unused-imports/no-unused-imports, @typescript-eslint/no-unused-vars
+import { JWT } from "next-auth/jwt";
 
 declare module "next-auth" {
-  /**
-   * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
-   */
   interface Session {
     user: {
       id: number;
@@ -17,11 +16,22 @@ declare module "next-auth" {
   }
 
   interface User {
-    id: number;
+    id?: string;
     token: string;
     refreshToken: string;
-    name: string;
-    email: string;
+    name?: string | null;
+    email?: string | null;
+    firstName: string;
+    lastName: string;
+  }
+}
+declare module "next-auth/jwt" {
+  interface JWT {
+    id?: string;
+    token: string;
+    refreshToken: string;
+    name?: string | null;
+    email?: string | null;
     firstName: string;
     lastName: string;
   }

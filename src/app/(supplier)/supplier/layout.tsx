@@ -1,15 +1,8 @@
-import { getServerSession } from "next-auth";
 import { PropsWithChildren } from "react";
 
 import Navbar from "@/components/navbar";
 
 async function layout({ children }: PropsWithChildren) {
-  const session = await getServerSession();
-
-  if (!session) {
-    // redirect("/login");
-  }
-
   return (
     <div className="bg-gray-200 min-h-screen">
       <Navbar />

@@ -3,7 +3,6 @@ import { Metadata, Viewport } from "next";
 import clsx from "clsx";
 
 import { Providers } from "../Providers/providers";
-import AuthProvider from "../Providers/AuthProvider";
 
 import { siteConfig } from "@/config/site";
 import { fontLato } from "@/config/fonts";
@@ -41,13 +40,11 @@ export default function RootLayout({
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
-          <AuthProvider>
-            <div className="relative flex flex-col">
-              <main className="container min-h-screen mx-auto max-w-7xl flex-grow">
-                {children}
-              </main>
-            </div>
-          </AuthProvider>
+          <div className="relative flex flex-col">
+            <main className="container min-h-screen mx-auto max-w-7xl flex-grow">
+              {children}
+            </main>
+          </div>
         </Providers>
       </body>
     </html>

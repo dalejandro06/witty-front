@@ -1,11 +1,11 @@
 import Credentials from "next-auth/providers/credentials";
-import { AuthOptions } from "next-auth";
+import { NextAuthConfig } from "next-auth";
 
 import { EXTERNAL_API_BASE } from "../config/config";
 
 import { NEXTAUTH_SECRET } from "@/utils/getEnv";
 
-export const authOptions: AuthOptions = {
+export const authOptions = {
   cookies: {
     sessionToken: {
       name: "next-auth.session-token",
@@ -88,4 +88,4 @@ export const authOptions: AuthOptions = {
   pages: {
     signIn: "/login",
   },
-};
+} satisfies NextAuthConfig;
