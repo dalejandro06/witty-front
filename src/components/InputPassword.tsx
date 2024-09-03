@@ -1,10 +1,10 @@
 "use client";
-import { Input } from "@nextui-org/input";
+import { Input, InputProps } from "@nextui-org/input";
 import { useState } from "react";
 
 import { EyeFilledIcon, EyeSlashFilledIcon } from "./icons";
 
-function InputPassword() {
+function InputPassword(props: InputProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => setIsVisible(!isVisible);
@@ -33,6 +33,7 @@ function InputPassword() {
       placeholder="Ingresa tu contraseña"
       type={isVisible ? "text" : "password"}
       variant="bordered"
+      {...props}
     />
   );
 }
