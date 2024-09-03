@@ -8,6 +8,7 @@ import { Providers } from "../Providers/providers";
 import { siteConfig } from "@/config/site";
 import { fontLato } from "@/config/fonts";
 import { LogoImage } from "@/components/icons";
+import { NextAuthProvider } from "@/Providers/AuthProvider";
 
 export const metadata: Metadata = {
   title: {
@@ -42,28 +43,30 @@ export default function RootLayout({
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
-          <div className="relative flex flex-col">
-            <main className="container min-h-screen mx-auto max-w-7xl flex-grow">
-              <Toaster
-                position="top-center"
-                reverseOrder={false}
-                toastOptions={{
-                  duration: 5000,
-                  success: {
-                    style: { background: "#D9ECE2", width: "100%" },
-                    className: "rounded-lg p-6 border-l-8 border-l-[#66CC99]",
-                    icon: <LogoImage fill="#66CC99" />,
-                  },
-                  error: {
-                    style: { background: "#ECD9D9", width: "100%" },
-                    className: "rounded-lg p-6 border-l-8 border-l-[#C64444]",
-                    icon: <LogoImage fill="#C64444" />,
-                  },
-                }}
-              />
-              {children}
-            </main>
-          </div>
+          <NextAuthProvider>
+            <div className="relative flex flex-col">
+              <main className="container min-h-screen mx-auto max-w-7xl flex-grow">
+                <Toaster
+                  position="top-center"
+                  reverseOrder={false}
+                  toastOptions={{
+                    duration: 5000,
+                    success: {
+                      style: { background: "#D9ECE2", width: "100%" },
+                      className: "rounded-lg p-6 border-l-8 border-l-[#66CC99]",
+                      icon: <LogoImage fill="#66CC99" />,
+                    },
+                    error: {
+                      style: { background: "#ECD9D9", width: "100%" },
+                      className: "rounded-lg p-6 border-l-8 border-l-[#C64444]",
+                      icon: <LogoImage fill="#C64444" />,
+                    },
+                  }}
+                />
+                {children}
+              </main>
+            </div>
+          </NextAuthProvider>
         </Providers>
       </body>
     </html>

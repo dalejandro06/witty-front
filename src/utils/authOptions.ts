@@ -25,8 +25,11 @@ export const authOptions = {
   providers: [
     Credentials({
       type: "credentials",
-      credentials: {},
-      async authorize(credentials: any) {
+      credentials: {
+        email: { label: "email" },
+        password: { label: "password" },
+      },
+      async authorize(credentials) {
         const { email, password } = credentials;
         const url = `${EXTERNAL_API_BASE}/v1/accounts/get-token-user/`;
         const res = await fetch(url, {
@@ -46,7 +49,7 @@ export const authOptions = {
           id: data.user.id,
           token: data.access,
           refreshToken: data.refresh,
-          name: data.user.username,
+          username: data.user.username,
           email: data.user.email,
           firstName: data.user.first_name,
           lastName: data.user.last_name,
@@ -61,7 +64,7 @@ export const authOptions = {
           id: user.id,
           token: user.token,
           refreshToken: user.refreshToken,
-          name: user.name,
+          username: user.username,
           email: user.email,
           firstName: user.firstName,
           lastName: user.lastName,
@@ -77,7 +80,7 @@ export const authOptions = {
           id: token.id,
           token: token.token,
           refreshToken: token.refreshToken,
-          name: token.name,
+          username: token.username,
           firstName: token.firstName,
           lastName: token.lastName,
           email: token.email,

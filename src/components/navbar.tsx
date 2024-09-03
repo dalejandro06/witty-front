@@ -16,6 +16,10 @@ import { siteConfig } from "@/config/site";
 import LogoWhite from "@/assets/logo-white.svg";
 
 const Navbar = () => {
+  const handleLogout = async () => {
+    await signOut({ callbackUrl: "/login" });
+  };
+
   return (
     <NextUINavbar className="bg-primary-blue" maxWidth="xl" position="sticky">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
@@ -28,8 +32,8 @@ const Navbar = () => {
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
         {/* <ThemeSwitch /> */}
-        {false ? (
-          <Button className="bg-secondary font-bold" onClick={() => signOut()}>
+        {true ? (
+          <Button className="bg-secondary font-bold" onClick={handleLogout}>
             Cerrar session
           </Button>
         ) : (
