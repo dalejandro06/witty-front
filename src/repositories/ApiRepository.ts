@@ -1,4 +1,4 @@
-import { Category, SubCategory } from "../types/ApiTypes";
+import { Category, Register, SubCategory } from "../types/ApiTypes";
 
 import ApiClient from "./clients/ApiClient";
 
@@ -6,7 +6,26 @@ type SubCategoriesParams = {
   category_line_item: number;
 };
 
+type RegisterParams = {
+  username: string;
+  email: string;
+  first_name: string;
+  last_name: string;
+  password: string;
+};
+
 export default {
+  async registerUser(payload: RegisterParams): Promise<Register> {
+    const data = await ApiClient.post<Register>("/v1/accounts/register-user/", {
+      email: payload.email,
+      username: payload.username,
+      first_name: payload.first_name,
+      last_name: payload.last_name,
+      password: payload.password,
+    });
+
+    return data.data;
+  },
   async getCategories(): Promise<Category[]> {
     const data = await ApiClient.get<Category[]>(
       "/v1/services/categories-line-item/",

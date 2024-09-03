@@ -1,3 +1,11 @@
+export type Register = {
+  id: number;
+  username: string;
+  email: string;
+  first_name: string;
+  last_name: string;
+};
+
 export type Category = {
   color: string;
   icon: string;

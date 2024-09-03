@@ -1,11 +1,11 @@
 import Credentials from "next-auth/providers/credentials";
-import { AuthOptions } from "next-auth";
+import { NextAuthConfig } from "next-auth";
 
 import { EXTERNAL_API_BASE } from "../config/config";
 
 import { NEXTAUTH_SECRET } from "@/utils/getEnv";
 
-export const authOptions: AuthOptions = {
+export const authOptions = {
   cookies: {
     sessionToken: {
       name: "next-auth.session-token",
@@ -25,8 +25,11 @@ export const authOptions: AuthOptions = {
   providers: [
     Credentials({
       type: "credentials",
-      credentials: {},
-      async authorize(credentials: any) {
+      credentials: {
+        email: { label: "email" },
+        password: { label: "password" },
+      },
+      async authorize(credentials) {
         const { email, password } = credentials;
         const url = `${EXTERNAL_API_BASE}/v1/accounts/get-token-user/`;
         const res = await fetch(url, {
@@ -46,7 +49,7 @@ export const authOptions: AuthOptions = {
           id: data.user.id,
           token: data.access,
           refreshToken: data.refresh,
-          name: data.user.username,
+          username: data.user.username,
           email: data.user.email,
           firstName: data.user.first_name,
           lastName: data.user.last_name,
@@ -61,7 +64,7 @@ export const authOptions: AuthOptions = {
           id: user.id,
           token: user.token,
           refreshToken: user.refreshToken,
-          name: user.name,
+          username: user.username,
           email: user.email,
           firstName: user.firstName,
           lastName: user.lastName,
@@ -77,7 +80,7 @@ export const authOptions: AuthOptions = {
           id: token.id,
           token: token.token,
           refreshToken: token.refreshToken,
-          name: token.name,
+          username: token.username,
           firstName: token.firstName,
           lastName: token.lastName,
           email: token.email,
@@ -88,4 +91,4 @@ export const authOptions: AuthOptions = {
   pages: {
     signIn: "/login",
   },
-};
+} satisfies NextAuthConfig;
