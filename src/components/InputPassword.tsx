@@ -11,8 +11,10 @@ function InputPassword(props: InputProps) {
 
   return (
     <Input
+      isRequired
       required
       className="text-secondary-blue"
+      description={"Minimo 8 caracteres"}
       endContent={
         <button
           aria-label="toggle password visibility"
@@ -29,6 +31,7 @@ function InputPassword(props: InputProps) {
       }
       id="password"
       label="Contraseña"
+      minLength={8}
       name="password"
       placeholder="Ingresa tu contraseña"
       type={isVisible ? "text" : "password"}

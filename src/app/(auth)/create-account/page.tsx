@@ -62,7 +62,7 @@ function CreateNewAccount() {
               required
               errorMessage={errors.first_name}
               label="Nombre"
-              placeholder="Nombre"
+              placeholder="Witty"
               type="text"
               value={values.first_name}
               variant="bordered"
@@ -72,7 +72,7 @@ function CreateNewAccount() {
               isRequired
               required
               label="Apellido"
-              placeholder="Apellido"
+              placeholder="Witty"
               type="text"
               value={values.last_name}
               variant="bordered"
@@ -84,7 +84,7 @@ function CreateNewAccount() {
               errorMessage={errors.username}
               isInvalid={!!errors.username}
               label="Alias"
-              placeholder="Alias"
+              placeholder="Witty App"
               type="error"
               value={values.username}
               variant="bordered"
@@ -96,7 +96,7 @@ function CreateNewAccount() {
               errorMessage={errors.email}
               isInvalid={!!errors.email}
               label="Correo"
-              placeholder="Correo"
+              placeholder="wittyapp@example.com"
               type="text"
               value={values.email}
               variant="bordered"

@@ -32,7 +32,7 @@ function LoginForm() {
         id="email"
         label="Correo"
         name="email"
-        placeholder="Correo"
+        placeholder="wittyapp@example.com"
         type="email"
         variant="bordered"
       />
