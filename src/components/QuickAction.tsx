@@ -21,12 +21,14 @@ function QuickAction({ icon, text, type }: Props) {
 
   return (
     <Button
-      className={`${getType()} w-full px-2 py-10 flex gap-1 items-center rounded-lg shadow-lg`}
+      className={`${getType()} w-full px-2 py-10 items-center rounded-lg shadow-lg`}
       color="secondary"
       size="lg"
     >
-      <FeatherIcon icon={icon} size={20} />
-      <p className="text-sm">{text}</p>
+      <div className="flex flex-col sm:flex-row items-center gap-1">
+        <FeatherIcon icon={icon} size={20} />
+        <p className="text-sm text-wrap">{text}</p>
+      </div>
     </Button>
   );
 }
