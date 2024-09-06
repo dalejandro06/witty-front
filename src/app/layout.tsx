@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
 import clsx from "clsx";
 import { Toaster } from "react-hot-toast";
+import { Analytics } from "@vercel/analytics/react";
 
 import { Providers } from "../Providers/providers";
 
@@ -66,6 +67,7 @@ export default function RootLayout({
                   }}
                 />
                 {children}
+                <Analytics />
               </main>
             </div>
           </NextAuthProvider>
