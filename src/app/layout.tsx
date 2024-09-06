@@ -7,7 +7,7 @@ import { Providers } from "../Providers/providers";
 
 import { siteConfig } from "@/config/site";
 import { fontLato } from "@/config/fonts";
-import { LogoImage } from "@/components/icons";
+import { ErrorLogo, LogoImage } from "@/components/icons";
 import { NextAuthProvider } from "@/Providers/AuthProvider";
 
 export const metadata: Metadata = {
@@ -53,13 +53,15 @@ export default function RootLayout({
                     duration: 5000,
                     success: {
                       style: { background: "#D9ECE2", width: "100%" },
-                      className: "rounded-lg p-6 border-l-8 border-l-[#66CC99]",
+                      className:
+                        "rounded-lg p-6 border-l-8 border-l-[#66CC99] font-bold",
                       icon: <LogoImage fill="#66CC99" />,
                     },
                     error: {
                       style: { background: "#ECD9D9", width: "100%" },
-                      className: "rounded-lg p-6 border-l-8 border-l-[#C64444]",
-                      icon: <LogoImage fill="#C64444" />,
+                      className:
+                        "rounded-lg p-6 border-l-8 border-l-[#C64444] font-bold",
+                      icon: <ErrorLogo fill="#C64444" />,
                     },
                   }}
                 />

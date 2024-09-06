@@ -20,6 +20,10 @@ const config: Config = {
         "secondary-blue": "#003366",
         "tertiary-blue": "#4A90E2",
         "base-blue": "#006FEE",
+        navbar: "#02101E",
+        gray: {
+          400: "#C1C1C1",
+        },
       },
       fontFamily: {
         lato: ["Lato"],

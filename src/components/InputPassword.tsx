@@ -11,8 +11,6 @@ function InputPassword(props: InputProps) {
 
   return (
     <Input
-      isRequired
-      required
       className="text-secondary-blue"
       description={"Minimo 8 caracteres"}
       endContent={
@@ -30,10 +28,11 @@ function InputPassword(props: InputProps) {
         </button>
       }
       id="password"
+      isRequired={props.isRequired || true}
       label="Contraseña"
-      minLength={8}
       name="password"
       placeholder="Ingresa tu contraseña"
+      required={props.required || true}
       type={isVisible ? "text" : "password"}
       variant="bordered"
       {...props}

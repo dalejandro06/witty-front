@@ -93,6 +93,9 @@ function RegisterForm() {
             onChange={(e) => setFieldValue("email", e.target.value)}
           />
           <InputPassword
+            errorMessage={errors.password}
+            isInvalid={!!errors.password}
+            required={false}
             value={values.password}
             onChange={(e) => setFieldValue("password", e.target.value)}
           />

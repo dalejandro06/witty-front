@@ -6,10 +6,13 @@ Yup.setLocale({
   },
   string: {
     email: "Debe ser un correo valido",
+    min: "El campo debe tener al menos 8 caracteres",
+    max: "El campo no debe superar los caracteres",
   },
 });
 
 export const RegisterSchema = new Yup.ObjectSchema({
-  username: Yup.string().required(),
+  username: Yup.string().max(30).required(),
   email: Yup.string().email().required(),
+  password: Yup.string().required().min(8),
 });
