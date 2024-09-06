@@ -14,7 +14,7 @@ async function layout({ children }: PropsWithChildren) {
 
   return (
     <div className="bg-gray-200 min-h-screen pb-28">
-      <Navbar />
+      <Navbar session={session} />
       <div className="my-10 mx-6">{children}</div>
       <Navigation />
     </div>

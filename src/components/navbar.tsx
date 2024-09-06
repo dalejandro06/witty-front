@@ -1,22 +1,24 @@
 "use client";
+
 import {
   Navbar as NextUINavbar,
   NavbarContent,
-  NavbarMenu,
   NavbarBrand,
-  NavbarMenuItem,
 } from "@nextui-org/navbar";
 import { Link } from "@nextui-org/link";
 import NextLink from "next/link";
 import Image from "next/image";
 import { Button } from "@nextui-org/button";
-import { signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
+import { Session } from "next-auth";
 
-import { siteConfig } from "@/config/site";
 import LogoWhite from "@/assets/logo-white.svg";
 
-const Navbar = () => {
-  const { data: session } = useSession();
+type Props = {
+  session: Session | null;
+};
+
+const Navbar = ({ session }: Props) => {
   const handleLogout = async () => {
     await signOut({ callbackUrl: "/login" });
   };
@@ -43,28 +45,6 @@ const Navbar = () => {
           </Button>
         )}
       </NavbarContent>
-      {/* Menu for mobile */}
-      <NavbarMenu>
-        <div className="mx-4 mt-2 flex flex-col gap-2">
-          {siteConfig.navMenuItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
-                color={
-                  index === 2
-                    ? "primary"
-                    : index === siteConfig.navMenuItems.length - 1
-                      ? "danger"
-                      : "foreground"
-                }
-                href={item.href}
-                size="lg"
-              >
-                {item.label}
-              </Link>
-            </NavbarMenuItem>
-          ))}
-        </div>
-      </NavbarMenu>
     </NextUINavbar>
   );
 };

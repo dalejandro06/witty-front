@@ -19,7 +19,7 @@ export default async function Home() {
 
   return (
     <>
-      <Navbar />
+      <Navbar session={session} />
       <Hero />
       <CategorySection categories={categories} />
       <FooterGuest />
