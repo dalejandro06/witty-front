@@ -23,6 +23,7 @@ const config: Config = {
         navbar: "#02101E",
         gray: {
           400: "#C1C1C1",
+          800: "#02101ED1",
         },
       },
       fontFamily: {
