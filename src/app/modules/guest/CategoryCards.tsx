@@ -1,13 +1,17 @@
 "use client";
 import {
+  Button,
   Card,
   CardBody,
   CardFooter,
   CardHeader,
   Link,
   Skeleton,
+  useDisclosure,
 } from "@nextui-org/react";
 import FeatherIcon from "feather-icons-react";
+
+import LoginModal from "./LoginModal";
 
 import { SubCategory } from "@/types/ApiTypes";
 
@@ -17,6 +21,8 @@ type Props = {
 };
 
 function CategoryCards({ cards, loading }: Props) {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
   if (loading || !cards.length)
     return (
       <>
@@ -71,12 +77,19 @@ function CategoryCards({ cards, loading }: Props) {
             <p>{item.description}</p>
           </CardBody>
           <CardFooter>
-            <Link showAnchorIcon className="text-base-blue" href="/login">
+            <Button
+              showAnchorIcon
+              as={Link}
+              className="text-base-blue"
+              variant="light"
+              onPress={onOpen}
+            >
               Conoce todos los servicios
-            </Link>
+            </Button>
           </CardFooter>
         </Card>
       ))}
+      <LoginModal isOpen={isOpen} onOpenChange={onOpenChange} />
     </>
   );
 }

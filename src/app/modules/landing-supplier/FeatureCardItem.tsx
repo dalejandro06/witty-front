@@ -23,9 +23,9 @@ function FeatureCardItem({ imageBanner, title, checkList }: Props) {
       </div>
       <ul>
         {checkList.map((item) => (
-          <li key={item.description} className="flex gap-1 my-2">
+          <li key={item.description} className="flex my-2">
             <FeatherIcon
-              className="text-secondary pt-1"
+              className="text-secondary pt-1 pe-1 flex-shrink-0"
               icon="check-circle"
               size={20}
             />

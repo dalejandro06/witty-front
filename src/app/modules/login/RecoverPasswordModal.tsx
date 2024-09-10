@@ -1,5 +1,5 @@
 "use client";
-import { Link, useDisclosure } from "@nextui-org/react";
+import { Input, Link, useDisclosure } from "@nextui-org/react";
 
 import CustomModal from "@/components/CustomModal";
 
@@ -17,13 +17,22 @@ function RecoverPasswordModal() {
 
       <CustomModal
         body={
-          <p>
-            Enviaremos una link al correo{" "}
-            <strong className="text-secondary-blue">
-              wittyapp@example.com
-            </strong>{" "}
-            para que puedas restablecer tu contraseña.
-          </p>
+          <div className="flex flex-col gap-2">
+            <p>
+              Ingresa tu correo para enviarte un enlace y restablecer tu
+              contraseña.
+            </p>
+            <Input
+              isRequired
+              required
+              id="email"
+              label="Correo"
+              name="email"
+              placeholder="wittyapp@example.com"
+              type="email"
+              variant="bordered"
+            />
+          </div>
         }
         isOpen={isOpen}
         title="Recupera tu contraseña"

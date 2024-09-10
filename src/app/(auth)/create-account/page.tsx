@@ -14,7 +14,7 @@ function CreateNewAccount() {
             <Image alt="Witty Logo" src={Logo} />
           </Link>
         </div>
-        <p className="text-secondary-blue dark:text-white text-xl font-bold text-center mt-5">
+        <p className="text-secondary-blue dark:text-white text-xl text-center mt-5">
           ¡Tu aventura de servicios comienza aquí!
         </p>
       </div>

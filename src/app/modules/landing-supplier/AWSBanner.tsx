@@ -2,7 +2,7 @@ import { AWSBrand } from "@/components/icons";
 
 function AWSBanner() {
   return (
-    <section className="bg-secondary px-16 text-center py-10">
+    <section className="bg-secondary px-10 text-center py-10">
       <p className="font-bold text-3xl text-gray-800">
         Confianza y Rendimiento Impulsados por{" "}
         <span className="text-white">AWS</span>

@@ -4,7 +4,7 @@ import React from "react";
 
 function HeroLandingSupplier() {
   return (
-    <section className="bg-primary-blue flex flex-col px-16 py-6 gap-4 w-100">
+    <section className="bg-primary-blue flex flex-col px-10 py-6 gap-4 w-100">
       <div className="text-white">
         <div className="font-bold text-4xl text-center">
           <span className="block text-linear-gradient">PROVEEDOR</span>
