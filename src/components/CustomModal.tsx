@@ -32,7 +32,12 @@ function CustomModal({
   onOpenChange,
 }: ModalProps) {
   return (
-    <Modal isOpen={isOpen} placement="center" onOpenChange={onOpenChange}>
+    <Modal
+      backdrop="blur"
+      isOpen={isOpen}
+      placement="bottom"
+      onOpenChange={onOpenChange}
+    >
       <ModalContent>
         {(onClose) => (
           <>
@@ -40,23 +45,20 @@ function CustomModal({
               {title}
             </ModalHeader>
             <ModalBody>{body}</ModalBody>
-            <ModalFooter className="justify-center">
+            <ModalFooter className="justify-end">
               <Button
-                fullWidth
-                color="secondary"
-                size="lg"
+                size="md"
                 variant="bordered"
                 onPress={onCancelBtn || onClose}
               >
                 {cancelBtnText || "Cancelar"}
               </Button>
               <Button
-                fullWidth
                 color="primary"
-                size="lg"
+                size="md"
                 onPress={onConfirmBtn || onclose}
               >
-                {confirmBtnText || "Confirmar"}
+                {confirmBtnText || "Enviar"}
               </Button>
             </ModalFooter>
           </>

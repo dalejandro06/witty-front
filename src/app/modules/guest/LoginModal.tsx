@@ -15,9 +15,10 @@ type Props = {
 function LoginModal({ isOpen, onOpenChange }: Props) {
   return (
     <Modal
+      backdrop="blur"
       className="py-6"
       isOpen={isOpen}
-      placement="center"
+      placement="bottom"
       onOpenChange={onOpenChange}
     >
       <ModalContent>
