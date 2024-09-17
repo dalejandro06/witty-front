@@ -8,3 +8,28 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/* .stepper-line-content {
+  position: relative;
+  &::before {
+    position: absolute;
+    bottom: -60%;
+    left: 50%;
+    content: "";
+    width: 1px;
+    height: 50%;
+    background-color: hsl(var(--nextui-secondary-500));
+    display: block;
+  }
+} */
+
+.absolute-from-grid {
+  & > * {
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+
+.clip-rounded {
+  clip-path: circle(50% at 50% 0);
+}
