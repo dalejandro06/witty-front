@@ -50,8 +50,8 @@ function Onboarding() {
           <div className="relative -top-1/4 overflow-hidden bg-gradient-to-r from-secondary-500 to-secondary-blue clip-rounded">
             <Image alt="stars" className="w-full h-full" src={StarsImage} />
           </div>
-          <div className="relative rounded grid place-items-center mt-14">
-            <Image alt="Medal" height={100} src={MedalImage} width={100} />
+          <div className="relative rounded grid place-items-center mt-16">
+            <Image alt="Medal" height={85} src={MedalImage} width={85} />
             <div className="text-center">
               <p className="font-medium text-xl">Felicidades</p>
               <p className="text-gray-500">Tu perfil esta completo</p>
