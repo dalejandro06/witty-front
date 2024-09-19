@@ -1,4 +1,9 @@
-import { Category, Register, SubCategory } from "../types/ApiTypes";
+import {
+  Category,
+  ForgotPassword,
+  Register,
+  SubCategory,
+} from "../types/ApiTypes";
 
 import ApiClient from "./clients/ApiClient";
 
@@ -38,6 +43,17 @@ export default {
   }: SubCategoriesParams): Promise<SubCategory[]> {
     const data = await ApiClient.get<SubCategory[]>(
       `/v1/services/categories/${category_line_item}/`,
+    );
+
+    return data.data;
+  },
+
+  async forgotPassword({ email }: { email: string }): Promise<ForgotPassword> {
+    const data = await ApiClient.post<ForgotPassword>(
+      "/v1/accounts/forgot-password/",
+      {
+        email,
+      },
     );
 
     return data.data;

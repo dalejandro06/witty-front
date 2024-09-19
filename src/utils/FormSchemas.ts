@@ -16,3 +16,7 @@ export const RegisterSchema = new Yup.ObjectSchema({
   email: Yup.string().email().required(),
   password: Yup.string().required().min(8),
 });
+
+export const ForgotPasswordSchema = new Yup.ObjectSchema({
+  email: Yup.string().email().required(),
+});

@@ -14,22 +14,26 @@ type ModalProps = {
   title: string;
   body: string | ReactNode;
   onCancelBtn?: () => void;
-  onConfirmBtn: () => void;
   cancelBtnText?: string;
-  confirmBtnText?: string;
   isOpen: boolean;
   onOpenChange: () => void;
+  confirmButton: {
+    text: string;
+    type?: "button" | "reset" | "submit";
+    form?: string;
+    loading: boolean;
+    onPress?: () => void;
+  };
 };
 
 function CustomModal({
   title,
   body,
   onCancelBtn,
-  onConfirmBtn,
   cancelBtnText,
-  confirmBtnText,
   isOpen,
   onOpenChange,
+  confirmButton,
 }: ModalProps) {
   return (
     <Modal
@@ -55,10 +59,13 @@ function CustomModal({
               </Button>
               <Button
                 color="primary"
+                form={confirmButton.form}
+                isLoading={confirmButton.loading}
                 size="md"
-                onPress={onConfirmBtn || onclose}
+                type={confirmButton.type || "button"}
+                onPress={confirmButton.onPress}
               >
-                {confirmBtnText || "Enviar"}
+                {confirmButton.text || "Enviar"}
               </Button>
             </ModalFooter>
           </>

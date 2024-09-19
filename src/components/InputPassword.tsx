@@ -29,9 +29,9 @@ function InputPassword(props: InputProps) {
       }
       id="password"
       isRequired={props.isRequired || true}
-      label="Contraseña"
+      label={props.label || "Contraseña"}
       name="password"
-      placeholder="Ingresa tu contraseña"
+      placeholder={props.placeholder || "Ingresa tu contraseña"}
       required={props.required || true}
       type={isVisible ? "text" : "password"}
       variant="bordered"

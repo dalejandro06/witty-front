@@ -6,11 +6,10 @@ import { Button } from "@nextui-org/button";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 
-import { RegisterSchema } from "./RegisterSchema";
-
 import ApiRepository from "@/repositories/ApiRepository";
 import InputPassword from "@/components/InputPassword";
 import { useErrorHandler } from "@/utils/handleError";
+import { RegisterSchema } from "@/utils/FormSchemas";
 
 function RegisterForm() {
   const errorHandler = useErrorHandler();

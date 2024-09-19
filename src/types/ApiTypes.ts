@@ -20,3 +20,7 @@ export type SubCategory = {
   description: string;
   category_line_item: Category;
 };
+
+export type ForgotPassword = {
+  email: string;
+};
