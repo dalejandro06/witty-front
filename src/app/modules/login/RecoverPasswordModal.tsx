@@ -9,7 +9,7 @@ import ApiRepository from "@/repositories/ApiRepository";
 import { ForgotPasswordSchema } from "@/utils/FormSchemas";
 
 function RecoverPasswordModal() {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
   const [pending, startTransition] = useTransition();
 
   const handleForgotPassword = (values: FormikValues) => {
@@ -19,7 +19,7 @@ function RecoverPasswordModal() {
 
         if (res.email) {
           toast.success(`Te hemos enviado un enlace a tu correo ${res.email}`);
-          onOpenChange();
+          onClose();
         }
       } catch (error) {
         toast.error(
