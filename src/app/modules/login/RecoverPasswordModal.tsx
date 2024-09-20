@@ -80,6 +80,7 @@ function RecoverPasswordModal() {
           loading: pending,
         }}
         isOpen={isOpen}
+        placementent="center"
         title="Recupera tu contraseña"
         onOpenChange={onOpenChange}
       />

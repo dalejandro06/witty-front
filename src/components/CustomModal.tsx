@@ -16,6 +16,13 @@ type ModalProps = {
   onCancelBtn?: () => void;
   cancelBtnText?: string;
   isOpen: boolean;
+  placementent?:
+    | "center"
+    | "bottom"
+    | "auto"
+    | "top"
+    | "top-center"
+    | "bottom-center";
   onOpenChange: () => void;
   confirmButton: {
     text: string;
@@ -34,12 +41,13 @@ function CustomModal({
   isOpen,
   onOpenChange,
   confirmButton,
+  placementent,
 }: ModalProps) {
   return (
     <Modal
       backdrop="blur"
       isOpen={isOpen}
-      placement="bottom"
+      placement={placementent || "bottom"}
       onOpenChange={onOpenChange}
     >
       <ModalContent>
