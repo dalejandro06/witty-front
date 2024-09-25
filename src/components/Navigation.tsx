@@ -17,7 +17,10 @@ function Navigation() {
               href={item.href}
               variant="light"
             >
-              <FeatherIcon className="text-gray-400" icon={item.icon} />
+              <FeatherIcon
+                className="text-gray-400 stroke-[1.5px]"
+                icon={item.icon}
+              />
             </Button>
           </NavbarItem>
         ))}

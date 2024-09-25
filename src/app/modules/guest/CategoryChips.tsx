@@ -22,7 +22,7 @@ function CategoryChips({
       {categories.map((item) => (
         <Chip
           key={item.id}
-          className="cursor-pointer"
+          className="cursor-pointer h-[34px] px-4"
           startContent={<FeatherIcon icon={item.icon} size={15} />}
           style={
             isSelectedItem(item)
