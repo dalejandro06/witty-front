@@ -16,9 +16,10 @@ import LogoWhite from "@/assets/logo-white.svg";
 
 type Props = {
   session: Session | null;
+  showButton?: boolean;
 };
 
-const Navbar = ({ session }: Props) => {
+const Navbar = ({ session, showButton = true }: Props) => {
   const handleLogout = async () => {
     await signOut({ callbackUrl: "/login" });
   };
@@ -32,19 +33,24 @@ const Navbar = ({ session }: Props) => {
           </NextLink>
         </NavbarBrand>
       </NavbarContent>
-
-      <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        {/* <ThemeSwitch /> */}
-        {session && session.user ? (
-          <Button className="bg-secondary font-bold" onClick={handleLogout}>
-            Cerrar session
-          </Button>
-        ) : (
-          <Button as={Link} className="bg-secondary font-bold" href="/welcome">
-            Accede
-          </Button>
-        )}
-      </NavbarContent>
+      {showButton && (
+        <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
+          {/* <ThemeSwitch /> */}
+          {session && session.user ? (
+            <Button className="bg-secondary font-bold" onClick={handleLogout}>
+              Cerrar session
+            </Button>
+          ) : (
+            <Button
+              as={Link}
+              className="bg-secondary font-bold"
+              href="/welcome"
+            >
+              Accede
+            </Button>
+          )}
+        </NavbarContent>
+      )}
     </NextUINavbar>
   );
 };
