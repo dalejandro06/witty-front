@@ -22,7 +22,7 @@ function HeroLandingSupplier() {
           as={Link}
           className="text-black font-bold w-full p-7"
           color="secondary"
-          href="/welcome"
+          href="/register-supplier"
         >
           Únete hoy
         </Button>

@@ -24,3 +24,9 @@ export type SubCategory = {
 export type ForgotPassword = {
   email: string;
 };
+
+// GEOLOCATIONS
+export interface Departaments {
+  id: number;
+  name: string;
+}

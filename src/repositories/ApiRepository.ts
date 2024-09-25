@@ -1,5 +1,6 @@
 import {
   Category,
+  Departaments,
   ForgotPassword,
   Register,
   SubCategory,
@@ -54,6 +55,21 @@ export default {
       {
         email,
       },
+    );
+
+    return data.data;
+  },
+
+  async getDepartaments(): Promise<Departaments[]> {
+    const data = await ApiClient.get<Departaments[]>(
+      "/v1/geolocations/states-input/",
+    );
+
+    return data.data;
+  },
+  async getCityByDepartment(id: string): Promise<Departaments[]> {
+    const data = await ApiClient.get<Departaments[]>(
+      `/v1/geolocations/cities-input/${id}/`,
     );
 
     return data.data;
