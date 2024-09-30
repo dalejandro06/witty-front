@@ -3,6 +3,7 @@ import * as Yup from "yup";
 Yup.setLocale({
   mixed: {
     required: "Completa este campo",
+    notType: "El campo debe contener solo números",
   },
   string: {
     email: "Debe ser un correo valido",
@@ -19,4 +20,12 @@ export const RegisterSchema = new Yup.ObjectSchema({
 
 export const ForgotPasswordSchema = new Yup.ObjectSchema({
   email: Yup.string().email().required(),
+});
+
+export const RegisterSupplierSchema = new Yup.ObjectSchema({
+  typeBusiness: Yup.number().required(),
+  email: Yup.string().email("Debe ser un correo valido").required(),
+  phoneNumber: Yup.number().required(),
+  nit: Yup.number(),
+  address: Yup.string().required(),
 });

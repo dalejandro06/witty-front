@@ -3,22 +3,14 @@ import {
   Departaments,
   ForgotPassword,
   Register,
+  RegisterParams,
+  RegisterSupplierParams,
+  RegisterSupplierResponse,
+  SubCategoriesParams,
   SubCategory,
 } from "../types/ApiTypes";
 
 import ApiClient from "./clients/ApiClient";
-
-type SubCategoriesParams = {
-  category_line_item: number;
-};
-
-type RegisterParams = {
-  username: string;
-  email: string;
-  first_name: string;
-  last_name: string;
-  password: string;
-};
 
 export default {
   async registerUser(payload: RegisterParams): Promise<Register> {
@@ -70,6 +62,19 @@ export default {
   async getCityByDepartment(id: string): Promise<Departaments[]> {
     const data = await ApiClient.get<Departaments[]>(
       `/v1/geolocations/cities-input/${id}/`,
+    );
+
+    return data.data;
+  },
+
+  async registerSupplier(
+    payload: RegisterSupplierParams,
+  ): Promise<RegisterSupplierResponse> {
+    const data = await ApiClient.post<RegisterSupplierResponse>(
+      "/v1/accounts/join-supplier-profile/",
+      {
+        ...payload,
+      },
     );
 
     return data.data;

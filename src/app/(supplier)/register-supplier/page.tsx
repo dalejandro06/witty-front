@@ -1,16 +1,15 @@
-"use client";
-import { Button, useDisclosure } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 
 import Navbar from "@/components/navbar";
-import BusinessModal from "@/app/modules/register-supplier/BusinessModal";
 import FormRegisterSupplier from "@/app/modules/register-supplier/FormRegisterSupplier";
+import { auth } from "@/auth";
 
-function RegisterSupplier() {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+async function RegisterSupplier() {
+  const session = await auth();
 
   return (
     <div className="bg-primary-blue">
-      <Navbar session={null} showButton={false} />
+      <Navbar session={session} showButton={false} />
       <div className="px-6 pb-5">
         <div className="font-bold text-4xl text-center text-white">
           <p className="uppercase">
@@ -19,7 +18,7 @@ function RegisterSupplier() {
             aquí
           </p>
         </div>
-        <FormRegisterSupplier onOpen={onOpen} />
+        <FormRegisterSupplier user={session?.user} />
         <Button
           fullWidth
           className="text-black py-6"
@@ -30,7 +29,6 @@ function RegisterSupplier() {
           Regístrate
         </Button>
       </div>
-      <BusinessModal isOpen={isOpen} onOpenChange={onOpenChange} />
     </div>
   );
 }
