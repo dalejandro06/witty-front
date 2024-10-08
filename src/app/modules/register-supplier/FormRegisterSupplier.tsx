@@ -11,12 +11,13 @@ import FeatherIcon from "feather-icons-react";
 import { useFormik } from "formik";
 import { User } from "next-auth";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 import BusinessModal from "./BusinessModal";
 
 import { useDepartments } from "@/hooks/useDepartments";
 import { RegisterSupplierSchema } from "@/utils/FormSchemas";
-import ApiRepository from "@/repositories/ApiRepository";
+import { registerSupplier } from "@/repositories/ApiRepository";
 
 const typeBusiness = [
   { id: 0, name: "Propietario solo" },
@@ -30,6 +31,7 @@ type Props = {
 
 function FormRegisterSupplier({ user }: Props) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const router = useRouter();
 
   const {
     departments,
@@ -56,7 +58,7 @@ function FormRegisterSupplier({ user }: Props) {
     validationSchema: RegisterSupplierSchema,
     async onSubmit(values) {
       try {
-        const data = await ApiRepository.registerSupplier({
+        const data = await registerSupplier({
           user: user?.id as string,
           state: values.department,
           city: values.city,
@@ -73,6 +75,7 @@ function FormRegisterSupplier({ user }: Props) {
           toast.success(
             `¡Te has registrado con éxito ${data.complete_owner_name}!`,
           );
+          router.push("/");
         }
       } catch (error) {
         toast.error("Error al registrar al usuario");

@@ -71,3 +71,9 @@ export interface RegisterSupplierResponse {
   instagram_page: null;
   type_business: number;
 }
+
+export type HomeSupplierMetrics = {
+  locations: number;
+  services: number;
+  onboarding_completed: boolean;
+};

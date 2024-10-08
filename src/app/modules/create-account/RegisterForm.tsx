@@ -6,7 +6,7 @@ import { Button } from "@nextui-org/button";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 
-import ApiRepository from "@/repositories/ApiRepository";
+import { registerUser } from "@/repositories/ApiRepository";
 import InputPassword from "@/components/InputPassword";
 import { useErrorHandler } from "@/utils/handleError";
 import { RegisterSchema } from "@/utils/FormSchemas";
@@ -30,7 +30,7 @@ function RegisterForm() {
       onSubmit={(values) => {
         startTransition(async () => {
           try {
-            const data = await ApiRepository.registerUser(values);
+            const data = await registerUser(values);
 
             toast.success(`¡Tu usuario ${data.username} se creo exitosamente!`);
             router.push("/login");

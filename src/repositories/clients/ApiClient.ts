@@ -1,20 +1,18 @@
+"use server";
 import axios, { InternalAxiosRequestConfig } from "axios";
 
-import { EXTERNAL_API_BASE, INTERNAL_API_BASE } from "@/config/config";
+import { EXTERNAL_API_BASE } from "@/config/config";
+import { auth } from "@/auth";
 
 const ApiClient = axios.create({
   baseURL: EXTERNAL_API_BASE,
 });
 
 const injectToken = async (config: InternalAxiosRequestConfig) => {
-  const session = await fetch(`${INTERNAL_API_BASE}/api/get-token`, {
-    method: "GET",
-  });
+  const session = await auth();
 
-  const token = await session.json();
-
-  if (token.token) {
-    config.headers.Authorization = `Bearer ${token.token}`;
+  if (session && session.user) {
+    config.headers.Authorization = `Bearer ${session.user.token}`;
   }
 
   return config;

@@ -1,6 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 
-import ApiRepository from "@/repositories/ApiRepository";
+import {
+  getCityByDepartment as getCity,
+  getDepartaments,
+} from "@/repositories/ApiRepository";
 import { Departaments } from "@/types/ApiTypes";
 
 export const useDepartments = () => {
@@ -11,14 +14,14 @@ export const useDepartments = () => {
 
   const getCityByDepartment = useCallback((id: string) => {
     setLoadingCity(true);
-    ApiRepository.getCityByDepartment(id)
+    getCity(id)
       .then(setCities)
       .finally(() => setLoadingCity(false));
   }, []);
 
   useEffect(() => {
     setLoadingDepartments(true);
-    ApiRepository.getDepartaments()
+    getDepartaments()
       .then(setDepartments)
       .finally(() => setLoadingDepartments(false));
   }, []);

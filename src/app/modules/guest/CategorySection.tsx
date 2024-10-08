@@ -6,7 +6,7 @@ import CategoryChips from "./CategoryChips";
 import CategoryCards from "./CategoryCards";
 
 import { Category, SubCategory } from "@/types/ApiTypes";
-import ApiRepository from "@/repositories/ApiRepository";
+import { getSubCategories } from "@/repositories/ApiRepository";
 import { FetchStatus } from "@/types";
 
 type Props = {
@@ -22,13 +22,17 @@ function CategorySection({ categories }: Props) {
 
   useEffect(() => {
     setStatus("loading");
-    ApiRepository.getSubCategories({
+    getSubCategories({
       category_line_item: selectedCategory.id,
     })
-      .then(setCards)
-      .catch(() => setStatus("error"))
-      .finally(() => setStatus("idle"));
+      .then((data) => {
+        setCards(data);
+        setStatus("idle");
+      })
+      .catch(() => setStatus("error"));
   }, [selectedCategory]);
+
+  if (status === "error") return <h1>Error</h1>;
 
   return (
     <section className="bg-white mb-20">

@@ -5,7 +5,7 @@ import { useTransition } from "react";
 import toast from "react-hot-toast";
 
 import CustomModal from "@/components/CustomModal";
-import ApiRepository from "@/repositories/ApiRepository";
+import { forgotPassword } from "@/repositories/ApiRepository";
 import { ForgotPasswordSchema } from "@/utils/FormSchemas";
 
 function RecoverPasswordModal() {
@@ -15,7 +15,7 @@ function RecoverPasswordModal() {
   const handleForgotPassword = (values: FormikValues) => {
     startTransition(async () => {
       try {
-        const res = await ApiRepository.forgotPassword({ email: values.email });
+        const res = await forgotPassword({ email: values.email });
 
         if (res.email) {
           toast.success(`Te hemos enviado un enlace a tu correo ${res.email}`);

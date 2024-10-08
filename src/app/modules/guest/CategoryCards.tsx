@@ -23,7 +23,7 @@ type Props = {
 function CategoryCards({ cards, loading }: Props) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-  if (loading || !cards.length)
+  if (loading)
     return (
       <>
         {[1, 2, 3, 4].map((id) => (

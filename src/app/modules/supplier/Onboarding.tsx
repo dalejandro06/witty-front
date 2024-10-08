@@ -1,32 +1,12 @@
-"use client";
-import { Accordion, AccordionItem, Progress, Switch } from "@nextui-org/react";
 import Image from "next/image";
-import { useState } from "react";
 
-import { onboardingSteps } from "./supplierData";
-
-import ProgressStepper from "@/components/ProgressStepper";
 import StarsImage from "@/assets/stars.png";
 import MedalImage from "@/assets/medal.png";
+import { getHomeSupplier } from "@/repositories/ApiRepository";
+import OnboardingAccordion from "@/components/OnboardingAccordion";
 
-function Onboarding() {
-  const [completed, setCompleted] = useState(false);
-
-  const AccordionTitle = () => (
-    <div>
-      <Progress
-        classNames={{
-          track: "",
-          indicator: "bg-secondary",
-          label: "font-medium text-default-600",
-          value: "text-foreground/60",
-        }}
-        label="Progreso"
-        showValueLabel={true}
-        value={30}
-      />
-    </div>
-  );
+async function Onboarding() {
+  const metrics = await getHomeSupplier();
 
   return (
     <div className="my-10 grid gap-5">
@@ -37,15 +17,7 @@ function Onboarding() {
           pasos clave para comenzar a aprender en <strong>Witty.</strong>
         </p>
       </div>
-      <Switch
-        aria-label="Automatic updates"
-        size="sm"
-        onChange={() => setCompleted(!completed)}
-      >
-        Completar
-      </Switch>
-
-      {completed ? (
+      {metrics.onboarding_completed ? (
         <div className="relative overflow-hidden bg-white rounded-lg shadow-sm grid absolute-from-grid pb-5">
           <div className="relative -top-1/4 overflow-hidden bg-gradient-to-r from-secondary-500 to-secondary-blue clip-rounded">
             <Image alt="stars" className="w-full h-full" src={StarsImage} />
@@ -59,26 +31,7 @@ function Onboarding() {
           </div>
         </div>
       ) : (
-        <Accordion defaultExpandedKeys={["1"]} variant="shadow">
-          <AccordionItem
-            key="1"
-            aria-label="Progreso"
-            className="mb-4"
-            title={<AccordionTitle />}
-          >
-            <div className="grid gap-4">
-              {onboardingSteps.map((item, idx) => (
-                <ProgressStepper
-                  key={item.title}
-                  completed={item.completed}
-                  description={item.description}
-                  index={idx + 1}
-                  title={item.title}
-                />
-              ))}
-            </div>
-          </AccordionItem>
-        </Accordion>
+        <OnboardingAccordion metrics={metrics} />
       )}
     </div>
   );
