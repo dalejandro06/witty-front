@@ -5,7 +5,7 @@ export const onboardingSteps = (data: HomeSupplierMetrics) => [
     title: "Agrega una foto a tu perfil",
     description:
       "Genera confianza a los usuarios y ten una identidad única en Witty",
-    completed: data.onboarding_completed,
+    completed: data.supplier_photo,
   },
   {
     title: "Agrega una ubicación",

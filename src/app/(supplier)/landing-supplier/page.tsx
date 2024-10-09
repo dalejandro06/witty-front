@@ -3,17 +3,12 @@ import FeatherIcon from "feather-icons-react";
 import { Link } from "@nextui-org/link";
 
 import HeroLandingSupplier from "@/app/modules/landing-supplier/HeroLandingSupplier";
-import Navbar from "@/components/navbar";
 import FeatureCards from "@/app/modules/landing-supplier/FeatureCards";
-import { auth } from "@/auth";
 import { AWSBrand } from "@/components/icons";
 
 async function page() {
-  const session = await auth();
-
   return (
     <div>
-      <Navbar session={session} />
       <HeroLandingSupplier />
       <FeatureCards />
       <footer className="bg-blue-900 p-3 flex gap-2 justify-center items-center w-full">

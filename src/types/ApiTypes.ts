@@ -76,4 +76,6 @@ export type HomeSupplierMetrics = {
   locations: number;
   services: number;
   onboarding_completed: boolean;
+  supplier_photo: boolean;
+  date_onboarding_completed: Date;
 };

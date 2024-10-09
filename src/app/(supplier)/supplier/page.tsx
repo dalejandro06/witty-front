@@ -8,7 +8,7 @@ async function Supplier() {
   const session = await auth();
 
   return (
-    <div>
+    <div className="py-10 px-6">
       <CardAvatar user={session?.user} />
       <Onboarding />
       <QuickAccess />
