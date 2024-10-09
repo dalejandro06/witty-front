@@ -11,7 +11,7 @@ import FeatherIcon from "feather-icons-react";
 import { useFormik } from "formik";
 import { User } from "next-auth";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
+import { signOut } from "next-auth/react";
 
 import BusinessModal from "./BusinessModal";
 
@@ -31,7 +31,6 @@ type Props = {
 
 function FormRegisterSupplier({ user }: Props) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const router = useRouter();
 
   const {
     departments,
@@ -75,7 +74,7 @@ function FormRegisterSupplier({ user }: Props) {
           toast.success(
             `¡Te has registrado con éxito ${data.complete_owner_name}!`,
           );
-          router.push("/");
+          await signOut();
         }
       } catch (error) {
         toast.error("Error al registrar al usuario");

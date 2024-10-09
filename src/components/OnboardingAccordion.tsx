@@ -6,25 +6,30 @@ import ProgressStepper from "./ProgressStepper";
 
 import { onboardingSteps } from "@/app/modules/supplier/supplierData";
 import { HomeSupplierMetrics } from "@/types/ApiTypes";
-
-const AccordionTitle = () => (
-  <div>
-    <Progress
-      classNames={{
-        track: "",
-        indicator: "bg-secondary",
-        label: "font-medium text-default-600",
-        value: "text-foreground/60",
-      }}
-      label="Progreso"
-      showValueLabel={true}
-      value={30}
-    />
-  </div>
-);
+import { getOnboardingPercentage } from "@/utils/getOnboardingPercentage";
 
 type Props = {
   metrics: HomeSupplierMetrics;
+};
+
+const AccordionTitle = ({ metrics }: Props) => {
+  const percentage = getOnboardingPercentage(metrics);
+
+  return (
+    <div>
+      <Progress
+        classNames={{
+          track: "",
+          indicator: "bg-secondary",
+          label: "font-medium text-default-600",
+          value: "text-foreground/60",
+        }}
+        label="Progreso"
+        showValueLabel={true}
+        value={percentage}
+      />
+    </div>
+  );
 };
 
 function OnboardingAccordion({ metrics }: Props) {
@@ -34,7 +39,7 @@ function OnboardingAccordion({ metrics }: Props) {
         key="1"
         aria-label="Progreso"
         className="mb-4"
-        title={<AccordionTitle />}
+        title={<AccordionTitle metrics={metrics} />}
       >
         <div className="grid gap-4">
           {onboardingSteps(metrics).map((item, idx) => (

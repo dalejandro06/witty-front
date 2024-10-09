@@ -12,7 +12,7 @@ const injectToken = async (config: InternalAxiosRequestConfig) => {
   const session = await auth();
 
   if (session && session.user) {
-    config.headers.Authorization = `Bearer ${session.user.token}`;
+    config.headers["Authorization"] = `Bearer ${session.user.token}`;
   }
 
   return config;
