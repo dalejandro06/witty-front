@@ -1,10 +1,15 @@
 import { Input } from "@nextui-org/input";
-import { Button, Divider } from "@nextui-org/react";
+import { Button, Divider, Link } from "@nextui-org/react";
 import FeatherIcon from "feather-icons-react";
+import Image from "next/image";
 
 import LocationCard from "@/components/LocationCard";
+import NoLocation from "@/assets/no-locations.png";
+import { getSupplierLocations } from "@/repositories/ApiRepository";
 
-function SavedLocations() {
+async function SavedLocations() {
+  const locations = await getSupplierLocations();
+
   return (
     <>
       <Input
@@ -27,23 +32,43 @@ function SavedLocations() {
             Busca y filtra tus ubicaciones en donde ofreces tus servicios.
           </p>
         </div>
-        <div className="mt-10 grid gap-5">
-          <LocationCard
-            location={{ city: "Bogotá", department: "Cundinamarca" }}
-          />
-          <LocationCard
-            location={{ city: "Bogotá", department: "Cundinamarca" }}
-          />
-          <LocationCard
-            location={{ city: "Bogotá", department: "Cundinamarca" }}
-          />
-          <LocationCard
-            location={{ city: "Bogotá", department: "Cundinamarca" }}
-          />
-        </div>
-        <Button fullWidth className="text-black py-5 mt-10" color="secondary">
-          Añade una ubicación
-        </Button>
+        {locations.length > 0 ? (
+          <>
+            <div className="mt-10 grid gap-5">
+              {locations.map((location) => (
+                <LocationCard
+                  key={location.id}
+                  isDisabled={location.status}
+                  isPrincipal={location.available_all_services}
+                  location={location}
+                />
+              ))}
+            </div>
+            <Button
+              fullWidth
+              className="text-black py-5 mt-10"
+              color="secondary"
+            >
+              Añade una ubicación
+            </Button>
+          </>
+        ) : (
+          <div className="grid place-items-center gap-6 mt-20">
+            <Image
+              alt="Not locations banner"
+              height={150}
+              src={NoLocation}
+              width={150}
+            />
+            <div className="text-center">
+              <p>Aún no has generado ubicaciones.</p>
+              <p>¡Agrega una para empezar!</p>
+            </div>
+            <Button showAnchorIcon as={Link} className="bg-gray-100 text-black">
+              Crea una ubicación
+            </Button>
+          </div>
+        )}
       </div>
     </>
   );

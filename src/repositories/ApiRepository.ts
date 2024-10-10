@@ -10,6 +10,7 @@ import {
   RegisterSupplierResponse,
   SubCategoriesParams,
   SubCategory,
+  SupplierLocation,
 } from "../types/ApiTypes";
 
 import ApiClient from "./clients/ApiClient";
@@ -87,6 +88,22 @@ export async function registerSupplier(
 export async function getHomeSupplier(): Promise<HomeSupplierMetrics> {
   const data = await ApiClient.get<HomeSupplierMetrics>(
     "/v1/metrics/get-home-supplier/",
+  );
+
+  return data.data;
+}
+
+export async function getSupplierLocations(): Promise<SupplierLocation[]> {
+  const data = await ApiClient.get<SupplierLocation[]>(
+    "/v1/services/services-location/",
+  );
+
+  return data.data;
+}
+
+export async function deleteSupplierLocation(id: number) {
+  const data = await ApiClient.get<SupplierLocation[]>(
+    `/v1/services/services-location/${id}/delete/`,
   );
 
   return data.data;

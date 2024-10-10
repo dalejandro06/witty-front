@@ -79,3 +79,14 @@ export type HomeSupplierMetrics = {
   supplier_photo: boolean;
   date_onboarding_completed: Date;
 };
+
+export type SupplierLocation = {
+  id: number;
+  state: State;
+  city: State;
+  status: boolean;
+  available_all_services: boolean;
+  supplier_profile: number;
+};
+
+export type State = { id: number; name: string };
