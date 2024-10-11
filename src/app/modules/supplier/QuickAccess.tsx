@@ -11,7 +11,7 @@ function QuickAccess() {
         <QuickAction icon="send" text="Invita a un servicio" type="secondary" />
         <QuickAction
           icon="eye"
-          text="Mira tus solicitudes"
+          text="Solicitudes pendientes"
           type="secondaryDark"
         />
       </div>
