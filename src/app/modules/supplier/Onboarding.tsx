@@ -10,13 +10,16 @@ async function Onboarding() {
 
   return (
     <div className="my-10 grid gap-5">
-      <div>
-        <h3 className="text-2xl font-bold">Completa tu perfil</h3>
-        <p className="text-sm mt-2">
-          Para asegurarte de que tu perfil sea completo y atractivo, sigue estos
-          pasos clave para comenzar a aprender en <strong>Witty.</strong>
-        </p>
-      </div>
+      {!metrics.onboarding_completed && (
+        <div>
+          <h3 className="text-2xl font-bold">Completa tu perfil</h3>
+          <p className="text-sm mt-2">
+            Para asegurarte de que tu perfil sea completo y atractivo, sigue
+            estos pasos clave para comenzar a aprender en{" "}
+            <strong>Witty.</strong>
+          </p>
+        </div>
+      )}
       {metrics.onboarding_completed ? (
         <div className="relative overflow-hidden bg-white rounded-lg shadow-sm grid absolute-from-grid pb-5">
           <div className="relative -top-1/4 overflow-hidden bg-gradient-to-r from-secondary-500 to-secondary-blue clip-rounded">
