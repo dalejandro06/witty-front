@@ -19,8 +19,8 @@ export const navigationItems = [
   },
   {
     id: 4,
-    href: "",
-    icon: "search",
+    href: "/supplier/saved-locations",
+    icon: "map-pin",
   },
   {
     id: 5,

@@ -11,6 +11,7 @@ import {
 } from "@nextui-org/react";
 import FeatherIcon from "feather-icons-react";
 import { Key } from "react";
+import { useRouter } from "next/navigation";
 
 import { deleteSupplierLocation } from "@/repositories/ApiRepository";
 import { SupplierLocation } from "@/types/ApiTypes";
@@ -21,12 +22,14 @@ type Props = {
   isPrincipal?: boolean;
 };
 function LocationCard({ isPrincipal, location, isDisabled }: Props) {
+  const router = useRouter();
   const handleAction = async (key: Key) => {
     switch (key) {
       case "delete":
         await deleteSupplierLocation(location.id);
         break;
       case "edit":
+        router.push(`/supplier/edit-location/${location.id}`);
         break;
 
       default:

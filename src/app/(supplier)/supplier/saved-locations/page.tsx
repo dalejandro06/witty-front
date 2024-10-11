@@ -3,9 +3,9 @@ import { Button, Divider, Link } from "@nextui-org/react";
 import FeatherIcon from "feather-icons-react";
 import Image from "next/image";
 
-import LocationCard from "@/components/LocationCard";
 import NoLocation from "@/assets/no-locations.png";
 import { getSupplierLocations } from "@/repositories/ApiRepository";
+import LocationsList from "@/app/modules/supplier-location/LocationsList";
 
 async function SavedLocations() {
   const locations = await getSupplierLocations();
@@ -33,25 +33,7 @@ async function SavedLocations() {
           </p>
         </div>
         {locations.length > 0 ? (
-          <>
-            <div className="mt-10 grid gap-5">
-              {locations.map((location) => (
-                <LocationCard
-                  key={location.id}
-                  isDisabled={location.status}
-                  isPrincipal={location.available_all_services}
-                  location={location}
-                />
-              ))}
-            </div>
-            <Button
-              fullWidth
-              className="text-black py-5 mt-10"
-              color="secondary"
-            >
-              Añade una ubicación
-            </Button>
-          </>
+          <LocationsList locations={locations} />
         ) : (
           <div className="grid place-items-center gap-6 mt-20">
             <Image

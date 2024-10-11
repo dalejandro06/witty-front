@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Divider, Select, SelectItem, Switch } from "@nextui-org/react";
+import { Select, SelectItem, Switch } from "@nextui-org/react";
 import { useFormik } from "formik";
 import { User } from "next-auth";
 import toast from "react-hot-toast";
@@ -113,17 +113,6 @@ function LocationForm({ user }: Props) {
           Desactivada / Activada
         </Switch>
         <Switch color="secondary">Añadir ubicación a nuevos servicios</Switch>
-
-        <div className="flex flex-col gap-5 mt-10">
-          <Divider />
-          <p>
-            Cuentas con <strong className="text-secondary">5</strong> servicios
-            asociados a esta ubicación.
-          </p>
-          <Button fullWidth className="text-black" color="secondary" size="lg">
-            Editar ubicación
-          </Button>
-        </div>
       </form>
     </>
   );
