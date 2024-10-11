@@ -7,7 +7,7 @@ async function RegisterSupplier() {
   const session = await auth();
 
   return (
-    <div className="bg-primary-blue">
+    <div className="bg-primary-blue min-h-screen">
       <div className="px-6 py-5">
         <div className="font-bold text-4xl text-center text-white">
           <p className="uppercase">
@@ -19,9 +19,10 @@ async function RegisterSupplier() {
         <FormRegisterSupplier user={session?.user} />
         <Button
           fullWidth
-          className="text-black py-6"
+          className="text-black"
           color="secondary"
           form="register-supplier-form"
+          size="lg"
           type="submit"
         >
           Regístrate

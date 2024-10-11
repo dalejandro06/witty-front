@@ -23,6 +23,7 @@ function HeroLandingSupplier() {
           className="text-black font-bold w-full p-7"
           color="secondary"
           href="/register-supplier"
+          size="lg"
         >
           Únete hoy
         </Button>

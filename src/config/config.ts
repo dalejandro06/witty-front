@@ -4,27 +4,27 @@ export const INTERNAL_API_BASE = process.env.NEXT_PUBLIC_URL;
 export const navigationItems = [
   {
     id: 1,
-    href: "",
+    href: "/supplier",
     icon: "home",
   },
   {
     id: 2,
-    href: "",
+    href: "/calendar",
     icon: "calendar",
   },
   {
     id: 3,
-    href: "",
+    href: "/services",
     icon: "briefcase",
   },
   {
     id: 4,
-    href: "/supplier/saved-locations",
+    href: "/location/saved-locations",
     icon: "map-pin",
   },
   {
     id: 5,
-    href: "",
+    href: "/profile",
     icon: "user",
   },
 ];

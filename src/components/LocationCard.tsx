@@ -29,7 +29,7 @@ function LocationCard({ isPrincipal, location, isDisabled }: Props) {
         await deleteSupplierLocation(location.id);
         break;
       case "edit":
-        router.push(`/supplier/edit-location/${location.id}`);
+        router.push(`/location/edit-location/${location.id}`);
         break;
 
       default:

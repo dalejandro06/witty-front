@@ -28,7 +28,7 @@ async function ConfigLocationLayout({ title, subtitle, isNewLocation }: Props) {
           </p>
         </div>
       )}
-      <Button fullWidth className="text-black" color="secondary" size="lg">
+      <Button fullWidth className="mt-4 text-black" color="secondary" size="lg">
         {isNewLocation ? "Añadir ubicación" : "Editar ubicación"}
       </Button>
     </div>

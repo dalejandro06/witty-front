@@ -28,7 +28,8 @@ function LocationsList({ locations }: Props) {
         fullWidth
         className="text-black py-5 mt-10"
         color="secondary"
-        onClick={() => router.push("/supplier/add-location")}
+        size="lg"
+        onClick={() => router.push("/location/add-location")}
       >
         Añade una ubicación
       </Button>
