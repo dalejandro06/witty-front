@@ -17,7 +17,7 @@ async function Onboarding() {
           pasos clave para comenzar a aprender en <strong>Witty.</strong>
         </p>
       </div>
-      {metrics.date_onboarding_completed ? (
+      {metrics.onboarding_completed ? (
         <div className="relative overflow-hidden bg-white rounded-lg shadow-sm grid absolute-from-grid pb-5">
           <div className="relative -top-1/4 overflow-hidden bg-gradient-to-r from-secondary-500 to-secondary-blue clip-rounded">
             <Image alt="stars" className="w-full h-full" src={StarsImage} />
