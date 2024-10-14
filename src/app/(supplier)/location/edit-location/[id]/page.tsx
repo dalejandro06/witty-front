@@ -1,8 +1,16 @@
 import ConfigLocationLayout from "@/components/ConfigLocationLayout";
+import { getLocationById } from "@/repositories/ApiRepository";
 
-async function EditLocation() {
+type Props = {
+  params: { id: string };
+};
+
+async function EditLocation({ params }: Props) {
+  const location = await getLocationById({ id: params.id });
+
   return (
     <ConfigLocationLayout
+      location={location}
       subtitle="Al editar el Departamento o la Ciudad, esta ubicación se desvinculará de los servicios asociados."
       title="Edita tu ubicación"
     />

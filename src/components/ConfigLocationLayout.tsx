@@ -1,14 +1,54 @@
+"use client";
 import { Button, Divider } from "@nextui-org/react";
+import { FormikValues } from "formik";
+import toast from "react-hot-toast";
+import { User } from "next-auth";
 
 import LocationForm from "@/app/modules/supplier-location/LocationForm";
+import { addLocation, editLocation } from "@/repositories/ApiRepository";
+import { SupplierLocation } from "@/types/ApiTypes";
 
 type Props = {
   title: string;
   subtitle: string;
-  isNewLocation?: boolean;
+  user?: User;
+  location?: SupplierLocation;
 };
 
-async function ConfigLocationLayout({ title, subtitle, isNewLocation }: Props) {
+function ConfigLocationLayout({ user, title, subtitle, location }: Props) {
+  const hasLocationToEdit = location && Object.keys(location).length > 1;
+
+  const onSubmit = async (values: FormikValues) => {
+    const payload = {
+      state_id: Number(values.state),
+      status: values.status,
+      city_id: Number(values.city),
+      supplier_profile_id: Number(user?.id),
+      available_all_services: values.availableAllServices,
+    };
+
+    try {
+      let data;
+
+      if (hasLocationToEdit) {
+        data = await editLocation({
+          locationId: location.id,
+          ...payload,
+        });
+      } else {
+        data = await addLocation(payload);
+      }
+
+      if (data) {
+        toast.success(
+          `¡Ubicación ${hasLocationToEdit ? "agregada" : "actualizada"} con Éxito!`,
+        );
+      }
+    } catch (error) {
+      toast.error("Error al registrar la ubicación");
+    }
+  };
+
   return (
     <div className="py-5 px-6 relative h-full">
       <h1 className="text-3xl font-bold my-5">{title}</h1>
@@ -16,10 +56,12 @@ async function ConfigLocationLayout({ title, subtitle, isNewLocation }: Props) {
         <Divider className="w-[3px] h-[60px] me-3" orientation="vertical" />
         <p className="text-gray-500">{subtitle}</p>
       </div>
-      <div className="mt-5">
-        <LocationForm />
-      </div>
-      {!isNewLocation && (
+      <LocationForm
+        formId="add-location-form"
+        location={location}
+        onSubmit={onSubmit}
+      />
+      {!hasLocationToEdit && (
         <div className="flex flex-col gap-5 mt-10">
           <Divider />
           <p>
@@ -28,8 +70,15 @@ async function ConfigLocationLayout({ title, subtitle, isNewLocation }: Props) {
           </p>
         </div>
       )}
-      <Button fullWidth className="mt-4 text-black" color="secondary" size="lg">
-        {isNewLocation ? "Añadir ubicación" : "Editar ubicación"}
+      <Button
+        fullWidth
+        className="mt-4 text-black"
+        color="secondary"
+        form="add-location-form"
+        size="lg"
+        type="submit"
+      >
+        {hasLocationToEdit ? "Añadir ubicación" : "Editar ubicación"}
       </Button>
     </div>
   );

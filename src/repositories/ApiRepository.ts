@@ -1,7 +1,9 @@
 "use server";
 import {
+  AddLocationParams,
   Category,
   Departaments,
+  EditLocationParams,
   ForgotPassword,
   HomeSupplierMetrics,
   Register,
@@ -104,6 +106,37 @@ export async function getSupplierLocations(): Promise<SupplierLocation[]> {
 export async function deleteSupplierLocation(id: number) {
   const data = await ApiClient.get<SupplierLocation[]>(
     `/v1/services/services-location/${id}/delete/`,
+  );
+
+  return data.data;
+}
+
+export async function addLocation(params: AddLocationParams) {
+  const data = await ApiClient.post("/v1/services/services-location/create/", {
+    ...params,
+  });
+
+  return data.data;
+}
+
+export async function editLocation(params: EditLocationParams) {
+  const data = await ApiClient.post(
+    `/v1/services/services-location/${params.locationId}/update/`,
+    {
+      ...params,
+    },
+  );
+
+  return data.data;
+}
+
+export async function getLocationById({
+  id,
+}: {
+  id: string;
+}): Promise<SupplierLocation> {
+  const data = await ApiClient.get<SupplierLocation>(
+    `/v1/services/services-location/${id}/`,
   );
 
   return data.data;

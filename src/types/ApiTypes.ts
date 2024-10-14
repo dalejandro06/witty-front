@@ -88,5 +88,16 @@ export type SupplierLocation = {
   available_all_services: boolean;
   supplier_profile: number;
 };
-
 export type State = { id: number; name: string };
+
+export type AddLocationParams = {
+  state_id: number;
+  city_id: number;
+  supplier_profile_id?: number;
+  status: boolean;
+  available_all_services: boolean;
+};
+
+export type EditLocationParams = {
+  locationId: number;
+} & AddLocationParams;

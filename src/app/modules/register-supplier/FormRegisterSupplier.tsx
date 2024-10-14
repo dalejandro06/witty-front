@@ -48,7 +48,7 @@ function FormRegisterSupplier({ user }: Props) {
       nit: "",
       email: user?.email || "",
       phoneNumber: "",
-      department: "",
+      state: "",
       city: "",
       address: "",
       webpage: "",
@@ -59,7 +59,7 @@ function FormRegisterSupplier({ user }: Props) {
       try {
         const data = await registerSupplier({
           user: user?.id as string,
-          state: values.department,
+          state: values.state,
           city: values.city,
           supplier_name: values.companyName,
           complete_owner_name: values.name,
@@ -193,14 +193,14 @@ function FormRegisterSupplier({ user }: Props) {
         />
         <Select
           isRequired
-          errorMessage={formik.errors.department}
-          id="department"
-          isInvalid={!!formik.errors.department}
+          errorMessage={formik.errors.state}
+          id="state"
+          isInvalid={!!formik.errors.state}
           isLoading={loadingDepartments}
           label="Departamento"
-          name="department"
+          name="state"
           placeholder="Selecciona"
-          value={formik.values.department}
+          value={formik.values.state}
           variant="bordered"
           onChange={(e) => {
             formik.handleChange(e);
