@@ -2,6 +2,8 @@ import { DefaultSession } from "next-auth";
 // eslint-disable-next-line unused-imports/no-unused-imports, @typescript-eslint/no-unused-vars
 import { JWT } from "next-auth/jwt";
 
+import { SupplierUser } from ".";
+
 declare module "next-auth" {
   interface Session {
     user: {
@@ -12,6 +14,7 @@ declare module "next-auth" {
       email: string;
       firstName: string;
       lastName: string;
+      supplier?: SupplierUser | null;
     } & DefaultSession["user"];
   }
 
@@ -23,6 +26,7 @@ declare module "next-auth" {
     email?: string | null;
     firstName: string;
     lastName: string;
+    supplier?: SupplierUser | null;
   }
 }
 declare module "next-auth/jwt" {
@@ -34,5 +38,6 @@ declare module "next-auth/jwt" {
     email?: string | null;
     firstName: string;
     lastName: string;
+    supplier?: SupplierUser | null;
   }
 }

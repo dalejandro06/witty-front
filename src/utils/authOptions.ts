@@ -53,6 +53,7 @@ export const authOptions = {
           email: data.user.email,
           firstName: data.user.first_name,
           lastName: data.user.last_name,
+          supplier: data?.supplier || null,
         };
       },
     }),
@@ -68,6 +69,7 @@ export const authOptions = {
           email: user.email,
           firstName: user.firstName,
           lastName: user.lastName,
+          supplier: user?.supplier || null,
         };
       }
 
@@ -84,6 +86,7 @@ export const authOptions = {
           firstName: token.firstName,
           lastName: token.lastName,
           email: token.email,
+          supplier: token?.supplier || null,
         },
       };
     },

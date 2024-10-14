@@ -44,6 +44,7 @@ function LocationForm({ formId, onSubmit, location }: Props) {
         isRequired
         errorMessage={formik.errors.state}
         id="state"
+        isDisabled={Boolean(location)}
         isInvalid={!!formik.errors.state}
         isLoading={loadingDepartments}
         label="Departamento"
@@ -64,6 +65,7 @@ function LocationForm({ formId, onSubmit, location }: Props) {
         isRequired
         errorMessage={formik.errors.city}
         id="city"
+        isDisabled={Boolean(location)}
         isInvalid={!!formik.errors.city}
         isLoading={loadingCity}
         label="Ciudad"
@@ -78,7 +80,6 @@ function LocationForm({ formId, onSubmit, location }: Props) {
         ))}
       </Select>
       <Switch
-        defaultSelected
         color="secondary"
         id="status"
         isSelected={formik.values.status}
@@ -88,7 +89,6 @@ function LocationForm({ formId, onSubmit, location }: Props) {
         Desactivada / Activada
       </Switch>
       <Switch
-        defaultSelected
         color="secondary"
         id="availableAllServices"
         isSelected={formik.values.availableAllServices}

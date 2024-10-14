@@ -104,7 +104,7 @@ export async function getSupplierLocations(): Promise<SupplierLocation[]> {
 }
 
 export async function deleteSupplierLocation(id: number) {
-  const data = await ApiClient.get<SupplierLocation[]>(
+  const data = await ApiClient.delete<SupplierLocation[]>(
     `/v1/services/services-location/${id}/delete/`,
   );
 
@@ -119,8 +119,8 @@ export async function addLocation(params: AddLocationParams) {
   return data.data;
 }
 
-export async function editLocation(params: EditLocationParams) {
-  const data = await ApiClient.post(
+export async function editLocation(params: Partial<EditLocationParams>) {
+  const data = await ApiClient.patch(
     `/v1/services/services-location/${params.locationId}/update/`,
     {
       ...params,

@@ -35,6 +35,7 @@ function LocationCard({ isPrincipal, location, isDisabled }: Props) {
       default:
         break;
     }
+    router.refresh();
   };
 
   return (
@@ -54,10 +55,10 @@ function LocationCard({ isPrincipal, location, isDisabled }: Props) {
           />
           <div className="flex flex-col gap-1 items-start justify-center">
             <h4 className="text-small font-semibold leading-none text-default-600">
-              {location.state.name}
+              {location.city.name}
             </h4>
             <h5 className="text-small tracking-tight text-default-400">
-              {location.city.name}
+              {location.state.name}
             </h5>
             {isPrincipal && (
               <div className="flex gap-2 items-center">

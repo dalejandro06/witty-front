@@ -18,7 +18,7 @@ function LocationsList({ locations }: Props) {
         {locations.map((location) => (
           <LocationCard
             key={location.id}
-            isDisabled={location.status}
+            isDisabled={!location.status}
             isPrincipal={location.available_all_services}
             location={location}
           />

@@ -3,6 +3,8 @@ import { Button, Divider } from "@nextui-org/react";
 import { FormikValues } from "formik";
 import toast from "react-hot-toast";
 import { User } from "next-auth";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 import LocationForm from "@/app/modules/supplier-location/LocationForm";
 import { addLocation, editLocation } from "@/repositories/ApiRepository";
@@ -11,19 +13,22 @@ import { SupplierLocation } from "@/types/ApiTypes";
 type Props = {
   title: string;
   subtitle: string;
-  user?: User;
+  user: User | undefined;
   location?: SupplierLocation;
 };
 
 function ConfigLocationLayout({ user, title, subtitle, location }: Props) {
   const hasLocationToEdit = location && Object.keys(location).length > 1;
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const onSubmit = async (values: FormikValues) => {
+    setLoading(true);
     const payload = {
       state_id: Number(values.state),
       status: values.status,
       city_id: Number(values.city),
-      supplier_profile_id: Number(user?.id),
+      supplier_profile_id: Number(user?.supplier?.id),
       available_all_services: values.availableAllServices,
     };
 
@@ -33,7 +38,9 @@ function ConfigLocationLayout({ user, title, subtitle, location }: Props) {
       if (hasLocationToEdit) {
         data = await editLocation({
           locationId: location.id,
-          ...payload,
+          status: values.status,
+          supplier_profile_id: Number(user?.supplier?.id),
+          available_all_services: values.availableAllServices,
         });
       } else {
         data = await addLocation(payload);
@@ -43,9 +50,13 @@ function ConfigLocationLayout({ user, title, subtitle, location }: Props) {
         toast.success(
           `¡Ubicación ${hasLocationToEdit ? "agregada" : "actualizada"} con Éxito!`,
         );
+        router.push("/location/saved-locations");
+        router.refresh();
       }
     } catch (error) {
       toast.error("Error al registrar la ubicación");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -61,7 +72,7 @@ function ConfigLocationLayout({ user, title, subtitle, location }: Props) {
         location={location}
         onSubmit={onSubmit}
       />
-      {!hasLocationToEdit && (
+      {hasLocationToEdit && (
         <div className="flex flex-col gap-5 mt-10">
           <Divider />
           <p>
@@ -75,10 +86,11 @@ function ConfigLocationLayout({ user, title, subtitle, location }: Props) {
         className="mt-4 text-black"
         color="secondary"
         form="add-location-form"
+        isLoading={loading}
         size="lg"
         type="submit"
       >
-        {hasLocationToEdit ? "Añadir ubicación" : "Editar ubicación"}
+        {hasLocationToEdit ? "Editar ubicación" : "Añadir ubicación"}
       </Button>
     </div>
   );
