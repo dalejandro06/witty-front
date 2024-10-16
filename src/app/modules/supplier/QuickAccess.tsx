@@ -2,18 +2,25 @@ import React from "react";
 
 import QuickAction from "@/components/QuickAction";
 import SectionTitle from "@/components/SectionTitle";
+import { QuickActionData } from "@/types";
 
-function QuickAccess() {
+type Props = {
+  actions: QuickActionData[];
+};
+
+function QuickAccess({ actions }: Props) {
   return (
     <div className="my-10">
       <SectionTitle title="Accesos rápidos" />
       <div className="flex justify-between mt-5 gap-5">
-        <QuickAction icon="send" text="Invita a un servicio" type="secondary" />
-        <QuickAction
-          icon="eye"
-          text="Solicitudes pendientes"
-          type="secondaryDark"
-        />
+        {actions.map((item) => (
+          <QuickAction
+            key={`${item.icon}-${item.text}-${item.type}`}
+            icon={item.icon}
+            text={item.text}
+            type={item.type}
+          />
+        ))}
       </div>
     </div>
   );

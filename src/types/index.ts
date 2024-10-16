@@ -20,3 +20,18 @@ export interface SupplierUser {
   instagram_page: string | null;
   type_business: number;
 }
+
+export type QuickActionData = {
+  icon: string;
+  text: string;
+  type: "secondary" | "secondaryDark";
+};
+
+export type ServiceInfo = {
+  id: string | number;
+  icon: string;
+  title: string;
+  supplierName: string;
+  location?: string;
+  date: string;
+};

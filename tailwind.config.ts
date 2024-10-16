@@ -25,6 +25,9 @@ const config: Config = {
           400: "#C1C1C1",
           800: "#02101ED1",
         },
+        orange: {
+          700: "#CC6666",
+        },
       },
       fontFamily: {
         lato: ["Lato"],
