@@ -3,6 +3,7 @@ import QuickAccess from "@/app/modules/supplier/QuickAccess";
 import { auth } from "@/auth";
 import { QuickActionData } from "@/types";
 import ScheduledServices from "@/app/modules/client/ScheduledServices";
+import SupplierBanner from "@/app/modules/client/SupplierBanner";
 
 async function Supplier() {
   const session = await auth();
@@ -21,10 +22,11 @@ async function Supplier() {
   ];
 
   return (
-    <div className="py-10 px-6">
+    <div className="py-10 px-6 grid gap-5">
       <CardAvatar user={session?.user} />
       <QuickAccess actions={actions} />
       <ScheduledServices />
+      <SupplierBanner />
     </div>
   );
 }
