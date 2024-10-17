@@ -6,8 +6,12 @@ import { auth } from "@/auth";
 async function layout({ children }: PropsWithChildren) {
   const session = await auth();
 
-  if (session && session.user) {
-    redirect("/supplier");
+  if (session) {
+    if (session.user.supplier) {
+      redirect("/supplier");
+    } else {
+      redirect("/client");
+    }
   }
 
   return <div>{children}</div>;
