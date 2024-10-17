@@ -13,8 +13,12 @@ export default async function Home() {
   const categories = await getCategories();
   const session = await auth();
 
-  if (session && session.user) {
-    redirect("/supplier");
+  if (session) {
+    if (session.user.supplier) {
+      redirect("/supplier");
+    } else {
+      redirect("/client");
+    }
   }
 
   return (

@@ -20,7 +20,7 @@ function LoginForm() {
       if (response.error) {
         toast.error(response.error);
       } else {
-        router.replace("/supplier");
+        router.replace("/");
       }
     });
   };
