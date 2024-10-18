@@ -35,6 +35,7 @@ async function SavedLocations() {
             showAnchorIcon
             as={Link}
             className="bg-gray-100 text-black"
+            href="/location/add-location"
             size="lg"
           >
             Crea una ubicación
