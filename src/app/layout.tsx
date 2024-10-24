@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   icons: {
     icon: "/favicon.ico",
+    apple: "/icon-72x72.png",
   },
   manifest: "/manifest.json",
   themeColor: "#66CC99",
