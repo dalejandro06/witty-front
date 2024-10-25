@@ -11,7 +11,7 @@ function ProfileNameCard({ user }: Props) {
   return (
     <div className="flex gap-5 shadow-xl py-4 px-6 items-center rounded-lg bg-white">
       <div className="flex justify-center items-center rounded-full ">
-        <ProfileAvatar size={16} />
+        <ProfileAvatar className="w-16 h-16" />
       </div>
       <div>
         <h1 className="font-bold text-lg">

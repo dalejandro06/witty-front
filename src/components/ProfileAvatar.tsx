@@ -10,17 +10,17 @@ import {
 } from "@nextui-org/react";
 
 type Props = {
-  size?: number;
+  className?: string;
 };
 
-function ProfileAvatar({ size = 28 }: Props) {
+function ProfileAvatar({ className }: Props) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
     <div>
       <Avatar
         isBordered
-        className={`w-${size} h-${size}`}
+        className={className}
         color="success"
         src="https://i.pravatar.cc/150?u=a04258114e29026302d"
         onClick={onOpen}
