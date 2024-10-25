@@ -1,27 +1,29 @@
-import { Card, CardBody, CardHeader, Divider } from "@nextui-org/react";
+import ProfileNameCard from "@/app/modules/profile/ProfileNameCard";
+import { auth } from "@/auth";
+import TitleInfo from "@/components/TitleInfo";
+import LinkProfileCard from "@/app/modules/profile/LinkProfileCard";
 
-import ProfileAvatar from "@/components/ProfileAvatar";
-import ProfileInfo from "@/components/ProfileInfo";
+async function Profile() {
+  const session = await auth();
 
-function Profile() {
   return (
-    <div>
-      <Card className="py-6">
-        <CardHeader className="flex flex-col justify-center">
-          <ProfileAvatar />
-          <h1 className="text-3xl mt-4 font-bold">Pablo torres</h1>
-        </CardHeader>
-        <Divider />
-        <CardBody>
-          <p className="text-xl my-3">Sobre ti</p>
-          <p className="text-gray-500 mb-4">
-            Soy Pablo Torres, apasionado por ofrecer soluciones rápidas y
-            personalizadas para facilitar tu vida. Me comprometo a brindarte un
-            servicio confiable y de alta calidad.
-          </p>
-          <ProfileInfo />
-        </CardBody>
-      </Card>
+    <div className="grid gap-5">
+      <TitleInfo
+        infoText="En esta vista, puedes ver opciones de tu perfil, además de cerrar tu
+          sesión."
+        title="Tu perfil"
+      />
+      <ProfileNameCard user={session?.user} />
+      <LinkProfileCard
+        infoText="Observa tu perfil y Edita tu foto e información personal."
+        link="/profile/about"
+        title="Perfil de servicios"
+      />
+      <LinkProfileCard
+        infoText="Edita tu contraseña y correo para el ingreso a la aplicación."
+        link="/profile/manage-credentials"
+        title="Datos de acceso"
+      />
     </div>
   );
 }

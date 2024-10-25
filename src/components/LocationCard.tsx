@@ -70,7 +70,7 @@ function LocationCard({ isPrincipal, location, isDisabled }: Props) {
             )}
           </div>
         </div>
-        <Dropdown>
+        <Dropdown backdrop="blur">
           <DropdownTrigger>
             <Button
               isIconOnly

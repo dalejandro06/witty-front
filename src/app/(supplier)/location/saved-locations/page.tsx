@@ -1,22 +1,20 @@
-import { Button, Divider, Link } from "@nextui-org/react";
+import { Button, Link } from "@nextui-org/react";
 import Image from "next/image";
 
 import NoLocation from "@/assets/no-locations.png";
 import { getSupplierLocations } from "@/repositories/ApiRepository";
 import LocationsList from "@/app/modules/supplier-location/LocationsList";
+import TitleInfo from "@/components/TitleInfo";
 
 async function SavedLocations() {
   const locations = await getSupplierLocations();
 
   return (
     <div className="my-5 px-6 relative h-full">
-      <h1 className="text-3xl font-bold my-5">Tus ubicaciones</h1>
-      <div className="flex items-center">
-        <Divider className="w-[3px] h-[60px] me-3" orientation="vertical" />
-        <p className="text-gray-500">
-          Busca y filtra tus ubicaciones en donde ofreces tus servicios.
-        </p>
-      </div>
+      <TitleInfo
+        infoText="Busca y filtra tus ubicaciones en donde ofreces tus servicios."
+        title="Tus ubicaciones"
+      />
       {locations.length > 0 ? (
         <LocationsList locations={locations} />
       ) : (

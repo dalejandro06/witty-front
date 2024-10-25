@@ -34,7 +34,7 @@ function InputPassword(props: InputProps) {
       placeholder={props.placeholder || "Ingresa tu contraseña"}
       required={props.required || true}
       type={isVisible ? "text" : "password"}
-      variant="bordered"
+      variant={props.variant || "bordered"}
       {...props}
     />
   );

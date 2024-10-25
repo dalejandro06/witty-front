@@ -10,7 +10,7 @@ async function layout({ children }: PropsWithChildren) {
   return (
     <div className="bg-gray-200 min-h-screen pb-18">
       <Navbar session={session} />
-      <div className="py-10 px-4">{children}</div>
+      <div className="px-4">{children}</div>
       <Navigation />
     </div>
   );

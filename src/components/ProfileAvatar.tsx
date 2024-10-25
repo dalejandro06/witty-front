@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Avatar,
   Image,
@@ -8,14 +9,18 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 
-function ProfileAvatar() {
+type Props = {
+  size?: number;
+};
+
+function ProfileAvatar({ size = 28 }: Props) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
     <div>
       <Avatar
         isBordered
-        className="w-28 h-28"
+        className={`w-${size} h-${size}`}
         color="success"
         src="https://i.pravatar.cc/150?u=a04258114e29026302d"
         onClick={onOpen}

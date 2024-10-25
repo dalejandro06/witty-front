@@ -6,6 +6,8 @@ import { User } from "next-auth";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
+import TitleInfo from "./TitleInfo";
+
 import LocationForm from "@/app/modules/supplier-location/LocationForm";
 import { addLocation, editLocation } from "@/repositories/ApiRepository";
 import { SupplierLocation } from "@/types/ApiTypes";
@@ -62,11 +64,7 @@ function ConfigLocationLayout({ user, title, subtitle, location }: Props) {
 
   return (
     <div className="py-5 px-6 relative h-full">
-      <h1 className="text-3xl font-bold my-5">{title}</h1>
-      <div className="flex items-center">
-        <Divider className="w-[3px] h-[60px] me-3" orientation="vertical" />
-        <p className="text-gray-500">{subtitle}</p>
-      </div>
+      <TitleInfo infoText={subtitle} title={title} />
       <LocationForm
         formId="add-location-form"
         location={location}
