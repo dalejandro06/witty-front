@@ -5,9 +5,12 @@ import ProfileAvatar from "@/components/ProfileAvatar";
 
 type Props = {
   user?: User;
+  isSupplier: boolean;
 };
 
-function ProfileNameCard({ user }: Props) {
+function ProfileNameCard({ user, isSupplier }: Props) {
+  const userRoleText = isSupplier ? "Proveedor de servicios" : "Cliente";
+
   return (
     <div className="flex gap-5 shadow-xl py-4 px-6 items-center rounded-lg bg-white">
       <div className="flex justify-center items-center rounded-full ">
@@ -17,7 +20,7 @@ function ProfileNameCard({ user }: Props) {
         <h1 className="font-bold text-lg">
           {`${user?.firstName} ${user?.lastName}`}
         </h1>
-        <p className="text-gray-500">Supplier</p>
+        <p className="text-gray-500">{userRoleText}</p>
       </div>
     </div>
   );

@@ -77,10 +77,9 @@ function RecoverPasswordModal() {
           text: "Enviar",
           form: "forgotPasswordForm",
           type: "submit",
-          loading: pending,
+          isLoading: pending,
         }}
         isOpen={isOpen}
-        placementent="center"
         title="Recupera tu contraseña"
         onOpenChange={onOpenChange}
       />

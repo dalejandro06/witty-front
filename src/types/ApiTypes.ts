@@ -101,3 +101,20 @@ export type AddLocationParams = {
 export type EditLocationParams = {
   locationId: number;
 } & AddLocationParams;
+
+export interface UserData {
+  id: number;
+  image_supplier: null;
+  profile_description: null;
+  state: Departaments;
+  city: Departaments;
+  supplier_name: string;
+  complete_owner_name: string;
+  email: string;
+  phone_number: string;
+  physical_address: string;
+  web_page: string | null;
+  facebook_page: string | null;
+  instagram_page: string | null;
+  type_business: number;
+}

@@ -1,15 +1,55 @@
 import InfoEditText from "./InfoEditText";
 
-function ProfileInfo() {
+import { UserData } from "@/types/ApiTypes";
+
+type Props = {
+  userData: UserData;
+};
+
+function ProfileInfo({ userData }: Props) {
+  const profileInfoData = [
+    {
+      icon: "at-sign",
+      value: userData.email,
+    },
+    {
+      icon: "phone",
+      value: userData.phone_number,
+    },
+    {
+      icon: "map-pin",
+      value: `${userData.state.name} - ${userData.city.name}`,
+    },
+    {
+      icon: "navigation",
+      value: userData.physical_address,
+    },
+    {
+      icon: "globe",
+      value: userData.web_page,
+    },
+    {
+      icon: "facebook",
+      value: userData.facebook_page,
+    },
+    {
+      icon: "instagram",
+      value: userData.instagram_page,
+    },
+  ];
+
   return (
     <div>
-      <InfoEditText canEdit icon="at-sign" infoText="witty@email.com" />
-      <InfoEditText icon="phone" infoText="3130123123" />
-      <InfoEditText icon="map-pin" infoText="Bogotá - Cundinamarca" />
-      <InfoEditText icon="navigation" infoText="Cra 11a 89 - 25" />
-      <InfoEditText icon="globe" infoText="https://trywitty.co" />
-      <InfoEditText icon="facebook" infoText="Somos Witty" />
-      <InfoEditText icon="instagram" infoText="@trywitty" />
+      {profileInfoData.map(
+        (item) =>
+          item.value && (
+            <InfoEditText
+              key={item.icon + item.value}
+              icon={item.icon}
+              infoText={item.value}
+            />
+          ),
+      )}
     </div>
   );
 }

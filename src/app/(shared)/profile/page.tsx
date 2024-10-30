@@ -2,9 +2,12 @@ import ProfileNameCard from "@/app/modules/profile/ProfileNameCard";
 import { auth } from "@/auth";
 import TitleInfo from "@/components/TitleInfo";
 import LinkProfileCard from "@/app/modules/profile/LinkProfileCard";
+import SupplierBanner from "@/app/modules/client/SupplierBanner";
+import LogoutButton from "@/components/LogoutButton";
 
 async function Profile() {
   const session = await auth();
+  const isSupplier = Boolean(session?.user.supplier?.id);
 
   return (
     <div className="grid gap-5">
@@ -13,17 +16,21 @@ async function Profile() {
           sesión."
         title="Tu perfil"
       />
-      <ProfileNameCard user={session?.user} />
-      <LinkProfileCard
-        infoText="Observa tu perfil y Edita tu foto e información personal."
-        link="/profile/about"
-        title="Perfil de servicios"
-      />
+      <ProfileNameCard isSupplier={isSupplier} user={session?.user} />
+      {isSupplier && (
+        <LinkProfileCard
+          infoText="Observa tu perfil y Edita tu foto e información personal."
+          link="/profile/about"
+          title="Perfil de servicios"
+        />
+      )}
       <LinkProfileCard
         infoText="Edita tu contraseña y correo para el ingreso a la aplicación."
         link="/profile/manage-credentials"
         title="Datos de acceso"
       />
+      {!isSupplier && <SupplierBanner />}
+      <LogoutButton />
     </div>
   );
 }

@@ -2,52 +2,45 @@
 
 import {
   Button,
+  ButtonProps,
   Modal,
   ModalBody,
   ModalContent,
+  ModalProps,
   ModalFooter,
   ModalHeader,
 } from "@nextui-org/react";
 import { ReactNode } from "react";
 
-type ModalProps = {
-  title: string;
-  body: string | ReactNode;
-  onCancelBtn?: () => void;
-  cancelBtnText?: string;
+type LocalModalProps = {
+  title?: string;
+  body?: string | ReactNode;
   isOpen: boolean;
-  placementent?:
-    | "center"
-    | "bottom"
-    | "auto"
-    | "top"
-    | "top-center"
-    | "bottom-center";
+  modalProps?: Partial<ModalProps>;
   onOpenChange: () => void;
+  cancelButton?: {
+    text: string;
+  } & ButtonProps;
   confirmButton: {
     text: string;
-    type?: "button" | "reset" | "submit";
-    form?: string;
-    loading: boolean;
-    onPress?: () => void;
-  };
+  } & ButtonProps;
 };
 
 function CustomModal({
   title,
   body,
-  onCancelBtn,
-  cancelBtnText,
+  cancelButton,
   isOpen,
   onOpenChange,
   confirmButton,
-  placementent,
-}: ModalProps) {
+  modalProps,
+}: LocalModalProps) {
   return (
     <Modal
-      backdrop="blur"
+      {...modalProps}
+      backdrop={modalProps?.backdrop || "blur"}
       isOpen={isOpen}
-      placement={placementent || "bottom"}
+      placement={modalProps?.placement || "center"}
       onOpenChange={onOpenChange}
     >
       <ModalContent>
@@ -59,20 +52,13 @@ function CustomModal({
             <ModalBody>{body}</ModalBody>
             <ModalFooter className="justify-end">
               <Button
-                size="md"
                 variant="bordered"
-                onPress={onCancelBtn || onClose}
+                {...cancelButton}
+                onPress={cancelButton?.onPress || onClose}
               >
-                {cancelBtnText || "Cancelar"}
+                {cancelButton?.text || "Cancelar"}
               </Button>
-              <Button
-                color="primary"
-                form={confirmButton.form}
-                isLoading={confirmButton.loading}
-                size="md"
-                type={confirmButton.type || "button"}
-                onPress={confirmButton.onPress}
-              >
+              <Button {...confirmButton}>
                 {confirmButton.text || "Enviar"}
               </Button>
             </ModalFooter>

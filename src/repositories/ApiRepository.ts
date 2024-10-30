@@ -13,6 +13,7 @@ import {
   SubCategoriesParams,
   SubCategory,
   SupplierLocation,
+  UserData,
 } from "../types/ApiTypes";
 
 import ApiClient from "./clients/ApiClient";
@@ -137,6 +138,14 @@ export async function getLocationById({
 }): Promise<SupplierLocation> {
   const data = await ApiClient.get<SupplierLocation>(
     `/v1/services/services-location/${id}/`,
+  );
+
+  return data.data;
+}
+
+export async function getUserData(userId?: number) {
+  const data = await ApiClient.get<UserData>(
+    `/v1/accounts/supplier-profile/${userId}/`,
   );
 
   return data.data;

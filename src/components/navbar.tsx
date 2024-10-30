@@ -9,7 +9,6 @@ import { Link } from "@nextui-org/link";
 import NextLink from "next/link";
 import Image from "next/image";
 import { Button } from "@nextui-org/button";
-import { signOut } from "next-auth/react";
 import { Session } from "next-auth";
 
 import LogoWhite from "@/assets/logo-white.svg";
@@ -20,10 +19,6 @@ type Props = {
 };
 
 const Navbar = ({ session, showButton = true }: Props) => {
-  const handleLogout = async () => {
-    await signOut({ callbackUrl: "/login" });
-  };
-
   return (
     <NextUINavbar
       className="h-[70px] bg-primary-blue"
@@ -41,13 +36,14 @@ const Navbar = ({ session, showButton = true }: Props) => {
         <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
           {/* <ThemeSwitch /> */}
           {session && session.user ? (
-            <Button className="bg-secondary font-bold" onClick={handleLogout}>
-              Cerrar session
+            <Button className="text-black font-bold" color="secondary">
+              Nuevo Servicio
             </Button>
           ) : (
             <Button
               as={Link}
-              className="bg-secondary font-bold"
+              className="font-bold text-black"
+              color="secondary"
               href="/welcome"
             >
               Accede

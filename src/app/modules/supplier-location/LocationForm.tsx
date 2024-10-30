@@ -5,7 +5,6 @@ import {
   Card,
   CardBody,
   CardHeader,
-  Divider,
   Select,
   SelectItem,
   Switch,
@@ -63,7 +62,6 @@ function LocationForm({ formId, onSubmit, location }: Props) {
             />
             <p className="font-semibold text-xl">Ubicación seleccionada</p>
           </CardHeader>
-          <Divider />
           <CardBody className="justify-around">
             <div className="grid grid-cols-2 gap-3">
               <div>

@@ -28,6 +28,9 @@ const config: Config = {
         orange: {
           700: "#CC6666",
         },
+        red: {
+          300: "#EC6666",
+        },
       },
       fontFamily: {
         lato: ["Lato"],
@@ -68,6 +71,9 @@ const config: Config = {
               800: "#0d3a25",
               900: "#001509",
               DEFAULT: "#66CC99",
+            },
+            danger: {
+              DEFAULT: "#9b2c2c",
             },
           },
         },

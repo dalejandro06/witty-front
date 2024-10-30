@@ -1,23 +1,16 @@
-import {
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  Divider,
-  Link,
-} from "@nextui-org/react";
+import { Button, Card, CardBody, CardHeader, Divider } from "@nextui-org/react";
 
 import ProfileAvatar from "@/components/ProfileAvatar";
-import ProfileInfo from "@/components/ProfileInfo";
 import { auth } from "@/auth";
 import { getUserData } from "@/repositories/ApiRepository";
+import EditProfileForm from "@/app/modules/profile/EditProfileForm";
 
 async function Profile() {
   const session = await auth();
   const userData = await getUserData(session?.user.supplier?.id);
 
   return (
-    <div className="py-10 grid gap-10">
+    <div className="pt-10 pb-20 grid gap-10">
       <Card className="py-6">
         <CardHeader className="flex flex-col justify-center">
           <ProfileAvatar className="w-26 h-26" />
@@ -28,20 +21,11 @@ async function Profile() {
         </CardHeader>
         <Divider />
         <CardBody>
-          <p className="text-xl my-3">Sobre ti</p>
-          <p className="text-gray-500 mb-4">
-            {userData.profile_description ?? "No tenemos información sobre ti"}
-          </p>
-          <ProfileInfo userData={userData} />
+          <EditProfileForm userData={userData} />
         </CardBody>
       </Card>
-      <Button
-        as={Link}
-        className="text-black py-6"
-        color="secondary"
-        href="/profile/edit"
-      >
-        Editar información
+      <Button className="text-black py-6" color="secondary">
+        Guardar información
       </Button>
     </div>
   );
