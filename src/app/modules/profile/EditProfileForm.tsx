@@ -1,16 +1,23 @@
 "use client";
-import { Input } from "@nextui-org/input";
+
+import { Input, Textarea } from "@nextui-org/input";
 import { Formik } from "formik";
 import { Select, SelectItem } from "@nextui-org/react";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 import { UserData } from "@/types/ApiTypes";
 import { useDepartments } from "@/hooks/useDepartments";
+import { EditProfileSchema } from "@/utils/FormSchemas";
+import { updateUserData } from "@/repositories/ApiRepository";
 
 type Props = {
   userData: UserData;
+  profileImage?: File | null;
+  setLoading: (v: boolean) => void;
 };
 
-function EditProfileForm({ userData }: Props) {
+function EditProfileForm({ userData, profileImage, setLoading }: Props) {
   const {
     departments,
     loadingDepartments,
@@ -18,6 +25,7 @@ function EditProfileForm({ userData }: Props) {
     cities,
     loadingCity,
   } = useDepartments();
+  const router = useRouter();
 
   return (
     <Formik
@@ -32,7 +40,35 @@ function EditProfileForm({ userData }: Props) {
         facebook: "",
         instagram: "",
       }}
-      onSubmit={() => {}}
+      validateOnChange={false}
+      validationSchema={EditProfileSchema}
+      onSubmit={async (values) => {
+        setLoading(true);
+        try {
+          // TODO: this not works when upload a Blob file
+          await updateUserData({
+            user_id: userData.id,
+            image_supplier: profileImage,
+            profile_description: values.aboutMe,
+            email: values.email,
+            phone_number: values.phone,
+            state_id: values.state,
+            city_id: values.city,
+            physical_address: values.address,
+            web_page: values.webPage,
+            facebook_page: values.facebook,
+            instagram_page: values.instagram,
+          });
+
+          toast.success("!Tus datos se han actualizado con éxito!");
+          router.replace("/profile/about");
+        } catch (error) {
+          // console.log("error", error);
+          toast.error("Hubo un error al actualizar tus datos");
+        } finally {
+          setLoading(false);
+        }
+      }}
     >
       {({ errors, values, setFieldValue, handleSubmit }) => (
         <form
@@ -40,7 +76,8 @@ function EditProfileForm({ userData }: Props) {
           id="edit-profile-form"
           onSubmit={handleSubmit}
         >
-          <Input
+          <Textarea
+            errorMessage={errors.aboutMe}
             isInvalid={!!errors.aboutMe}
             label="Sobre ti"
             type="text"
@@ -49,6 +86,8 @@ function EditProfileForm({ userData }: Props) {
             onChange={(e) => setFieldValue("aboutMe", e.target.value)}
           />
           <Input
+            description="Este correo es solo para notificaciones"
+            errorMessage={errors.email}
             isInvalid={!!errors.email}
             label="Correo"
             type="email"
@@ -57,6 +96,7 @@ function EditProfileForm({ userData }: Props) {
             onChange={(e) => setFieldValue("email", e.target.value)}
           />
           <Input
+            errorMessage={errors.phone}
             isInvalid={!!errors.phone}
             label="Teléfono"
             type="number"
@@ -76,7 +116,7 @@ function EditProfileForm({ userData }: Props) {
             value={values.state}
             variant="bordered"
             onChange={(e) => {
-              setFieldValue("", e.target.value);
+              setFieldValue("state", e.target.value);
               getCityByDepartment(e.target.value);
             }}
           >
@@ -115,7 +155,6 @@ function EditProfileForm({ userData }: Props) {
             onChange={(e) => setFieldValue("address", e.target.value)}
           />
           <Input
-            isRequired
             errorMessage={errors.facebook}
             id="facebook"
             isInvalid={!!errors.facebook}
@@ -128,7 +167,6 @@ function EditProfileForm({ userData }: Props) {
             onChange={(e) => setFieldValue("facebook", e.target.value)}
           />
           <Input
-            isRequired
             errorMessage={errors.instagram}
             id="instagram"
             isInvalid={!!errors.instagram}
@@ -139,6 +177,18 @@ function EditProfileForm({ userData }: Props) {
             value={values.instagram}
             variant="bordered"
             onChange={(e) => setFieldValue("instagram", e.target.value)}
+          />
+          <Input
+            errorMessage={errors.webPage}
+            id="webPage"
+            isInvalid={!!errors.webPage}
+            label="Pagina Web"
+            name="webPage"
+            placeholder="trywitty.co"
+            type="text"
+            value={values.webPage}
+            variant="bordered"
+            onChange={(e) => setFieldValue("webPage", e.target.value)}
           />
         </form>
       )}

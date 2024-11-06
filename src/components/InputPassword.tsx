@@ -12,7 +12,7 @@ function InputPassword(props: InputProps) {
   return (
     <Input
       className="text-secondary-blue"
-      description={"Minimo 8 caracteres"}
+      description={props.description || "Minimo 8 caracteres"}
       endContent={
         <button
           aria-label="toggle password visibility"

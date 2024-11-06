@@ -13,6 +13,7 @@ import {
   SubCategoriesParams,
   SubCategory,
   SupplierLocation,
+  UpdateDataParams,
   UserData,
 } from "../types/ApiTypes";
 
@@ -146,6 +147,15 @@ export async function getLocationById({
 export async function getUserData(userId?: number) {
   const data = await ApiClient.get<UserData>(
     `/v1/accounts/supplier-profile/${userId}/`,
+  );
+
+  return data.data;
+}
+
+export async function updateUserData(payload: UpdateDataParams) {
+  const data = await ApiClient.patchForm(
+    `/v1/accounts/supplier-profile/${payload.user_id}/update/`,
+    payload,
   );
 
   return data.data;

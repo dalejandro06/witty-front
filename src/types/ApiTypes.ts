@@ -118,3 +118,17 @@ export interface UserData {
   instagram_page: string | null;
   type_business: number;
 }
+
+export interface UpdateDataParams {
+  user_id: string | number;
+  image_supplier?: Blob | null;
+  profile_description: string;
+  email: string;
+  phone_number: string;
+  state_id: string;
+  city_id: string;
+  physical_address: string;
+  web_page?: string;
+  facebook_page?: string;
+  instagram_page?: string;
+}

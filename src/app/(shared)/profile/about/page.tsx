@@ -17,7 +17,7 @@ async function Profile() {
   const userData = await getUserData(session?.user.supplier?.id);
 
   return (
-    <div className="py-10 grid gap-10">
+    <div className="pt-10 grid gap-10">
       <Card className="py-6">
         <CardHeader className="flex flex-col justify-center">
           <ProfileAvatar className="w-26 h-26" />

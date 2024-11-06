@@ -29,3 +29,15 @@ export const RegisterSupplierSchema = new Yup.ObjectSchema({
   nit: Yup.number(),
   address: Yup.string().required(),
 });
+
+export const EditProfileSchema = new Yup.ObjectSchema({
+  aboutMe: Yup.string()
+    .max(500, "El campo debe contener máximo 500 caracteres")
+    .required(),
+  email: Yup.string().email().required(),
+  phone: Yup.number().required(),
+  address: Yup.string().required(),
+  webPage: Yup.string(),
+  facebook: Yup.string(),
+  instagram: Yup.string(),
+});

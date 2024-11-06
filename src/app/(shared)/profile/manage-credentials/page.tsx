@@ -22,7 +22,24 @@ function ManageCredentials() {
           type="text"
           variant="flat"
         />
-        <InputPassword minLength={8} variant="flat" />
+        <InputPassword
+          description=""
+          label="Contraseña anterior"
+          minLength={8}
+          variant="flat"
+        />
+        <InputPassword
+          description=""
+          label="Contraseña nueva"
+          minLength={8}
+          variant="flat"
+        />
+        <InputPassword description="" minLength={8} variant="flat" />
+        <InputPassword
+          label="Confirma tu contraseña nueva"
+          minLength={8}
+          variant="flat"
+        />
         <Button
           fullWidth
           className="relative bottom-0 py-6 text-black"
