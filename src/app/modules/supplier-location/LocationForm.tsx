@@ -45,7 +45,7 @@ function LocationForm({ formId, onSubmit, location }: Props) {
 
   return (
     <form
-      className="my-6 p-4 rounded-xl grid gap-5 relative"
+      className="my-6 py-4 rounded-xl grid gap-5 relative"
       id={formId}
       onSubmit={formik.handleSubmit}
     >

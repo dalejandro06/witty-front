@@ -10,28 +10,31 @@ async function Profile() {
   const isSupplier = Boolean(session?.user.supplier?.id);
 
   return (
-    <div className="grid gap-5">
-      <TitleInfo
-        infoText="En esta vista, puedes ver opciones de tu perfil, además de cerrar tu
+    <section className="flex flex-col justify-between h-full">
+      <div className="grid gap-5">
+        <TitleInfo
+          infoText="En esta vista, puedes ver opciones de tu perfil, además de cerrar tu
           sesión."
-        title="Tu perfil"
-      />
-      <ProfileNameCard isSupplier={isSupplier} user={session?.user} />
-      {isSupplier && (
-        <LinkProfileCard
-          infoText="Observa tu perfil y Edita tu foto e información personal."
-          link="/profile/about"
-          title="Perfil de servicios"
+          title="Tu perfil"
         />
-      )}
-      <LinkProfileCard
-        infoText="Edita tu contraseña y correo para el ingreso a la aplicación."
-        link="/profile/manage-credentials"
-        title="Datos de acceso"
-      />
-      {!isSupplier && <SupplierBanner />}
+        <ProfileNameCard isSupplier={isSupplier} user={session?.user} />
+        {isSupplier && (
+          <LinkProfileCard
+            infoText="Observa tu perfil y Edita tu foto e información personal."
+            link="/profile/about"
+            title="Perfil de servicios"
+          />
+        )}
+        <LinkProfileCard
+          infoText="Edita tu contraseña y correo para el ingreso a la aplicación."
+          link="/profile/manage-credentials"
+          title="Datos de acceso"
+        />
+        {!isSupplier && <SupplierBanner />}
+      </div>
+
       <LogoutButton />
-    </div>
+    </section>
   );
 }
 

@@ -47,31 +47,29 @@ export default function RootLayout({
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
           <NextAuthProvider>
-            <div className="relative flex flex-col">
-              <main className="container min-h-screen mx-auto max-w-7xl flex-grow">
-                <Toaster
-                  position="top-center"
-                  reverseOrder={false}
-                  toastOptions={{
-                    duration: 5000,
-                    success: {
-                      style: { background: "#D9ECE2", width: "100%" },
-                      className:
-                        "rounded-lg p-6 border-l-8 border-l-[#66CC99] font-bold",
-                      icon: <LogoImage fill="#66CC99" />,
-                    },
-                    error: {
-                      style: { background: "#ECD9D9", width: "100%" },
-                      className:
-                        "rounded-lg p-6 border-l-8 border-l-[#C64444] font-bold",
-                      icon: <ErrorLogo fill="#C64444" />,
-                    },
-                  }}
-                />
-                {children}
-                <Analytics />
-              </main>
-            </div>
+            <main className="container min-h-screen mx-auto max-w-7xl flex-grow">
+              <Toaster
+                position="top-center"
+                reverseOrder={false}
+                toastOptions={{
+                  duration: 5000,
+                  success: {
+                    style: { background: "#D9ECE2", width: "100%" },
+                    className:
+                      "rounded-lg p-6 border-l-8 border-l-[#66CC99] font-bold",
+                    icon: <LogoImage fill="#66CC99" />,
+                  },
+                  error: {
+                    style: { background: "#ECD9D9", width: "100%" },
+                    className:
+                      "rounded-lg p-6 border-l-8 border-l-[#C64444] font-bold",
+                    icon: <ErrorLogo fill="#C64444" />,
+                  },
+                }}
+              />
+              {children}
+              <Analytics />
+            </main>
           </NextAuthProvider>
         </Providers>
       </body>
