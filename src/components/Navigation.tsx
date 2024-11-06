@@ -7,7 +7,7 @@ import { navigationItems } from "@/config/config";
 
 function Navigation() {
   return (
-    <Navbar className="bg-navbar rounded-t-2xl top-auto fixed bottom-0">
+    <Navbar className="bg-navbar rounded-t-2xl h-full">
       <NavbarContent className="flex w-full" justify="center">
         {navigationItems.map((item) => (
           <NavbarItem key={item.id} className="w-full">
