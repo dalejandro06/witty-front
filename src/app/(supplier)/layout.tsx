@@ -15,7 +15,7 @@ async function layout({ children }: PropsWithChildren) {
   }
 
   return (
-    <div className="bg-gray-200 container-grid h-screen">
+    <div className="bg-gray-200 container-grid h-dvh">
       <Navbar session={session} />
       <div className="px-4 py-6 overflow-scroll">{children}</div>
       <Navigation />
