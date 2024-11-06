@@ -10,10 +10,12 @@ import {
   RegisterParams,
   RegisterSupplierParams,
   RegisterSupplierResponse,
+  StatusResponse,
   SubCategoriesParams,
   SubCategory,
   SupplierLocation,
   UpdateDataParams,
+  UpdatePasswordParams,
   UserData,
 } from "../types/ApiTypes";
 
@@ -159,4 +161,13 @@ export async function updateUserData(payload: UpdateDataParams) {
   );
 
   return data.data;
+}
+
+export async function updatePassword(payload: UpdatePasswordParams) {
+  const data = ApiClient.patch<StatusResponse>(
+    "/v1/accounts/update-password",
+    payload,
+  );
+
+  return (await data).data;
 }

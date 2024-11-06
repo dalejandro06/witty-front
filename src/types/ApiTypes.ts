@@ -132,3 +132,13 @@ export interface UpdateDataParams {
   facebook_page?: string;
   instagram_page?: string;
 }
+
+export interface UpdatePasswordParams {
+  old_password: string;
+  new_password: string;
+}
+
+export type StatusResponse = {
+  status: boolean;
+  message?: string;
+};

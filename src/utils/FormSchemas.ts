@@ -41,3 +41,11 @@ export const EditProfileSchema = new Yup.ObjectSchema({
   facebook: Yup.string(),
   instagram: Yup.string(),
 });
+
+export const UpdatePasswordSchema = new Yup.ObjectSchema({
+  old_password: Yup.string().required(),
+  new_password: Yup.string().required(),
+  confirm_new_password: Yup.string()
+    .oneOf([Yup.ref("new_password")], "El campo debe coincidir")
+    .required(),
+});

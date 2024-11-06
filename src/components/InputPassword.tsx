@@ -27,10 +27,10 @@ function InputPassword(props: InputProps) {
           )}
         </button>
       }
-      id="password"
+      id={props.id || "password"}
       isRequired={props.isRequired || true}
       label={props.label || "Contraseña"}
-      name="password"
+      name={props.name || "password"}
       placeholder={props.placeholder || "Ingresa tu contraseña"}
       required={props.required || true}
       type={isVisible ? "text" : "password"}

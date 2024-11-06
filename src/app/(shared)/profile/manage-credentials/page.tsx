@@ -1,54 +1,17 @@
-"use client";
-import { Button } from "@nextui-org/button";
-import { Input } from "@nextui-org/input";
-
-import InputPassword from "@/components/InputPassword";
 import TitleInfo from "@/components/TitleInfo";
+import UpdatePasswordForm from "@/app/modules/profile/UpdatePasswordForm";
+import { auth } from "@/auth";
 
-function ManageCredentials() {
+async function ManageCredentials() {
+  const session = await auth();
+
   return (
     <div className="relative">
       <TitleInfo
         infoText="En esta vista, puedes cambiar tus credenciales de acceso. "
         title="Cambiar Credenciales"
       />
-      <form className="flex flex-col gap-5 my-5">
-        <Input
-          isRequired
-          id="email"
-          label="Correo"
-          name="email"
-          placeholder="witty@email.com"
-          type="text"
-          variant="flat"
-        />
-        <InputPassword
-          description=""
-          label="Contraseña anterior"
-          minLength={8}
-          variant="flat"
-        />
-        <InputPassword
-          description=""
-          label="Contraseña nueva"
-          minLength={8}
-          variant="flat"
-        />
-        <InputPassword description="" minLength={8} variant="flat" />
-        <InputPassword
-          label="Confirma tu contraseña nueva"
-          minLength={8}
-          variant="flat"
-        />
-        <Button
-          fullWidth
-          className="relative bottom-0 py-6 text-black"
-          color="secondary"
-          type="submit"
-        >
-          Confirmar Cambios
-        </Button>
-      </form>
+      <UpdatePasswordForm user={session?.user} />
     </div>
   );
 }
