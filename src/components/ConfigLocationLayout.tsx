@@ -63,7 +63,7 @@ function ConfigLocationLayout({ user, title, subtitle, location }: Props) {
   };
 
   return (
-    <div className="py-5 px-6 relative h-full">
+    <div className="py-5 relative h-full">
       <TitleInfo infoText={subtitle} title={title} />
       <LocationForm
         formId="add-location-form"
