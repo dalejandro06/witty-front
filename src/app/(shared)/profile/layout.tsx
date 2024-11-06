@@ -8,9 +8,9 @@ async function layout({ children }: PropsWithChildren) {
   const session = await auth();
 
   return (
-    <div className="bg-gray-200 container-grid">
+    <div className="bg-gray-200 container-grid h-screen">
       <Navbar session={session} />
-      <div className="px-4 pb-6 overflow-scroll">{children}</div>
+      <div className="px-4 py-6 overflow-scroll">{children}</div>
       <Navigation />
     </div>
   );
