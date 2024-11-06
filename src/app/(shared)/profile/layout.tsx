@@ -9,13 +9,9 @@ async function layout({ children }: PropsWithChildren) {
 
   return (
     <div className="bg-gray-200 container-grid">
-      <div className="">
-        <Navbar session={session} />
-      </div>
+      <Navbar session={session} />
       <div className="px-4 pb-6 overflow-scroll">{children}</div>
-      <div className="flex items-end">
-        <Navigation />
-      </div>
+      <Navigation />
     </div>
   );
 }

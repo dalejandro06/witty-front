@@ -10,8 +10,8 @@ async function Profile() {
   const isSupplier = Boolean(session?.user.supplier?.id);
 
   return (
-    <section className="flex flex-col justify-between h-full">
-      <div className="grid gap-5">
+    <section className="flex flex-col justify-between min-h-full">
+      <div className="grid gap-5 mb-4">
         <TitleInfo
           infoText="En esta vista, puedes ver opciones de tu perfil, además de cerrar tu
           sesión."
@@ -32,7 +32,6 @@ async function Profile() {
         />
         {!isSupplier && <SupplierBanner />}
       </div>
-
       <LogoutButton />
     </section>
   );

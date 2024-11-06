@@ -9,8 +9,8 @@ async function SavedLocations() {
   const locations = await getSupplierLocations();
 
   return (
-    <section className="flex flex-col justify-between h-full">
-      <div>
+    <section className="flex flex-col justify-between min-h-full">
+      <div className="grid gap-4 mb-4">
         <TitleInfo
           infoText="Busca y filtra tus ubicaciones en donde ofreces tus servicios."
           title="Tus ubicaciones"
@@ -20,7 +20,7 @@ async function SavedLocations() {
       <Button
         fullWidth
         as={Link}
-        className="text-black py-5 mt-10"
+        className="text-black py-5"
         color="secondary"
         href="/location/add-location"
         size="lg"
