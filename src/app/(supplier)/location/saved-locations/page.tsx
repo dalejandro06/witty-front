@@ -10,7 +10,7 @@ async function SavedLocations() {
   const locations = await getSupplierLocations();
 
   return (
-    <div className="my-5 px-6 relative h-full">
+    <div className="my-5 relative h-full">
       <TitleInfo
         infoText="Busca y filtra tus ubicaciones en donde ofreces tus servicios."
         title="Tus ubicaciones"

@@ -21,7 +21,7 @@ async function Supplier() {
   ];
 
   return (
-    <div className="py-10 px-6">
+    <div className="py-10">
       <CardAvatar user={session?.user} />
       <Onboarding />
       <QuickAccess actions={actions} />
