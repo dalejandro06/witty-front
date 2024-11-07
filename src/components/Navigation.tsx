@@ -3,9 +3,15 @@ import { Link } from "@nextui-org/link";
 import { Navbar, NavbarContent, NavbarItem } from "@nextui-org/navbar";
 import FeatherIcon from "feather-icons-react";
 
-import { navigationItems } from "@/config/config";
+import { getNavigationItems } from "@/config/config";
+import { auth } from "@/auth";
 
-function Navigation() {
+async function Navigation() {
+  const session = await auth();
+  const navigationItems = getNavigationItems(
+    Boolean(session?.user.supplier?.id),
+  );
+
   return (
     <Navbar className="bg-navbar rounded-t-2xl h-full">
       <NavbarContent className="flex w-full" justify="center">

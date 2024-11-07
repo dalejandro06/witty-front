@@ -7,7 +7,7 @@ async function Profile() {
   const userData = await getUserData(session?.user.supplier?.id);
 
   return (
-    <div className="pt-10 grid gap-10">
+    <div className="grid gap-10">
       <EditProfileCard session={session} userData={userData} />
     </div>
   );

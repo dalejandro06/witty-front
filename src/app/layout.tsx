@@ -47,7 +47,7 @@ export default function RootLayout({
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
           <NextAuthProvider>
-            <main className="container min-h-screen mx-auto max-w-7xl flex-grow">
+            <main className="container h-dvh mx-auto max-w-7xl flex-grow">
               <Toaster
                 position="top-center"
                 reverseOrder={false}

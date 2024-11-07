@@ -10,7 +10,7 @@ async function SavedLocations() {
 
   return (
     <section className="flex flex-col justify-between min-h-full">
-      <div className="grid gap-4 mb-4">
+      <div className="grid mb-4">
         <TitleInfo
           infoText="Busca y filtra tus ubicaciones en donde ofreces tus servicios."
           title="Tus ubicaciones"

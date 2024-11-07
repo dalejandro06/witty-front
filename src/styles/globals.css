@@ -27,3 +27,9 @@
   grid-template-rows: minmax(65px, 8%) minmax(100px, 84%) minmax(70px, 8%);
   height: 100dvh;
 }
+
+.landing-supplier-grid {
+  display: grid;
+  grid-template-rows: minmax(65px, 8%) minmax(100px, 92%);
+  height: 100dvh;
+}

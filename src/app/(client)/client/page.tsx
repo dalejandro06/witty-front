@@ -22,7 +22,7 @@ async function Supplier() {
   ];
 
   return (
-    <div className="py-10 px-6 grid gap-5">
+    <div className="grid gap-5">
       <CardAvatar user={session?.user} />
       <QuickAccess actions={actions} />
       <ScheduledServices />

@@ -18,7 +18,7 @@ async function page() {
       <Button
         as={Link}
         className="fixed bottom-5 right-5 rounded-full bg-secondary-500 min-w-[70px] min-h-[70px]"
-        href="/"
+        href="/client"
       >
         <FeatherIcon icon="home" />
       </Button>
