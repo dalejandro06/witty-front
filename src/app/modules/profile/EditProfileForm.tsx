@@ -64,7 +64,6 @@ function EditProfileForm({ userData, profileImage, setLoading }: Props) {
           router.replace("/profile/about");
           router.refresh();
         } catch (error) {
-          // console.log("error", error);
           toast.error("Hubo un error al actualizar tus datos");
         } finally {
           setLoading(false);

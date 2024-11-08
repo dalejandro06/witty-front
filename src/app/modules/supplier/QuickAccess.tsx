@@ -1,5 +1,3 @@
-import React from "react";
-
 import QuickAction from "@/components/QuickAction";
 import SectionTitle from "@/components/SectionTitle";
 import { QuickActionData } from "@/types";
