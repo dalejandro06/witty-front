@@ -7,7 +7,7 @@ import EmptyStateLayout from "@/components/EmptyStateLayout";
 
 function ListServices() {
   return (
-    <section className="flex flex-col justify-between min-h-full">
+    <section className="flex flex-col gap-4 justify-between min-h-full">
       <div>
         <TitleInfo
           infoText="Aquí encontraras tu lista de servicios creados."

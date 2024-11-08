@@ -10,7 +10,7 @@ async function Profile() {
   const isSupplier = Boolean(session?.user.supplier?.id);
 
   return (
-    <section className="flex flex-col justify-between min-h-full">
+    <section className="flex flex-col gap-4 justify-between min-h-full">
       <div className="grid gap-5 mb-4">
         <TitleInfo
           infoText="En esta vista, puedes ver opciones de tu perfil, además de cerrar tu

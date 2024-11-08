@@ -9,7 +9,7 @@ async function SavedLocations() {
   const locations = await getSupplierLocations();
 
   return (
-    <section className="flex flex-col justify-between min-h-full">
+    <section className="flex flex-col gap-4 justify-between min-h-full">
       <div className="grid mb-4">
         <TitleInfo
           infoText="Busca y filtra tus ubicaciones en donde ofreces tus servicios."

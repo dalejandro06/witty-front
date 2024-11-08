@@ -81,7 +81,7 @@ function ConfigLocationLayout({ user, title, subtitle, location }: Props) {
       )}
       <Button
         fullWidth
-        className="mt-4 text-black"
+        className="my-4 text-black"
         color="secondary"
         form="add-location-form"
         isLoading={loading}

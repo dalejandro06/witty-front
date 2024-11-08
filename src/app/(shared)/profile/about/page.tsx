@@ -17,7 +17,7 @@ async function Profile() {
   const userData = await getUserData(session?.user.supplier?.id);
 
   return (
-    <section className="flex flex-col justify-between min-h-full">
+    <section className="flex flex-col gap-4 justify-between min-h-full">
       <div className="grid gap-10">
         <Card className="py-6">
           <CardHeader className="flex flex-col justify-center">

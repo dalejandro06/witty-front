@@ -30,15 +30,15 @@ function EditProfileForm({ userData, profileImage, setLoading }: Props) {
   return (
     <Formik
       initialValues={{
-        aboutMe: "",
+        aboutMe: userData.profile_description,
         email: userData.email,
-        phone: "",
-        state: "",
-        city: "",
-        address: "",
-        webPage: "",
-        facebook: "",
-        instagram: "",
+        phone: userData.phone_number,
+        state: userData.state.id,
+        city: userData.city.id,
+        address: userData.physical_address,
+        webPage: userData.web_page,
+        facebook: userData.facebook_page,
+        instagram: userData.instagram_page,
       }}
       validateOnChange={false}
       validationSchema={EditProfileSchema}
@@ -49,7 +49,7 @@ function EditProfileForm({ userData, profileImage, setLoading }: Props) {
           await updateUserData({
             user_id: userData.id,
             image_supplier: profileImage,
-            profile_description: values.aboutMe,
+            profile_description: values?.aboutMe,
             email: values.email,
             phone_number: values.phone,
             state_id: values.state,
@@ -62,6 +62,7 @@ function EditProfileForm({ userData, profileImage, setLoading }: Props) {
 
           toast.success("!Tus datos se han actualizado con éxito!");
           router.replace("/profile/about");
+          router.refresh();
         } catch (error) {
           // console.log("error", error);
           toast.error("Hubo un error al actualizar tus datos");

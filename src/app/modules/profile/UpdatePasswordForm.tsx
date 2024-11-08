@@ -71,7 +71,6 @@ function UpdatePasswordForm({ user }: Props) {
             label="Contraseña anterior"
             minLength={8}
             value={values.old_password}
-            variant="flat"
             onChange={(e) => setFieldValue("old_password", e.target.value)}
           />
           <InputPassword
@@ -82,7 +81,6 @@ function UpdatePasswordForm({ user }: Props) {
             label="Contraseña nueva"
             minLength={8}
             value={values.new_password}
-            variant="flat"
             onChange={(e) => setFieldValue("new_password", e.target.value)}
           />
           <InputPassword
@@ -92,7 +90,6 @@ function UpdatePasswordForm({ user }: Props) {
             label="Confirma tu contraseña nueva"
             minLength={8}
             value={values.confirm_new_password}
-            variant="flat"
             onChange={(e) =>
               setFieldValue("confirm_new_password", e.target.value)
             }

@@ -104,8 +104,8 @@ export type EditLocationParams = {
 
 export interface UserData {
   id: number;
-  image_supplier: null;
-  profile_description: null;
+  image_supplier: string;
+  profile_description: string;
   state: Departaments;
   city: Departaments;
   supplier_name: string;
@@ -113,9 +113,9 @@ export interface UserData {
   email: string;
   phone_number: string;
   physical_address: string;
-  web_page: string | null;
-  facebook_page: string | null;
-  instagram_page: string | null;
+  web_page: string;
+  facebook_page: string;
+  instagram_page: string;
   type_business: number;
 }
 
@@ -125,8 +125,8 @@ export interface UpdateDataParams {
   profile_description: string;
   email: string;
   phone_number: string;
-  state_id: string;
-  city_id: string;
+  state_id: number;
+  city_id: number;
   physical_address: string;
   web_page?: string;
   facebook_page?: string;
