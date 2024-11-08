@@ -1,4 +1,11 @@
-import { Input, Select, SelectItem, Textarea } from "@nextui-org/react";
+import {
+  Accordion,
+  AccordionItem,
+  Input,
+  Select,
+  SelectItem,
+  Textarea,
+} from "@nextui-org/react";
 import { Formik } from "formik";
 
 function CreateServiceForm() {
@@ -71,6 +78,21 @@ function CreateServiceForm() {
               setFieldValue("serviceDescription", e.target.value)
             }
           />
+          <p className="text-primary">Personalizar tarifas del servicio</p>
+          <Accordion showDivider className="shadow-sm" variant="shadow">
+            <AccordionItem
+              key="1"
+              aria-label="Accordion 1"
+              title="¿Qué es una tarifa de servicio?"
+            >
+              Para comenzar a ofrecer este servicio, primero debes definir un
+              costo inicial. Puedes establecer diferentes tarifas para diversos
+              aspectos del servicio, como el tipo de sexo, el escenario, o
+              cualquier otra variante que consideres relevante. Estas
+              configuraciones te permitirán aplicar distintos cargos según las
+              características específicas de cada servicio que ofrezcas.
+            </AccordionItem>
+          </Accordion>
         </form>
       )}
     </Formik>

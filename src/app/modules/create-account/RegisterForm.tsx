@@ -96,6 +96,7 @@ function RegisterForm() {
             isInvalid={!!errors.password}
             required={false}
             value={values.password}
+            variant="bordered"
             onChange={(e) => setFieldValue("password", e.target.value)}
           />
           <Button

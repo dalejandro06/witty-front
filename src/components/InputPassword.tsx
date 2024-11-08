@@ -12,6 +12,9 @@ function InputPassword(props: InputProps) {
   return (
     <Input
       className="text-secondary-blue"
+      classNames={{
+        inputWrapper: "bg-default-100",
+      }}
       description={props.description || "Minimo 8 caracteres"}
       endContent={
         <button
