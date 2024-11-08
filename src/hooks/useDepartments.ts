@@ -12,18 +12,18 @@ export const useDepartments = () => {
   const [cities, setCities] = useState<Departaments[]>([]);
   const [loadingCity, setLoadingCity] = useState(false);
 
-  const getCityByDepartment = useCallback((id: string) => {
-    setLoadingCity(true);
-    getCity(id)
-      .then(setCities)
-      .finally(() => setLoadingCity(false));
-  }, []);
-
   useEffect(() => {
     setLoadingDepartments(true);
     getDepartaments()
       .then(setDepartments)
       .finally(() => setLoadingDepartments(false));
+  }, []);
+
+  const getCityByDepartment = useCallback((id: string) => {
+    setLoadingCity(true);
+    getCity(id)
+      .then(setCities)
+      .finally(() => setLoadingCity(false));
   }, []);
 
   return {

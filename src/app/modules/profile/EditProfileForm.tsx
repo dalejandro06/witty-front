@@ -5,6 +5,7 @@ import { Formik } from "formik";
 import { Select, SelectItem } from "@nextui-org/react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 import { UserData } from "@/types/ApiTypes";
 import { useDepartments } from "@/hooks/useDepartments";
@@ -26,6 +27,12 @@ function EditProfileForm({ userData, profileImage, setLoading }: Props) {
     loadingCity,
   } = useDepartments();
   const router = useRouter();
+
+  useEffect(() => {
+    if (userData.state.id) {
+      getCityByDepartment(userData.state.id.toString());
+    }
+  }, [userData.state.id]);
 
   return (
     <Formik
@@ -106,6 +113,7 @@ function EditProfileForm({ userData, profileImage, setLoading }: Props) {
           />
           <Select
             isRequired
+            defaultSelectedKeys={[userData.state.id.toString()]}
             errorMessage={errors.state}
             id="state"
             isInvalid={!!errors.state}
@@ -126,6 +134,7 @@ function EditProfileForm({ userData, profileImage, setLoading }: Props) {
           </Select>
           <Select
             isRequired
+            defaultSelectedKeys={[userData.city.id.toString()]}
             errorMessage={errors.city}
             id="city"
             isInvalid={!!errors.city}
@@ -137,8 +146,8 @@ function EditProfileForm({ userData, profileImage, setLoading }: Props) {
             variant="bordered"
             onChange={(e) => setFieldValue("city", e.target.value)}
           >
-            {cities.map((animal) => (
-              <SelectItem key={animal.id}>{animal.name}</SelectItem>
+            {cities.map((city) => (
+              <SelectItem key={city.id}>{city.name}</SelectItem>
             ))}
           </Select>
           <Input
