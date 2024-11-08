@@ -36,7 +36,7 @@ function LoginForm() {
         type="email"
         variant="bordered"
       />
-      <InputPassword minLength={8} />
+      <InputPassword minLength={8} variant="bordered" />
       <Button color="primary" isLoading={isPending} type="submit">
         Ingresa
       </Button>

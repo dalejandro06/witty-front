@@ -11,6 +11,12 @@ import ProfileAvatar from "@/components/ProfileAvatar";
 import ProfileInfo from "@/components/ProfileInfo";
 import { auth } from "@/auth";
 import { getUserData } from "@/repositories/ApiRepository";
+import WBreadcrumb, { BreadcrumbItem } from "@/components/WBreadcrumb";
+
+const breadcrumbItems: BreadcrumbItem[] = [
+  { text: "Perfil", href: "/profile" },
+  { text: "Perfil de servicios" },
+];
 
 async function Profile() {
   const session = await auth();
@@ -19,6 +25,7 @@ async function Profile() {
   return (
     <section className="flex flex-col gap-4 justify-between min-h-full">
       <div className="grid gap-10">
+        <WBreadcrumb items={breadcrumbItems} />
         <Card className="py-6">
           <CardHeader className="flex flex-col justify-center">
             <ProfileAvatar className="w-26 h-26" />

@@ -69,12 +69,10 @@ function UpdatePasswordForm({ user }: Props) {
             id="old_password"
             isInvalid={!!errors.old_password}
             label="Contraseña anterior"
-            minLength={8}
             value={values.old_password}
             onChange={(e) => setFieldValue("old_password", e.target.value)}
           />
           <InputPassword
-            description=""
             errorMessage={errors.new_password}
             id="new_password"
             isInvalid={!!errors.new_password}

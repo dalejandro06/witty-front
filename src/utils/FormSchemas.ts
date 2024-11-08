@@ -43,8 +43,8 @@ export const EditProfileSchema = new Yup.ObjectSchema({
 });
 
 export const UpdatePasswordSchema = new Yup.ObjectSchema({
-  old_password: Yup.string().required(),
-  new_password: Yup.string().required(),
+  old_password: Yup.string().required().min(8),
+  new_password: Yup.string().min(8).required(),
   confirm_new_password: Yup.string()
     .oneOf([Yup.ref("new_password")], "El campo debe coincidir")
     .required(),
