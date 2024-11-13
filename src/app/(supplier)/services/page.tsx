@@ -4,6 +4,9 @@ import { Link } from "@nextui-org/link";
 import TitleInfo from "@/components/TitleInfo";
 import NoLocation from "@/assets/no-services-yet.png";
 import EmptyStateLayout from "@/components/EmptyStateLayout";
+import ServiceCard from "@/components/ServiceCard";
+
+const services = [{}];
 
 function ListServices() {
   return (
@@ -13,11 +16,15 @@ function ListServices() {
           infoText="Aquí encontraras tu lista de servicios creados."
           title="Tu lista de servicios"
         />
-        <EmptyStateLayout
-          image={NoLocation}
-          subtitle="¡Agrega una para empezar!"
-          title="Aún no has generado ubicaciones."
-        />
+        {services.length > 0 ? (
+          <ServiceCard />
+        ) : (
+          <EmptyStateLayout
+            image={NoLocation}
+            subtitle="¡Agrega una para empezar!"
+            title="Aún no has generado ubicaciones."
+          />
+        )}
       </div>
       <Button
         fullWidth

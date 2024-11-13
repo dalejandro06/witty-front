@@ -1,17 +1,10 @@
 "use client";
-import {
-  Avatar,
-  Button,
-  Card,
-  CardHeader,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
-} from "@nextui-org/react";
+import { Avatar, Card, CardHeader } from "@nextui-org/react";
 import FeatherIcon from "feather-icons-react";
 import { Key } from "react";
 import { useRouter } from "next/navigation";
+
+import DropdownMenuDots from "./DropdownMenuDots";
 
 import { deleteSupplierLocation } from "@/repositories/ApiRepository";
 import { SupplierLocation } from "@/types/ApiTypes";
@@ -70,29 +63,13 @@ function LocationCard({ isPrincipal, location, isDisabled }: Props) {
             )}
           </div>
         </div>
-        <Dropdown backdrop="blur">
-          <DropdownTrigger>
-            <Button
-              isIconOnly
-              className="bg-transparent text-foreground border-default-200"
-              color="primary"
-              radius="full"
-              size="sm"
-            >
-              <FeatherIcon icon="more-vertical" />
-            </Button>
-          </DropdownTrigger>
-          <DropdownMenu
-            aria-label="Static Actions"
-            variant="shadow"
-            onAction={handleAction}
-          >
-            <DropdownItem key="edit">Editar</DropdownItem>
-            <DropdownItem key="delete" className="text-danger" color="danger">
-              Eliminar
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
+        <DropdownMenuDots
+          handleAction={handleAction}
+          items={[
+            { key: "edit", text: "Editar" },
+            { key: "delete", text: "Eliminar", color: "danger" },
+          ]}
+        />
       </CardHeader>
     </Card>
   );
