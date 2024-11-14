@@ -10,14 +10,16 @@ const services = [{}];
 
 function ListServices() {
   return (
-    <section className="flex flex-col gap-4 justify-between min-h-full">
-      <div>
+    <section className="flex flex-col gap-4 justify-between min-h-full relative">
+      <div className="grid gap-5 relative">
         <TitleInfo
           infoText="Aquí encontraras tu lista de servicios creados."
           title="Tu lista de servicios"
         />
         {services.length > 0 ? (
-          <ServiceCard />
+          <>
+            <ServiceCard />
+          </>
         ) : (
           <EmptyStateLayout
             image={NoLocation}
@@ -25,17 +27,17 @@ function ListServices() {
             title="Aún no has generado ubicaciones."
           />
         )}
+        <Button
+          fullWidth
+          as={Link}
+          className="text-black py-5 sticky bottom-0 z-20"
+          color="secondary"
+          href="/services/create"
+          size="lg"
+        >
+          Añadir un nuevo servicio
+        </Button>
       </div>
-      <Button
-        fullWidth
-        as={Link}
-        className="text-black py-5"
-        color="secondary"
-        href="/services/create"
-        size="lg"
-      >
-        Añadir un nuevo servicio
-      </Button>
     </section>
   );
 }

@@ -48,6 +48,7 @@ function OnboardingAccordion({ metrics }: Props) {
               completed={item.completed}
               description={item.description}
               index={idx + 1}
+              link={item.link}
               title={item.title}
             />
           ))}

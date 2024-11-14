@@ -1,4 +1,5 @@
 import { Button } from "@nextui-org/button";
+import { Link } from "@nextui-org/react";
 import FeatherIcon from "feather-icons-react";
 
 type Props = {
@@ -6,11 +7,19 @@ type Props = {
   completed: boolean;
   title: string;
   description: string;
+  link: string;
 };
 
-function ProgressStepper({ index, completed, title, description }: Props) {
+function ProgressStepper({
+  index,
+  completed,
+  title,
+  description,
+  link,
+}: Props) {
   return (
     <Button
+      as={Link}
       className="border-0 p-3 bg-transparent flex justify-start whitespace-normal h-auto"
       endContent={
         completed ? (
@@ -27,6 +36,7 @@ function ProgressStepper({ index, completed, title, description }: Props) {
           />
         )
       }
+      href={link}
     >
       <div className="flex items-center w-full gap-4">
         <div
