@@ -35,6 +35,7 @@ function LogoutButton() {
           onPress: handleLogout,
           color: "danger",
         }}
+        footerClass="flex-col"
         isOpen={isOpen}
         modalProps={{ placement: "center", size: "sm" }}
         onOpenChange={onOpenChange}

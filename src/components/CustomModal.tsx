@@ -17,6 +17,7 @@ type LocalModalProps = {
   body?: string | ReactNode;
   isOpen: boolean;
   modalProps?: Partial<ModalProps>;
+  footerClass?: string;
   onOpenChange: () => void;
   cancelButton?: {
     text: string;
@@ -34,6 +35,7 @@ function CustomModal({
   onOpenChange,
   confirmButton,
   modalProps,
+  footerClass,
 }: LocalModalProps) {
   return (
     <Modal
@@ -50,7 +52,7 @@ function CustomModal({
               {title}
             </ModalHeader>
             <ModalBody>{body}</ModalBody>
-            <ModalFooter className="justify-end">
+            <ModalFooter className={footerClass}>
               <Button
                 variant="bordered"
                 {...cancelButton}
