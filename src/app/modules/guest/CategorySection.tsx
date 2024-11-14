@@ -35,7 +35,7 @@ function CategorySection({ categories }: Props) {
   if (status === "error") return <h1>Error</h1>;
 
   return (
-    <section className="bg-white mb-20">
+    <section className="bg-white pb-28">
       <div className="bg-gray-200 pt-10 px-6">
         <p className="text-lg font-semibold">Categorías</p>
         <div className="overflow-x-scroll my-5 pb-4 bg">
