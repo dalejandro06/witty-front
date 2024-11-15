@@ -1,5 +1,7 @@
 import { PropsWithChildren } from "react";
 import { redirect } from "next/navigation";
+import { Button, Link } from "@nextui-org/react";
+import FeatherIcon from "feather-icons-react";
 
 import { auth } from "@/auth";
 
@@ -14,7 +16,19 @@ async function layout({ children }: PropsWithChildren) {
     }
   }
 
-  return <div>{children}</div>;
+  return (
+    <div className="mt-6">
+      <Button
+        as={Link}
+        href="/"
+        startContent={<FeatherIcon icon="chevron-left" />}
+        variant="light"
+      >
+        Volver
+      </Button>
+      {children}
+    </div>
+  );
 }
 
 export default layout;
