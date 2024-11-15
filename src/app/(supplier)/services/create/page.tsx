@@ -5,6 +5,8 @@ import { useState } from "react";
 import TitleInfo from "@/components/TitleInfo";
 import CreateServiceForm from "@/app/modules/services/CreateServiceForm";
 import WBreadcrumb from "@/components/WBreadcrumb";
+import RatesServicesForm from "@/app/modules/services/RatesServicesForm";
+import RateCard from "@/components/RateCard";
 
 function CreateService() {
   const [firstStepCompleted] = useState(false);
@@ -21,6 +23,7 @@ function CreateService() {
         className="block"
         classNames={{
           tab: "py-6",
+          tabContent: "text-wrap",
           base: "overflow-hidden",
         }}
         color="secondary"
@@ -36,10 +39,11 @@ function CreateService() {
           </article>
         </Tab>
         <Tab key="serviceRates" title="Personalizar tarifas">
-          <article className="grid gap-5">
+          <article className="grid gap-4">
             <TitleInfo infoText="" title="Personalizar tarifas" />
-
-            <CreateServiceForm />
+            <p className="text-primary">Tarifas</p>
+            <RateCard />
+            <RatesServicesForm />
           </article>
         </Tab>
         <Tab
