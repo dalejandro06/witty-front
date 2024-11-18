@@ -1,8 +1,20 @@
-import { Button, Input, Switch } from "@nextui-org/react";
-import FeatherIcon from "feather-icons-react";
+import { Button, Input } from "@nextui-org/react";
 import { Formik } from "formik";
 
-function RatesServicesForm() {
+import RangeTimeInput from "@/components/RangeTimeInput";
+
+type Props = {
+  showForm: boolean;
+  setShowForm: (v: boolean) => void;
+};
+
+function RatesServicesForm({ showForm, setShowForm }: Props) {
+  const onCancelClick = () => {
+    setShowForm(false);
+  };
+
+  if (!showForm) return null;
+
   return (
     <Formik
       initialValues={{
@@ -42,29 +54,8 @@ function RatesServicesForm() {
             variant="flat"
             onChange={(e) => setFieldValue("rateEmoji", e.target.value)}
           />
-          {/* TODO: arreglar desde aquí, abstraer a componentes y mejorar HTMl */}
           <div className="grid grid-cols-2 gap-2 justify-items-stretch">
-            <div className="grid gap-3">
-              <div>
-                <p className="mb-2">Tiempo estimado</p>
-                <div className="flex gap-4">
-                  <Button isIconOnly className="h-12 w-14" color="secondary">
-                    <FeatherIcon icon="minus" />
-                  </Button>
-                  <Input
-                    isRequired
-                    required
-                    className="w-6/12"
-                    classNames={{ inputWrapper: "h-full" }}
-                    placeholder="0"
-                  />
-                  <Button isIconOnly className="h-12 w-14" color="secondary">
-                    <FeatherIcon icon="plus" />
-                  </Button>
-                </div>
-              </div>
-              <Switch color="secondary">Minutos / Horas</Switch>
-            </div>
+            <RangeTimeInput />
             <div>
               <p className="mb-2">Valor por servicio</p>
               <Input
@@ -80,6 +71,7 @@ function RatesServicesForm() {
               className="text-black"
               size="md"
               variant="bordered"
+              onPress={onCancelClick}
             >
               Cancelar
             </Button>

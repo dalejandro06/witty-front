@@ -1,5 +1,5 @@
 "use client";
-import { Tab, Tabs } from "@nextui-org/react";
+import { Button, Tab, Tabs } from "@nextui-org/react";
 import { useState } from "react";
 
 import TitleInfo from "@/components/TitleInfo";
@@ -7,9 +7,12 @@ import CreateServiceForm from "@/app/modules/services/CreateServiceForm";
 import WBreadcrumb from "@/components/WBreadcrumb";
 import RatesServicesForm from "@/app/modules/services/RatesServicesForm";
 import RateCard from "@/components/RateCard";
+import AddLocationService from "@/app/modules/services/AddLocationService";
 
 function CreateService() {
-  const [firstStepCompleted] = useState(false);
+  const [firstStepCompleted] = useState(true);
+  const [rates] = useState([]);
+  const [showForm, setShowForm] = useState(false);
 
   return (
     <div className="grid gap-5">
@@ -42,8 +45,35 @@ function CreateService() {
           <article className="grid gap-4">
             <TitleInfo infoText="" title="Personalizar tarifas" />
             <p className="text-primary">Tarifas</p>
-            <RateCard />
-            <RatesServicesForm />
+            {rates.length > 0 ? (
+              <>
+                <RateCard />
+                <RatesServicesForm
+                  setShowForm={setShowForm}
+                  showForm={showForm}
+                />
+              </>
+            ) : showForm ? (
+              <RatesServicesForm
+                setShowForm={setShowForm}
+                showForm={showForm}
+              />
+            ) : (
+              <div className="grid items-center text-center border border-dashed border-gray-400 p-10 rounded-lg gap-4">
+                <div className="text-gray-500">
+                  <p>Aun no has agregado un costo,</p>
+                  <p>pulsa el botón para agrega uno.</p>
+                </div>
+                <Button
+                  className="text-black"
+                  color="secondary"
+                  size="lg"
+                  onPress={() => setShowForm(true)}
+                >
+                  Agregar costo
+                </Button>
+              </div>
+            )}
           </article>
         </Tab>
         <Tab
@@ -56,7 +86,7 @@ function CreateService() {
               infoText="Selecciona las ubicaciones donde el servicio estará disponible. Ten en cuenta que, según la ubicación, deberás desplazarte a la locación del cliente o el cliente se desplazará a la tuya."
               title="Elije una ubicación"
             />
-            <CreateServiceForm />
+            <AddLocationService />
           </article>
         </Tab>
       </Tabs>
