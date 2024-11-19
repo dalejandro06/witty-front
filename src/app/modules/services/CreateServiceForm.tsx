@@ -7,17 +7,38 @@ import {
   Textarea,
 } from "@nextui-org/react";
 import { Formik } from "formik";
+import { useContext } from "react";
 
-function CreateServiceForm() {
+import { CreateServiceContext } from "@/context/CreateServiceContext";
+import { useCategories } from "@/hooks/useCategories";
+import { Tabs } from "@/app/(supplier)/services/create/page";
+
+type Props = {
+  setSelectedTab: (v: Tabs) => void;
+};
+
+function CreateServiceForm({ setSelectedTab }: Props) {
+  const { basicData, setBasicData } = useContext(CreateServiceContext);
+  const {
+    categories,
+    loadingCategories,
+    getSubCategoriesByCategoryId,
+    subCategories,
+    loadingSubCategory,
+  } = useCategories();
+
   return (
     <Formik
       initialValues={{
-        category: "",
-        subCategory: "",
-        serviceName: "",
-        serviceDescription: "",
+        category: basicData.category,
+        subCategory: basicData.subCategory,
+        serviceName: basicData.serviceName,
+        serviceDescription: basicData.serviceDescription,
       }}
-      onSubmit={() => {}}
+      onSubmit={(values) => {
+        setBasicData(values);
+        setSelectedTab("serviceRates");
+      }}
     >
       {({ errors, values, handleSubmit, setFieldValue }) => (
         <form
@@ -28,20 +49,25 @@ function CreateServiceForm() {
           <Select
             isRequired
             id="category"
+            isLoading={loadingCategories}
             label="Categoría"
             name="category"
             placeholder="Selecciona"
             value={values.category}
             variant="flat"
-            onChange={(e) => setFieldValue("category", e.target.value)}
+            onChange={(e) => {
+              setFieldValue("category", e.target.value);
+              getSubCategoriesByCategoryId(Number(e.target.value));
+            }}
           >
-            {[1].map((item) => (
-              <SelectItem key={item}>{item}</SelectItem>
+            {categories.map((item) => (
+              <SelectItem key={item.id}>{item.title}</SelectItem>
             ))}
           </Select>
           <Select
             isRequired
             id="subCategory"
+            isLoading={loadingSubCategory}
             label="Sub categoría"
             name="subCategory"
             placeholder="Selecciona"
@@ -49,8 +75,8 @@ function CreateServiceForm() {
             variant="flat"
             onChange={(e) => setFieldValue("subCategory", e.target.value)}
           >
-            {[1].map((item) => (
-              <SelectItem key={item}>{item}</SelectItem>
+            {subCategories.map((item) => (
+              <SelectItem key={item.id}>{item.title}</SelectItem>
             ))}
           </Select>
           <Input
@@ -88,7 +114,13 @@ function CreateServiceForm() {
             size="lg"
             startContent={<p>Sí</p>}
           />
-          <Button className="text-black" color="secondary" size="lg">
+          <Button
+            className="text-black"
+            color="secondary"
+            form="create-service-form"
+            size="lg"
+            type="submit"
+          >
             Siguiente
           </Button>
         </form>
