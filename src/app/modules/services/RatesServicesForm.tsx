@@ -1,7 +1,9 @@
 import { Button, Input } from "@nextui-org/react";
 import { Formik } from "formik";
+import { useContext } from "react";
 
 import RangeTimeInput from "@/components/RangeTimeInput";
+import { CreateServiceContext } from "@/context/CreateServiceContext";
 
 type Props = {
   showForm: boolean;
@@ -9,59 +11,72 @@ type Props = {
 };
 
 function RatesServicesForm({ showForm, setShowForm }: Props) {
-  const onCancelClick = () => {
-    setShowForm(false);
-  };
+  const { setRates, rates } = useContext(CreateServiceContext);
 
   if (!showForm) return null;
 
   return (
     <Formik
       initialValues={{
-        rateName: "",
-        rateEmoji: "",
-        estimatedTime: "",
-        valuePerHour: "",
-        timeSpan: "",
+        name: "",
+        emoji: "",
+        estimatedTime: 0,
+        timeSpan: false,
+        cost: "",
       }}
-      onSubmit={() => {}}
+      onSubmit={(values) => {
+        setRates([...rates, values]);
+      }}
     >
       {({ errors, values, handleSubmit, setFieldValue }) => (
         <form
           className="grid gap-5"
-          id="create-service-form"
+          id="rate-service-form"
           onSubmit={handleSubmit}
         >
           <Input
             isRequired
             required
-            errorMessage={errors.rateName}
-            isInvalid={!!errors.rateName}
+            errorMessage={errors.name}
+            isInvalid={!!errors.name}
             label="Nombre tarifa"
             placeholder="Costo general"
-            value={values.rateName}
+            value={values.name}
             variant="flat"
-            onChange={(e) => setFieldValue("rateName", e.target.value)}
+            onChange={(e) => setFieldValue("name", e.target.value)}
           />
           <Input
             isRequired
             required
-            errorMessage={errors.rateEmoji}
-            isInvalid={!!errors.rateEmoji}
+            errorMessage={errors.emoji}
+            isInvalid={!!errors.emoji}
             label="Emoji tarifa"
             placeholder="🎶"
-            value={values.rateEmoji}
+            value={values.emoji}
             variant="flat"
-            onChange={(e) => setFieldValue("rateEmoji", e.target.value)}
+            onChange={(e) => setFieldValue("emoji", e.target.value)}
           />
           <div className="grid grid-cols-2 gap-2 justify-items-stretch">
-            <RangeTimeInput />
+            <RangeTimeInput
+              handleAddValue={(val) => setFieldValue("estimatedTime", val + 1)}
+              handleSubstractValue={(val) => {
+                setFieldValue("estimatedTime", val === 0 ? 0 : val - 1);
+              }}
+              setValue={(val) => setFieldValue("estimatedTime", val)}
+              timeSpanValue={values.timeSpan}
+              value={values.estimatedTime}
+              onChangeSwitch={(val) => setFieldValue("timeSpan", val)}
+            />
             <div>
               <p className="mb-2">Valor por servicio</p>
               <Input
+                isRequired
+                required
                 className="h-12"
                 classNames={{ inputWrapper: "h-full" }}
                 placeholder="$00,00"
+                value={values.cost}
+                onValueChange={(val) => setFieldValue("cost", val)}
               />
             </div>
           </div>
@@ -71,7 +86,7 @@ function RatesServicesForm({ showForm, setShowForm }: Props) {
               className="text-black"
               size="md"
               variant="bordered"
-              onPress={onCancelClick}
+              onPress={() => setShowForm(false)}
             >
               Cancelar
             </Button>
@@ -80,6 +95,7 @@ function RatesServicesForm({ showForm, setShowForm }: Props) {
               className="text-black"
               color="secondary"
               size="md"
+              type="submit"
             >
               Añadir
             </Button>

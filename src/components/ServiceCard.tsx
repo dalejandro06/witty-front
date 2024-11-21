@@ -37,7 +37,7 @@ function ServiceCard() {
   ];
 
   return (
-    <Card className="max-w-[400px] p-4">
+    <Card className="p-4">
       <CardHeader className="flex gap-3 justify-between">
         <div className="flex gap-3">
           <Avatar

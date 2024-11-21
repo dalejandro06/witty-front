@@ -1,18 +1,27 @@
 import { Avatar, Card, CardHeader } from "@nextui-org/react";
-import FeatherIcon from "feather-icons-react";
 import React from "react";
 
 import DropdownMenuDots from "./DropdownMenuDots";
 
+import { RateFields } from "@/context/CreateServiceContext";
+
 type Props = {
-  isDisabled?: boolean;
+  rateData: RateFields;
 };
 
-function RateCard({ isDisabled }: Props) {
+function RateCard({ rateData }: Props) {
+  const getTimeSpanText = () => {
+    if (rateData.estimatedTime > 1) {
+      return rateData.timeSpan ? "Horas" : "Minutos";
+    }
+
+    return rateData.timeSpan ? "Hora" : "Minuto";
+  };
+
   return (
     <Card
       classNames={{
-        base: `bg-gray-200 w-full ${isDisabled && "grayscale"}`,
+        base: "bg-gray-200 w-full",
       }}
       shadow="none"
     >
@@ -22,19 +31,19 @@ function RateCard({ isDisabled }: Props) {
             classNames={{
               base: "bg-secondary",
             }}
-            icon={<FeatherIcon icon="map-pin" />}
+            icon={<p>{rateData.emoji}</p>}
             radius="md"
             size="lg"
           />
           <div className="flex flex-col gap-1 items-start justify-center">
             <h4 className="text-small font-semibold leading-none text-default-600">
-              $ 00.00
+              ${rateData.cost}
             </h4>
             <h5 className="text-small tracking-tight text-default-400">
-              Costo general
+              {rateData.name}
             </h5>
             <p className="text-small tracking-tight text-default-500">
-              1 hora estimada
+              {`${rateData.estimatedTime} ${getTimeSpanText()}`}
             </p>
           </div>
         </div>

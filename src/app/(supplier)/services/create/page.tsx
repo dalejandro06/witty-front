@@ -9,10 +9,16 @@ import RateCard from "@/components/RateCard";
 import AddLocationService from "@/app/modules/services/AddLocationService";
 import { CreateServiceContext } from "@/context/CreateServiceContext";
 
-export type Tabs = "serviceInfo" | "serviceRates" | "location";
+export enum TabsKeys {
+  serviceInfo = "serviceInfo",
+  serviceRates = "serviceRates",
+  location = "location",
+}
 
 function CreateService() {
-  const [selectedTab, setSelectedTab] = useState<Tabs>("serviceInfo");
+  const [selectedTab, setSelectedTab] = useState<TabsKeys>(
+    TabsKeys.serviceInfo,
+  );
   const [showForm, setShowForm] = useState(false);
   const { basicData, rates } = useContext(CreateServiceContext);
 
@@ -27,9 +33,9 @@ function CreateService() {
       color="secondary"
       selectedKey={selectedTab}
       size="lg"
-      onSelectionChange={(v) => setSelectedTab(v as Tabs)}
+      onSelectionChange={(v) => setSelectedTab(v as keyof typeof Tabs)}
     >
-      <Tab key="serviceInfo" title="Configurar servicio">
+      <Tab key={TabsKeys.serviceInfo} title="Configurar servicio">
         <article className="grid gap-5">
           <TitleInfo
             infoText="Aquí podrás crear tus servicios. Completa los detalles necesarios para ofrecer tus servicios a los clientes y destacar en las áreas que selecciones."
@@ -39,7 +45,7 @@ function CreateService() {
         </article>
       </Tab>
       <Tab
-        key="serviceRates"
+        key={TabsKeys.serviceRates}
         isDisabled={
           !basicData.category ||
           !basicData.subCategory ||
@@ -53,7 +59,12 @@ function CreateService() {
           <p className="text-primary">Tarifas</p>
           {rates.length > 0 ? (
             <>
-              <RateCard />
+              {rates.map((rate) => (
+                <RateCard
+                  key={`${rate.name}-${rate.emoji}-${rate.cost}`}
+                  rateData={rate}
+                />
+              ))}
               <RatesServicesForm
                 setShowForm={setShowForm}
                 showForm={showForm}
@@ -79,7 +90,11 @@ function CreateService() {
           )}
         </article>
       </Tab>
-      <Tab key="location" isDisabled={!rates} title="Asociar ubicación">
+      <Tab
+        key={TabsKeys.location}
+        isDisabled={!rates.length}
+        title="Asociar ubicación"
+      >
         <article className="grid gap-5">
           <TitleInfo
             infoText="Selecciona las ubicaciones donde el servicio estará disponible. Ten en cuenta que, según la ubicación, deberás desplazarte a la locación del cliente o el cliente se desplazará a la tuya."

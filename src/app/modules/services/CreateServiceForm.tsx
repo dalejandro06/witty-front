@@ -7,14 +7,14 @@ import {
   Textarea,
 } from "@nextui-org/react";
 import { Formik } from "formik";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import { CreateServiceContext } from "@/context/CreateServiceContext";
 import { useCategories } from "@/hooks/useCategories";
-import { Tabs } from "@/app/(supplier)/services/create/page";
+import { TabsKeys } from "@/app/(supplier)/services/create/page";
 
 type Props = {
-  setSelectedTab: (v: Tabs) => void;
+  setSelectedTab: (v: TabsKeys) => void;
 };
 
 function CreateServiceForm({ setSelectedTab }: Props) {
@@ -27,6 +27,12 @@ function CreateServiceForm({ setSelectedTab }: Props) {
     loadingSubCategory,
   } = useCategories();
 
+  useEffect(() => {
+    if (basicData.category) {
+      getSubCategoriesByCategoryId(Number(basicData.category));
+    }
+  }, [basicData]);
+
   return (
     <Formik
       initialValues={{
@@ -34,10 +40,11 @@ function CreateServiceForm({ setSelectedTab }: Props) {
         subCategory: basicData.subCategory,
         serviceName: basicData.serviceName,
         serviceDescription: basicData.serviceDescription,
+        locationMode: basicData.locationMode,
       }}
       onSubmit={(values) => {
         setBasicData(values);
-        setSelectedTab("serviceRates");
+        setSelectedTab(TabsKeys.serviceRates);
       }}
     >
       {({ errors, values, handleSubmit, setFieldValue }) => (
@@ -48,6 +55,7 @@ function CreateServiceForm({ setSelectedTab }: Props) {
         >
           <Select
             isRequired
+            defaultSelectedKeys={[basicData.category?.toString() || ""]}
             id="category"
             isLoading={loadingCategories}
             label="Categoría"
@@ -66,6 +74,7 @@ function CreateServiceForm({ setSelectedTab }: Props) {
           </Select>
           <Select
             isRequired
+            defaultSelectedKeys={[basicData.subCategory?.toString() || ""]}
             id="subCategory"
             isLoading={loadingSubCategory}
             label="Sub categoría"
@@ -108,11 +117,13 @@ function CreateServiceForm({ setSelectedTab }: Props) {
             <li>No, tu te desplazarás a la ubicación del cliente.</li>
           </ul>
           <Switch
-            defaultSelected
             color="secondary"
+            defaultSelected={basicData.locationMode}
             endContent={<p>No</p>}
+            isSelected={values.locationMode}
             size="lg"
             startContent={<p>Sí</p>}
+            onValueChange={(val) => setFieldValue("locationMode", val)}
           />
           <Button
             className="text-black"

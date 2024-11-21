@@ -5,8 +5,8 @@ import { createContext, PropsWithChildren, useMemo, useState } from "react";
 export type CreateServiceContextType = {
   basicData: BasicDataFields;
   setBasicData: (v: BasicDataFields) => void;
-  rates: string;
-  setRates: (v: string) => void;
+  rates: RateFields[];
+  setRates: (v: RateFields[]) => void;
   locations: Location[];
   setLocations: (v: Location[]) => void;
 };
@@ -16,6 +16,15 @@ type BasicDataFields = {
   subCategory: string | undefined;
   serviceName: string;
   serviceDescription: string;
+  locationMode: boolean;
+};
+
+export type RateFields = {
+  name: string;
+  emoji: string;
+  estimatedTime: number;
+  timeSpan: boolean;
+  cost: string;
 };
 
 export const CreateServiceContext = createContext<CreateServiceContextType>({
@@ -24,9 +33,10 @@ export const CreateServiceContext = createContext<CreateServiceContextType>({
     subCategory: undefined,
     serviceName: "",
     serviceDescription: "",
+    locationMode: false,
   },
   setBasicData: () => {},
-  rates: "",
+  rates: [],
   setRates: () => {},
   locations: [],
   setLocations: () => {},
@@ -40,8 +50,9 @@ export default function CreateServiceContextProvider({
     subCategory: undefined,
     serviceName: "",
     serviceDescription: "",
+    locationMode: false,
   });
-  const [rates, setRates] = useState("");
+  const [rates, setRates] = useState<RateFields[]>([]);
   const [locations, setLocations] = useState<Location[]>([]);
 
   const value = useMemo(
