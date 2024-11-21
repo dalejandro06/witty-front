@@ -24,14 +24,16 @@ function CalendarSupplier() {
           startContent={<FeatherIcon icon="chevron-right" size={25} />}
         />
       </div>
-      <div className="flex justify-between">
-        <DateItem isSelected />
-        <DateItem />
-        <DateItem />
-        <DateItem />
-        <DateItem />
-        <DateItem />
-        <DateItem />
+      <div className="overflow-hidden">
+        <div className="overflow-x-scroll flex justify-between gap-2">
+          <DateItem isSelected />
+          <DateItem isSelected />
+          <DateItem />
+          <DateItem />
+          <DateItem />
+          <DateItem />
+          <DateItem />
+        </div>
       </div>
       <CalendarServicesCard />
     </div>

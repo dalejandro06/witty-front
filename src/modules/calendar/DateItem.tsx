@@ -11,7 +11,7 @@ function DateItem({ isSelected }: Props) {
 
   return (
     <Button
-      className={`flex flex-col min-w-6 w-14 h-auto py-5 ${selectedClass}`}
+      className={`flex flex-col min-w-16 w-14 h-auto py-5 ${selectedClass}`}
       // style={{ borderBottom: "6px solid #66CC99" }}
     >
       <p>Lun.</p>
