@@ -35,3 +35,9 @@ export type ServiceInfo = {
   location?: string;
   date: string;
 };
+
+export enum TabsKeys {
+  serviceInfo = "serviceInfo",
+  serviceRates = "serviceRates",
+  location = "location",
+}

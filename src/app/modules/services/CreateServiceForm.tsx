@@ -11,7 +11,7 @@ import { useContext, useEffect } from "react";
 
 import { CreateServiceContext } from "@/context/CreateServiceContext";
 import { useCategories } from "@/hooks/useCategories";
-import { TabsKeys } from "@/app/(supplier)/services/create/page";
+import { TabsKeys } from "@/types";
 
 type Props = {
   setSelectedTab: (v: TabsKeys) => void;

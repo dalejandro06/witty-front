@@ -8,12 +8,7 @@ import RatesServicesForm from "@/app/modules/services/RatesServicesForm";
 import RateCard from "@/components/RateCard";
 import AddLocationService from "@/app/modules/services/AddLocationService";
 import { CreateServiceContext } from "@/context/CreateServiceContext";
-
-export enum TabsKeys {
-  serviceInfo = "serviceInfo",
-  serviceRates = "serviceRates",
-  location = "location",
-}
+import { TabsKeys } from "@/types";
 
 function CreateService() {
   const [selectedTab, setSelectedTab] = useState<TabsKeys>(
