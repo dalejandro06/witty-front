@@ -2,13 +2,15 @@
 
 import { createContext, PropsWithChildren, useMemo, useState } from "react";
 
+import { SupplierLocation } from "@/types/ApiTypes";
+
 export type CreateServiceContextType = {
   basicData: BasicDataFields;
   setBasicData: (v: BasicDataFields) => void;
   rates: RateFields[];
   setRates: (v: RateFields[]) => void;
-  locations: Location[];
-  setLocations: (v: Location[]) => void;
+  selectedLocations: SupplierLocation[];
+  setSelectedLocations: (v: SupplierLocation[]) => void;
 };
 
 type BasicDataFields = {
@@ -24,7 +26,7 @@ export type RateFields = {
   emoji: string;
   estimatedTime: number;
   timeSpan: boolean;
-  cost: string;
+  cost: number | bigint;
 };
 
 export const CreateServiceContext = createContext<CreateServiceContextType>({
@@ -38,8 +40,8 @@ export const CreateServiceContext = createContext<CreateServiceContextType>({
   setBasicData: () => {},
   rates: [],
   setRates: () => {},
-  locations: [],
-  setLocations: () => {},
+  selectedLocations: [],
+  setSelectedLocations: () => {},
 });
 
 export default function CreateServiceContextProvider({
@@ -53,7 +55,9 @@ export default function CreateServiceContextProvider({
     locationMode: false,
   });
   const [rates, setRates] = useState<RateFields[]>([]);
-  const [locations, setLocations] = useState<Location[]>([]);
+  const [selectedLocations, setSelectedLocations] = useState<
+    SupplierLocation[]
+  >([]);
 
   const value = useMemo(
     () => ({
@@ -61,10 +65,10 @@ export default function CreateServiceContextProvider({
       setBasicData,
       rates,
       setRates,
-      locations,
-      setLocations,
+      selectedLocations,
+      setSelectedLocations,
     }),
-    [basicData, rates, locations],
+    [basicData, rates, selectedLocations],
   );
 
   return (

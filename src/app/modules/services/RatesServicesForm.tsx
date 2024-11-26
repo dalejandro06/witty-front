@@ -22,7 +22,7 @@ function RatesServicesForm({ showForm, setShowForm }: Props) {
         emoji: "",
         estimatedTime: 0,
         timeSpan: false,
-        cost: "",
+        cost: 0,
       }}
       onSubmit={(values) => {
         setRates([...rates, values]);
@@ -75,8 +75,11 @@ function RatesServicesForm({ showForm, setShowForm }: Props) {
                 className="h-12"
                 classNames={{ inputWrapper: "h-full" }}
                 placeholder="$00,00"
-                value={values.cost}
-                onValueChange={(val) => setFieldValue("cost", val)}
+                value={new Intl.NumberFormat("es-CO").format(values.cost)}
+                onValueChange={(val) =>
+                  // Replace format number for a clean one
+                  setFieldValue("cost", val.replace(/[ ,.]/g, ""))
+                }
               />
             </div>
           </div>

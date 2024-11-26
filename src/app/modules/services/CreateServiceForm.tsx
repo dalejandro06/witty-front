@@ -1,11 +1,4 @@
-import {
-  Button,
-  Input,
-  Select,
-  SelectItem,
-  Switch,
-  Textarea,
-} from "@nextui-org/react";
+import { Input, Select, SelectItem, Switch, Textarea } from "@nextui-org/react";
 import { Formik } from "formik";
 import { useContext, useEffect } from "react";
 
@@ -125,15 +118,6 @@ function CreateServiceForm({ setSelectedTab }: Props) {
             startContent={<p>Sí</p>}
             onValueChange={(val) => setFieldValue("locationMode", val)}
           />
-          <Button
-            className="text-black"
-            color="secondary"
-            form="create-service-form"
-            size="lg"
-            type="submit"
-          >
-            Siguiente
-          </Button>
         </form>
       )}
     </Formik>

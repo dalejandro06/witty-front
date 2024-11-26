@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CircularProgress } from "@nextui-org/react";
 
 import { getSupplierLocations } from "@/repositories/ApiRepository";
 import { SupplierLocation } from "@/types/ApiTypes";
 import LocationCard from "@/components/LocationCard";
+import { CreateServiceContext } from "@/context/CreateServiceContext";
 
 function AddLocationService() {
   const [locations, setLocations] = useState<SupplierLocation[]>([]);
   const [loading, setLoading] = useState(false);
-  const [selectedLocations, setSelectedLocations] = useState<
-    SupplierLocation[]
-  >([]);
+  const { selectedLocations, setSelectedLocations } =
+    useContext(CreateServiceContext);
 
   const handleSelect = (location: SupplierLocation) => {
     const isSelected = selectedLocations.find(
