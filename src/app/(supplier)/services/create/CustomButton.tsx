@@ -45,7 +45,7 @@ function CustomButton({ step, setSelectedTab, rates }: Props) {
     <Button
       {...props}
       fullWidth
-      className="text-black sticky bottom-0 z-10"
+      className="text-black z-10"
       color="secondary"
       isDisabled={isDisabled()}
       size="lg"

@@ -1,16 +1,20 @@
-import { Button, Input } from "@nextui-org/react";
+import { Button, Input, Select, SelectItem } from "@nextui-org/react";
 import { Formik } from "formik";
 import { useContext } from "react";
 
-import RangeTimeInput from "@/components/RangeTimeInput";
-import { CreateServiceContext } from "@/context/CreateServiceContext";
+import {
+  CreateServiceContext,
+  RateFields,
+} from "@/context/CreateServiceContext";
+import { rangeSpanOptions } from "@/utils/rangeSpanOptions";
 
 type Props = {
   showForm: boolean;
   setShowForm: (v: boolean) => void;
+  rateData?: RateFields;
 };
 
-function RatesServicesForm({ showForm, setShowForm }: Props) {
+function RatesServicesForm({ showForm, setShowForm, rateData }: Props) {
   const { setRates, rates } = useContext(CreateServiceContext);
 
   if (!showForm) return null;
@@ -18,11 +22,10 @@ function RatesServicesForm({ showForm, setShowForm }: Props) {
   return (
     <Formik
       initialValues={{
-        name: "",
-        emoji: "",
-        estimatedTime: 0,
-        timeSpan: false,
-        cost: 0,
+        name: rateData?.name || "",
+        estimatedTime: rateData?.estimatedTime || 0,
+        timeSpan: rateData?.timeSpan || false,
+        cost: rateData?.cost || 0,
       }}
       onSubmit={(values) => {
         setRates([...rates, values]);
@@ -45,41 +48,39 @@ function RatesServicesForm({ showForm, setShowForm }: Props) {
             variant="flat"
             onChange={(e) => setFieldValue("name", e.target.value)}
           />
-          <Input
-            isRequired
-            required
-            errorMessage={errors.emoji}
-            isInvalid={!!errors.emoji}
-            label="Emoji tarifa"
-            placeholder="🎶"
-            value={values.emoji}
-            variant="flat"
-            onChange={(e) => setFieldValue("emoji", e.target.value)}
-          />
           <div className="grid grid-cols-2 gap-2 justify-items-stretch">
-            <RangeTimeInput
-              handleAddValue={(val) => setFieldValue("estimatedTime", val + 1)}
-              handleSubstractValue={(val) => {
-                setFieldValue("estimatedTime", val === 0 ? 0 : val - 1);
-              }}
-              setValue={(val) => setFieldValue("estimatedTime", val)}
-              timeSpanValue={values.timeSpan}
-              value={values.estimatedTime}
-              onChangeSwitch={(val) => setFieldValue("timeSpan", val)}
-            />
+            <div className="flex flex-col justify-between">
+              <p>Tiempo estimado</p>
+              <Select
+                aria-label="Tiempo estimado"
+                className="h-12"
+                classNames={{ trigger: "h-12" }}
+                placeholder="Selecciona un rango"
+              >
+                {rangeSpanOptions.map((item) => (
+                  <SelectItem key={item.id}>{item.description}</SelectItem>
+                ))}
+              </Select>
+            </div>
             <div>
               <p className="mb-2">Valor por servicio</p>
               <Input
                 isRequired
                 required
+                aria-label="Valor por servicio"
                 className="h-12"
                 classNames={{ inputWrapper: "h-full" }}
                 placeholder="$00,00"
-                value={new Intl.NumberFormat("es-CO").format(values.cost)}
-                onValueChange={(val) =>
-                  // Replace format number for a clean one
-                  setFieldValue("cost", val.replace(/[ ,.]/g, ""))
+                value={
+                  values.cost
+                    ? new Intl.NumberFormat("es-CO").format(values.cost)
+                    : undefined
                 }
+                onValueChange={(val) => {
+                  // Replace format number for a clean one
+                  // const regex = /^[0-9.,]+$/;
+                  setFieldValue("cost", val.replace(/[ ,.]/g, ""));
+                }}
               />
             </div>
           </div>

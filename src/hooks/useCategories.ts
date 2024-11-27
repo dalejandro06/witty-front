@@ -10,10 +10,19 @@ export const useCategories = () => {
   const [loadingSubCategory, setLoadingSubCategory] = useState(false);
 
   useEffect(() => {
-    setLoadingCategories(true);
-    getCategories()
-      .then(setCategories)
-      .finally(() => setLoadingCategories(false));
+    const sessionCategories = sessionStorage.getItem("serviceCategories");
+
+    if (sessionCategories) {
+      setCategories(JSON.parse(sessionCategories));
+    } else {
+      setLoadingCategories(true);
+      getCategories()
+        .then((data) => {
+          setCategories(data);
+          sessionStorage.setItem("serviceCategories", JSON.stringify(data));
+        })
+        .finally(() => setLoadingCategories(false));
+    }
   }, []);
 
   const getSubCategoriesByCategoryId = useCallback((id: number) => {

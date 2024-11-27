@@ -69,6 +69,7 @@ function CreateServiceForm({ setSelectedTab }: Props) {
             isRequired
             defaultSelectedKeys={[basicData.subCategory?.toString() || ""]}
             id="subCategory"
+            isDisabled={!subCategories.length}
             isLoading={loadingSubCategory}
             label="Sub categoría"
             name="subCategory"

@@ -27,11 +27,20 @@ function AddLocationService() {
   };
 
   useEffect(() => {
-    setLoading(true);
-    getSupplierLocations()
-      .then(setLocations)
-      .catch(() => {})
-      .finally(() => setLoading(false));
+    const cachedLocations = sessionStorage.getItem("userLocations");
+
+    if (cachedLocations) {
+      setLocations(JSON.parse(cachedLocations));
+    } else {
+      setLoading(true);
+      getSupplierLocations()
+        .then((data) => {
+          setLocations(data);
+          sessionStorage.setItem("userLocations", JSON.stringify(data));
+        })
+        .catch(() => {})
+        .finally(() => setLoading(false));
+    }
   }, []);
 
   if (loading) {

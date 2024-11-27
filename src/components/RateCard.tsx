@@ -1,9 +1,13 @@
 import { Avatar, Card, CardHeader } from "@nextui-org/react";
-import React from "react";
+import React, { Key, useContext } from "react";
+import FeatherIcon from "feather-icons-react";
 
 import DropdownMenuDots from "./DropdownMenuDots";
 
-import { RateFields } from "@/context/CreateServiceContext";
+import {
+  CreateServiceContext,
+  RateFields,
+} from "@/context/CreateServiceContext";
 
 type Props = {
   rateData: RateFields;
@@ -16,6 +20,21 @@ function RateCard({ rateData }: Props) {
     }
 
     return rateData.timeSpan ? "Hora" : "Minuto";
+  };
+
+  const { setRates, rates } = useContext(CreateServiceContext);
+
+  const handleActionMenu = (key: Key) => {
+    switch (key) {
+      case "edit":
+        return;
+      case "delete":
+        const filtered = rates.filter((item) => item.name !== rateData.name);
+
+        setRates(filtered);
+      default:
+        break;
+    }
   };
 
   return (
@@ -31,13 +50,16 @@ function RateCard({ rateData }: Props) {
             classNames={{
               base: "bg-secondary",
             }}
-            icon={<p>{rateData.emoji}</p>}
+            icon={<FeatherIcon icon="shopping-bag" />}
             radius="md"
             size="lg"
           />
           <div className="flex flex-col gap-1 items-start justify-center">
             <h4 className="text-small font-semibold leading-none text-default-600">
-              ${rateData.cost}
+              {new Intl.NumberFormat("es-CO", {
+                currency: "COP",
+                style: "currency",
+              }).format(rateData.cost)}
             </h4>
             <h5 className="text-small tracking-tight text-default-400">
               {rateData.name}
@@ -48,11 +70,8 @@ function RateCard({ rateData }: Props) {
           </div>
         </div>
         <DropdownMenuDots
-          handleAction={() => {}}
-          items={[
-            { key: "edit", text: "Editar" },
-            { key: "delete", text: "Eliminar", color: "danger" },
-          ]}
+          handleAction={handleActionMenu}
+          items={[{ key: "delete", text: "Eliminar", color: "danger" }]}
         />
       </CardHeader>
     </Card>

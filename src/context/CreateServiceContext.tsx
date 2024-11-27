@@ -23,7 +23,6 @@ type BasicDataFields = {
 
 export type RateFields = {
   name: string;
-  emoji: string;
   estimatedTime: number;
   timeSpan: boolean;
   cost: number | bigint;

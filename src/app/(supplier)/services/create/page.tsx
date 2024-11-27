@@ -58,10 +58,7 @@ function CreateService() {
             {rates.length > 0 ? (
               <>
                 {rates.map((rate) => (
-                  <RateCard
-                    key={`${rate.name}-${rate.emoji}-${rate.cost}`}
-                    rateData={rate}
-                  />
+                  <RateCard key={`${rate.name}-${rate.cost}`} rateData={rate} />
                 ))}
                 <RatesServicesForm
                   setShowForm={setShowForm}
