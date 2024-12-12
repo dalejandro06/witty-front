@@ -51,9 +51,9 @@ function CalendarSupplier({ children }: PropsWithChildren) {
           variant="light"
         >
           <Tab
-            key="/calendar/scheduled-services"
-            href="/calendar/scheduled-services"
-            id="/calendar/scheduled-services"
+            key="/calendar"
+            href="/calendar"
+            id="/calendar"
             title="Servicios agendados"
           />
           <Tab

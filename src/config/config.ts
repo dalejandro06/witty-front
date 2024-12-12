@@ -10,7 +10,7 @@ export const getNavigationItems = (isSupplier: boolean) => {
     },
     {
       id: 2,
-      href: "/calendar",
+      href: "/calendar/",
       icon: "calendar",
     },
   ];
