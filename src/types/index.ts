@@ -25,6 +25,7 @@ export type QuickActionData = {
   icon: string;
   text: string;
   type: "secondary" | "secondaryDark";
+  href: string;
 };
 
 export type ServiceInfo = {

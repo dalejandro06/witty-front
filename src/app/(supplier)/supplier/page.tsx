@@ -10,13 +10,15 @@ async function Supplier() {
   const actions: QuickActionData[] = [
     {
       icon: "send",
-      text: "Invita a un servicio",
+      text: "Comparte tu perfil",
       type: "secondary",
+      href: "/invite",
     },
     {
       icon: "eye",
       text: "Solicitudes pendientes",
       type: "secondaryDark",
+      href: "/calendar",
     },
   ];
 

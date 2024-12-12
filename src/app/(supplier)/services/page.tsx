@@ -34,6 +34,7 @@ function ListServices() {
           color="secondary"
           href="/services/create"
           size="lg"
+          variant="shadow"
         >
           Añadir un nuevo servicio
         </Button>

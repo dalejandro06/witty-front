@@ -13,10 +13,8 @@ function QuickAccess({ actions }: Props) {
       <div className="flex justify-between mt-5 gap-5">
         {actions.map((item) => (
           <QuickAction
+            {...item}
             key={`${item.icon}-${item.text}-${item.type}`}
-            icon={item.icon}
-            text={item.text}
-            type={item.type}
           />
         ))}
       </div>

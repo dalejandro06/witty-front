@@ -1,6 +1,7 @@
 "use client";
-import { Button, Tab, Tabs } from "@nextui-org/react";
+import { Button, Tab, Tabs, useDisclosure } from "@nextui-org/react";
 import { useContext, useState } from "react";
+import FeatherIcon from "feather-icons-react";
 
 import CustomButton from "./CustomButton";
 
@@ -11,6 +12,7 @@ import RateCard from "@/components/RateCard";
 import AddLocationService from "@/app/modules/services/AddLocationService";
 import { CreateServiceContext } from "@/context/CreateServiceContext";
 import { TabsKeys } from "@/types";
+import RateModalHelp from "@/app/modules/services/RateModalHelp";
 
 function CreateService() {
   const [selectedTab, setSelectedTab] = useState<TabsKeys>(
@@ -18,6 +20,7 @@ function CreateService() {
   );
   const [showForm, setShowForm] = useState(false);
   const { basicData, rates } = useContext(CreateServiceContext);
+  const { onOpen, isOpen, onOpenChange } = useDisclosure();
 
   return (
     <div className="relative">
@@ -34,7 +37,7 @@ function CreateService() {
         onSelectionChange={(v) => setSelectedTab(v as keyof typeof Tabs)}
       >
         <Tab key={TabsKeys.serviceInfo} title="Configurar servicio">
-          <article className="grid gap-5">
+          <article className="grid gap-5 pt-6">
             <TitleInfo
               infoText="Aquí podrás crear tus servicios. Completa los detalles necesarios para ofrecer tus servicios a los clientes y destacar en las áreas que selecciones."
               title="Crea un servicio"
@@ -52,8 +55,14 @@ function CreateService() {
           }
           title="Personalizar tarifas"
         >
-          <article className="grid gap-4">
-            <TitleInfo infoText="" title="Personalizar tarifas" />
+          <article className="grid gap-4 pt-6">
+            <div className="flex justify-between">
+              <TitleInfo infoText="" title="Personalizar tarifas" />
+              <Button isIconOnly variant="light" onPress={onOpen}>
+                <FeatherIcon icon="info" />
+              </Button>
+              <RateModalHelp isOpen={isOpen} onOpenChange={onOpenChange} />
+            </div>
             <p className="text-primary">Tarifas</p>
             {rates.length > 0 ? (
               <>
@@ -95,7 +104,7 @@ function CreateService() {
           isDisabled={!rates.length}
           title="Asociar ubicación"
         >
-          <article className="grid gap-5">
+          <article className="grid gap-5 pt-6">
             <TitleInfo
               infoText="Selecciona las ubicaciones donde el servicio estará disponible. Ten en cuenta que, según la ubicación, deberás desplazarte a la locación del cliente o el cliente se desplazará a la tuya."
               title="Elije una ubicación"
