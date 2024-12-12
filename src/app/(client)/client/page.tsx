@@ -13,11 +13,13 @@ async function Supplier() {
       icon: "briefcase",
       text: "Servicios Agendados",
       type: "secondary",
+      href: "/",
     },
     {
       icon: "settings",
       text: "Gestiona tu perfil",
       type: "secondaryDark",
+      href: "/",
     },
   ];
 
