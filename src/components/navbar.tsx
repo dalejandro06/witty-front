@@ -36,14 +36,25 @@ const Navbar = ({ session, showButton = true }: Props) => {
         <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
           {/* <ThemeSwitch /> */}
           {session && session.user ? (
-            <Button
-              as={Link}
-              className="text-black font-bold"
-              color="secondary"
-              href="/services/create"
-            >
-              Nuevo Servicio
-            </Button>
+            session.user.supplier ? (
+              <Button
+                as={Link}
+                className="text-black font-bold"
+                color="secondary"
+                href="/services/create"
+              >
+                Nuevo Servicio
+              </Button>
+            ) : (
+              <Button
+                as={Link}
+                className="text-black font-bold"
+                color="secondary"
+                href="/search-services"
+              >
+                Buscar un servicio
+              </Button>
+            )
           ) : (
             <Button
               as={Link}
