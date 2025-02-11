@@ -19,7 +19,7 @@ async function Supplier() {
       icon: "settings",
       text: "Gestiona tu perfil",
       type: "secondaryDark",
-      href: "/",
+      href: "/profile",
     },
   ];
 
