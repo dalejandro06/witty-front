@@ -1,8 +1,7 @@
 "use client";
 
-import { Input, Textarea } from "@nextui-org/input";
+import { Input, Textarea, Select, SelectItem } from "@nextui-org/react";
 import { Formik } from "formik";
-import { Select, SelectItem } from "@nextui-org/react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";

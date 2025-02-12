@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "@nextui-org/button";
+
 import {
   Input,
   Modal,
@@ -8,6 +8,7 @@ import {
   ModalFooter,
   ModalHeader,
   useDisclosure,
+  Button,
 } from "@nextui-org/react";
 import FeatherIcon from "feather-icons-react";
 

@@ -1,6 +1,10 @@
-import { Button } from "@nextui-org/button";
-import { Link } from "@nextui-org/link";
-import { Navbar, NavbarContent, NavbarItem } from "@nextui-org/navbar";
+import {
+  Navbar,
+  NavbarContent,
+  NavbarItem,
+  Link,
+  Button,
+} from "@nextui-org/react";
 import FeatherIcon from "feather-icons-react";
 
 import { getNavigationItems } from "@/config/config";

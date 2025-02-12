@@ -1,7 +1,6 @@
 "use client";
 
-import { Button } from "@nextui-org/button";
-import { useDisclosure } from "@nextui-org/react";
+import { useDisclosure, Button } from "@nextui-org/react";
 import { signOut } from "next-auth/react";
 
 import CustomModal from "./CustomModal";

@@ -1,5 +1,4 @@
-import { Button } from "@nextui-org/button";
-import { Link } from "@nextui-org/react";
+import { Link, Button } from "@nextui-org/react";
 import FeatherIcon from "feather-icons-react";
 
 type Props = {

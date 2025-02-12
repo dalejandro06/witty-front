@@ -1,6 +1,5 @@
-import { Button } from "@nextui-org/button";
+import { Button, Link } from "@nextui-org/react";
 import FeatherIcon from "feather-icons-react";
-import { Link } from "@nextui-org/link";
 
 import HeroLandingSupplier from "@/app/modules/landing-supplier/HeroLandingSupplier";
 import FeatureCards from "@/app/modules/landing-supplier/FeatureCards";

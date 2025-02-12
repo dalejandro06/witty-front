@@ -1,4 +1,4 @@
-import { Button } from "@nextui-org/button";
+import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { CSSProperties } from "react";

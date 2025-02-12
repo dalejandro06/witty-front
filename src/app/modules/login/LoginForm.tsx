@@ -1,7 +1,6 @@
 "use client";
 
-import { Input } from "@nextui-org/input";
-import { Button } from "@nextui-org/react";
+import { Button, Input } from "@nextui-org/react";
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";

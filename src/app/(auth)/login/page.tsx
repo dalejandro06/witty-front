@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Link } from "@nextui-org/link";
+import { Link } from "@nextui-org/react";
 
 import Logo from "@/assets/Logo.svg";
 import RecoverPasswordModal from "@/app/modules/login/RecoverPasswordModal";

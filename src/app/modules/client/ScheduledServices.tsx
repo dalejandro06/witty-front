@@ -1,6 +1,5 @@
 import Image from "next/image";
-import { Button } from "@nextui-org/button";
-import { Link } from "@nextui-org/link";
+import { Button, Link } from "@nextui-org/react";
 
 import ScheduledService from "@/components/ScheduledService";
 import SectionTitle from "@/components/SectionTitle";

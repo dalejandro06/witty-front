@@ -1,5 +1,5 @@
 "use client";
-import { Input, InputProps } from "@nextui-org/input";
+import { Input, InputProps } from "@nextui-org/react";
 import { useState } from "react";
 
 import { EyeFilledIcon, EyeSlashFilledIcon } from "./icons";

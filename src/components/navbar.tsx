@@ -4,11 +4,11 @@ import {
   Navbar as NextUINavbar,
   NavbarContent,
   NavbarBrand,
-} from "@nextui-org/navbar";
-import { Link } from "@nextui-org/link";
+  Link,
+  Button,
+} from "@nextui-org/react";
 import NextLink from "next/link";
 import Image from "next/image";
-import { Button } from "@nextui-org/button";
 import { Session } from "next-auth";
 
 import LogoWhite from "@/assets/logo-white.svg";

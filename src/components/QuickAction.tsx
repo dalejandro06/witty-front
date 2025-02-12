@@ -1,4 +1,4 @@
-import { Button } from "@nextui-org/button";
+import { Button } from "@nextui-org/react";
 import FeatherIcon from "feather-icons-react";
 import Link from "next/link";
 import React from "react";

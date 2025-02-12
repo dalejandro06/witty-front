@@ -1,7 +1,6 @@
 "use client";
 
-import { Button } from "@nextui-org/button";
-import { Input } from "@nextui-org/input";
+import { Button, Input } from "@nextui-org/react";
 import { User } from "next-auth";
 import { Formik } from "formik";
 import toast from "react-hot-toast";
