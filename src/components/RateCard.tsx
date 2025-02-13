@@ -8,21 +8,18 @@ import {
   CreateServiceContext,
   RateFields,
 } from "@/context/CreateServiceContext";
+import { rangeSpanOptions } from "@/utils/rangeSpanOptions";
 
 type Props = {
   rateData: RateFields;
 };
 
 function RateCard({ rateData }: Props) {
-  const getTimeSpanText = () => {
-    if (rateData.estimatedTime > 1) {
-      return rateData.timeSpan ? "Horas" : "Minutos";
-    }
-
-    return rateData.timeSpan ? "Hora" : "Minuto";
-  };
-
   const { setRates, rates } = useContext(CreateServiceContext);
+
+  const estimatedTime = rangeSpanOptions.find(
+    (item) => item.id === rateData.estimatedTime,
+  );
 
   const handleActionMenu = (key: Key) => {
     switch (key) {
@@ -55,17 +52,17 @@ function RateCard({ rateData }: Props) {
             size="lg"
           />
           <div className="flex flex-col gap-1 items-start justify-center">
-            <h4 className="text-small font-semibold leading-none text-default-600">
+            <h4 className="font-semibold leading-none text-default-600">
+              {rateData.name}
+            </h4>
+            <h5 className="text-small tracking-tight text-default-400">
               {new Intl.NumberFormat("es-CO", {
                 currency: "COP",
                 style: "currency",
               }).format(rateData.cost)}
-            </h4>
-            <h5 className="text-small tracking-tight text-default-400">
-              {rateData.name}
             </h5>
             <p className="text-small tracking-tight text-default-500">
-              {`${rateData.estimatedTime} ${getTimeSpanText()}`}
+              {`${estimatedTime?.description}`}
             </p>
           </div>
         </div>

@@ -1,16 +1,16 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { CircularProgress } from "@heroui/react";
 
-import { getSupplierLocations } from "@/repositories/ApiRepository";
 import { SupplierLocation } from "@/types/ApiTypes";
 import LocationCard from "@/components/LocationCard";
 import { CreateServiceContext } from "@/context/CreateServiceContext";
+import { useUserLocations } from "@/hooks/useUserLocations";
 
 function AddLocationService() {
-  const [locations, setLocations] = useState<SupplierLocation[]>([]);
-  const [loading, setLoading] = useState(false);
   const { selectedLocations, setSelectedLocations } =
     useContext(CreateServiceContext);
+
+  const { loadingLocations, availableUserLocations } = useUserLocations();
 
   const handleSelect = (location: SupplierLocation) => {
     const isSelected = selectedLocations.find(
@@ -26,24 +26,7 @@ function AddLocationService() {
     }
   };
 
-  useEffect(() => {
-    const cachedLocations = sessionStorage.getItem("userLocations");
-
-    if (cachedLocations) {
-      setLocations(JSON.parse(cachedLocations));
-    } else {
-      setLoading(true);
-      getSupplierLocations()
-        .then((data) => {
-          setLocations(data);
-          sessionStorage.setItem("userLocations", JSON.stringify(data));
-        })
-        .catch(() => {})
-        .finally(() => setLoading(false));
-    }
-  }, []);
-
-  if (loading) {
+  if (loadingLocations) {
     return (
       <div className="w-full h-full grid place-items-center mt-10">
         <CircularProgress color="secondary" size="lg" />
@@ -53,7 +36,7 @@ function AddLocationService() {
 
   return (
     <div className="grid gap-4">
-      {locations.map((location) => (
+      {availableUserLocations.map((location) => (
         <LocationCard
           key={location.id}
           isDisabled={!location.status}

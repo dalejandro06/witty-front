@@ -73,6 +73,17 @@ function CreateService() {
                   setShowForm={setShowForm}
                   showForm={showForm}
                 />
+                {!showForm && (
+                  <Button
+                    color="primary"
+                    endContent={<FeatherIcon icon="plus" size={20} />}
+                    fullWidth={false}
+                    variant="flat"
+                    onPress={() => setShowForm(true)}
+                  >
+                    Agregar costo
+                  </Button>
+                )}
               </>
             ) : showForm ? (
               <>

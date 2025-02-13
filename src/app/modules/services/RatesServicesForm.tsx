@@ -20,11 +20,10 @@ function RatesServicesForm({ showForm, setShowForm, rateData }: Props) {
   if (!showForm) return null;
 
   return (
-    (<Formik
+    <Formik
       initialValues={{
         name: rateData?.name || "",
         estimatedTime: rateData?.estimatedTime || 0,
-        timeSpan: rateData?.timeSpan || false,
         cost: rateData?.cost || 0,
       }}
       onSubmit={(values) => {
@@ -56,6 +55,7 @@ function RatesServicesForm({ showForm, setShowForm, rateData }: Props) {
                 className="h-12"
                 classNames={{ trigger: "h-12" }}
                 placeholder="Selecciona un rango"
+                onChange={(e) => setFieldValue("estimatedTime", e.target.value)}
               >
                 {rangeSpanOptions.map((item) => (
                   <SelectItem key={item.id}>{item.description}</SelectItem>
@@ -106,7 +106,7 @@ function RatesServicesForm({ showForm, setShowForm, rateData }: Props) {
           </div>
         </form>
       )}
-    </Formik>)
+    </Formik>
   );
 }
 

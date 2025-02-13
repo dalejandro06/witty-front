@@ -104,7 +104,12 @@ export async function getSupplierLocations(): Promise<SupplierLocation[]> {
     "/v1/services/services-location/",
   );
 
-  return data.data;
+  return data.data.sort((a, b) => {
+    if (a.status) return -1;
+    if (b.status) return 1;
+
+    return 0;
+  });
 }
 
 export async function deleteSupplierLocation(id: number) {
