@@ -1,4 +1,4 @@
-import { Card, CardBody, Link } from "@nextui-org/react";
+import { Card, CardBody, Link } from "@heroui/react";
 import Image from "next/image";
 
 import BannerImage from "@/assets/client-supplier-banner.png";

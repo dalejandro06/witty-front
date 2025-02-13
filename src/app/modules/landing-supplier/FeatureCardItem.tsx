@@ -1,4 +1,4 @@
-import { Chip } from "@nextui-org/react";
+import { Chip } from "@heroui/react";
 import FeatherIcon from "feather-icons-react";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";

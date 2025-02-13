@@ -1,5 +1,5 @@
 import React from "react";
-import { Badge, Card, CardBody } from "@nextui-org/react";
+import { Badge, Card, CardBody } from "@heroui/react";
 
 import SectionTitle from "@/components/SectionTitle";
 

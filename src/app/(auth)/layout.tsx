@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
 import { redirect } from "next/navigation";
-import { Button, Link } from "@nextui-org/react";
+import { Button, Link } from "@heroui/react";
 import FeatherIcon from "feather-icons-react";
 
 import { auth } from "@/auth";

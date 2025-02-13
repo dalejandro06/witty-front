@@ -10,19 +10,10 @@ export const useCategories = () => {
   const [loadingSubCategory, setLoadingSubCategory] = useState(false);
 
   useEffect(() => {
-    const sessionCategories = sessionStorage.getItem("serviceCategories");
-
-    if (sessionCategories) {
-      setCategories(JSON.parse(sessionCategories));
-    } else {
-      setLoadingCategories(true);
-      getCategories()
-        .then((data) => {
-          setCategories(data);
-          sessionStorage.setItem("serviceCategories", JSON.stringify(data));
-        })
-        .finally(() => setLoadingCategories(false));
-    }
+    setLoadingCategories(true);
+    getAndSaveCategories()
+      .then(setCategories)
+      .finally(() => setLoadingCategories(false));
   }, []);
 
   const getSubCategoriesByCategoryId = useCallback((id: number) => {
@@ -40,3 +31,16 @@ export const useCategories = () => {
     loadingSubCategory,
   };
 };
+
+async function getAndSaveCategories() {
+  const itemsLocalStorage = localStorage.getItem("categories");
+
+  if (itemsLocalStorage) {
+    return JSON.parse(itemsLocalStorage);
+  }
+  const data = await getCategories();
+
+  localStorage.setItem("categories", JSON.stringify(data));
+
+  return data;
+}

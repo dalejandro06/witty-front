@@ -1,5 +1,5 @@
 "use client";
-import { Avatar, Card, CardHeader } from "@nextui-org/react";
+import { Avatar, Card, CardHeader } from "@heroui/react";
 import FeatherIcon from "feather-icons-react";
 import { Key } from "react";
 import { useRouter } from "next/navigation";

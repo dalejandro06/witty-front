@@ -1,5 +1,5 @@
 "use client";
-import { Button, Tab, Tabs, useDisclosure } from "@nextui-org/react";
+import { Button, Tab, Tabs, useDisclosure } from "@heroui/react";
 import { useContext, useState } from "react";
 import FeatherIcon from "feather-icons-react";
 

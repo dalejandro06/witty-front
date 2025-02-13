@@ -1,4 +1,4 @@
-import { Button } from "@nextui-org/react";
+import { Button } from "@heroui/react";
 
 import FormRegisterSupplier from "@/app/modules/register-supplier/FormRegisterSupplier";
 import { auth } from "@/auth";

@@ -14,7 +14,7 @@ export const useDepartments = () => {
 
   useEffect(() => {
     setLoadingDepartments(true);
-    getDepartaments()
+    getDepartamentsAndSave()
       .then(setDepartments)
       .finally(() => setLoadingDepartments(false));
   }, []);
@@ -34,3 +34,16 @@ export const useDepartments = () => {
     loadingCity,
   };
 };
+
+async function getDepartamentsAndSave() {
+  const itemsLocalStorage = localStorage.getItem("departments");
+
+  if (itemsLocalStorage) {
+    return JSON.parse(itemsLocalStorage);
+  }
+  const data = await getDepartaments();
+
+  localStorage.setItem("departments", JSON.stringify(data));
+
+  return data;
+}

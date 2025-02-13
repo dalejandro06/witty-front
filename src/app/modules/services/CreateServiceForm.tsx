@@ -1,4 +1,4 @@
-import { Input, Select, SelectItem, Switch, Textarea } from "@nextui-org/react";
+import { Input, Select, SelectItem, Switch, Textarea } from "@heroui/react";
 import { Formik } from "formik";
 import { useContext, useEffect } from "react";
 

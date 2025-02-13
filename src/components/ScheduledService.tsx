@@ -1,4 +1,4 @@
-import { Avatar, Card, CardBody } from "@nextui-org/react";
+import { Avatar, Card, CardBody } from "@heroui/react";
 import FeatherIcon from "feather-icons-react";
 
 import { ServiceInfo } from "@/types";

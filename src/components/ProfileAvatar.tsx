@@ -7,7 +7,7 @@ import {
   ModalBody,
   ModalContent,
   useDisclosure,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import FeatherIcon from "feather-icons-react";
 import { useState } from "react";
 

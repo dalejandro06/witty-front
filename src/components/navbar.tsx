@@ -6,7 +6,7 @@ import {
   NavbarBrand,
   Link,
   Button,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import NextLink from "next/link";
 import Image from "next/image";
 import { Session } from "next-auth";

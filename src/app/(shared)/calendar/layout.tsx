@@ -1,6 +1,6 @@
 "use client";
 import FeatherIcon from "feather-icons-react";
-import { Button, Tab, Tabs } from "@nextui-org/react";
+import { Button, Tab, Tabs } from "@heroui/react";
 import { PropsWithChildren } from "react";
 import { usePathname } from "next/navigation";
 

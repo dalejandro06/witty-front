@@ -1,5 +1,5 @@
 "use client";
-import { Input, Link, useDisclosure } from "@nextui-org/react";
+import { Input, Link, useDisclosure } from "@heroui/react";
 import { Formik, FormikValues } from "formik";
 import { useTransition } from "react";
 import toast from "react-hot-toast";

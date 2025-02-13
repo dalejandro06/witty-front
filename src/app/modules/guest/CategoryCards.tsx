@@ -8,7 +8,7 @@ import {
   Link,
   Skeleton,
   useDisclosure,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import FeatherIcon from "feather-icons-react";
 
 import LoginModal from "./LoginModal";

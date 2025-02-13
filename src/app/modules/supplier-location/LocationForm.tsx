@@ -8,7 +8,7 @@ import {
   Select,
   SelectItem,
   Switch,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { FormikValues, useFormik } from "formik";
 import { User } from "next-auth";
 import FeatherIcon from "feather-icons-react";

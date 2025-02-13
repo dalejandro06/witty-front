@@ -9,7 +9,7 @@ import {
   ModalHeader,
   useDisclosure,
   Button,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import FeatherIcon from "feather-icons-react";
 
 type Props = {

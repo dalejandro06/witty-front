@@ -1,7 +1,7 @@
 "use client";
 import { Formik } from "formik";
 import toast from "react-hot-toast";
-import { Input, Button } from "@nextui-org/react";
+import { Input, Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 

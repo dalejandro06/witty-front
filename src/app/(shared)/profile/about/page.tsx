@@ -5,7 +5,7 @@ import {
   CardHeader,
   Divider,
   Link,
-} from "@nextui-org/react";
+} from "@heroui/react";
 
 import ProfileAvatar from "@/components/ProfileAvatar";
 import ProfileInfo from "@/components/ProfileInfo";

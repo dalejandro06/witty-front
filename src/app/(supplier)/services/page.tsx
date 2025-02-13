@@ -1,4 +1,4 @@
-import { Button, Link } from "@nextui-org/react";
+import { Button, Link } from "@heroui/react";
 
 import TitleInfo from "@/components/TitleInfo";
 import NoLocation from "@/assets/no-services-yet.png";

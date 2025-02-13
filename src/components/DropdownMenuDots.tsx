@@ -5,7 +5,7 @@ import {
   DropdownItem,
   DropdownTrigger,
   DropdownMenu,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import FeatherIcon from "feather-icons-react";
 import React, { Key } from "react";
 

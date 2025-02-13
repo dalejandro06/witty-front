@@ -1,5 +1,5 @@
 "use client";
-import { Button, Divider } from "@nextui-org/react";
+import { Button, Divider } from "@heroui/react";
 import { FormikValues } from "formik";
 import toast from "react-hot-toast";
 import { User } from "next-auth";

@@ -6,7 +6,7 @@ import {
   CardHeader,
   Chip,
   Divider,
-} from "@nextui-org/react";
+} from "@heroui/react";
 
 function CalendarServicesCard() {
   return (

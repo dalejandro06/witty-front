@@ -1,5 +1,5 @@
 "use client";
-import { Chip } from "@nextui-org/react";
+import { Chip } from "@heroui/react";
 import FeatherIcon from "feather-icons-react";
 
 import { Category } from "@/types/ApiTypes";

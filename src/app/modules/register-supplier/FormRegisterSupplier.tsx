@@ -6,7 +6,7 @@ import {
   Select,
   SelectItem,
   useDisclosure,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import FeatherIcon from "feather-icons-react";
 import { useFormik } from "formik";
 import { User } from "next-auth";

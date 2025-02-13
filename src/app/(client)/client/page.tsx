@@ -13,7 +13,7 @@ async function Supplier() {
       icon: "briefcase",
       text: "Servicios Agendados",
       type: "secondary",
-      href: "/",
+      href: "/calendar",
     },
     {
       icon: "settings",

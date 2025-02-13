@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Button, Link } from "@nextui-org/react";
+import { Button, Link } from "@heroui/react";
 
 import ScheduledService from "@/components/ScheduledService";
 import SectionTitle from "@/components/SectionTitle";
@@ -34,7 +34,7 @@ function ScheduledServices() {
             as={Link}
             className="text-black"
             color="secondary"
-            href="/client"
+            href="/search-services"
           >
             Busca un servicio
           </Button>

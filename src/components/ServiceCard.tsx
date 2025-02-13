@@ -6,7 +6,7 @@ import {
   CardHeader,
   Chip,
   Avatar,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import FeatherIcon from "feather-icons-react";
 import { useRouter } from "next/navigation";
 import { Key } from "react";

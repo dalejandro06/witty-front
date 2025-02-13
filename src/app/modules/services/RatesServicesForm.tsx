@@ -1,4 +1,4 @@
-import { Button, Input, Select, SelectItem } from "@nextui-org/react";
+import { Button, Input, Select, SelectItem } from "@heroui/react";
 import { Formik } from "formik";
 import { useContext } from "react";
 
@@ -20,7 +20,7 @@ function RatesServicesForm({ showForm, setShowForm, rateData }: Props) {
   if (!showForm) return null;
 
   return (
-    <Formik
+    (<Formik
       initialValues={{
         name: rateData?.name || "",
         estimatedTime: rateData?.estimatedTime || 0,
@@ -106,7 +106,7 @@ function RatesServicesForm({ showForm, setShowForm, rateData }: Props) {
           </div>
         </form>
       )}
-    </Formik>
+    </Formik>)
   );
 }
 

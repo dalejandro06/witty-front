@@ -1,6 +1,6 @@
 "use client";
 
-import { Accordion, AccordionItem, Progress } from "@nextui-org/react";
+import { Accordion, AccordionItem, Progress } from "@heroui/react";
 
 import ProgressStepper from "./ProgressStepper";
 

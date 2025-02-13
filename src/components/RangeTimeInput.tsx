@@ -1,4 +1,4 @@
-import { Button, Input, Switch } from "@nextui-org/react";
+import { Button, Input, Switch } from "@heroui/react";
 import FeatherIcon from "feather-icons-react";
 import React from "react";
 

@@ -1,4 +1,4 @@
-import { Button, Link } from "@nextui-org/react";
+import { Button, Link } from "@heroui/react";
 import FeatherIcon from "feather-icons-react";
 
 import HeroLandingSupplier from "@/app/modules/landing-supplier/HeroLandingSupplier";

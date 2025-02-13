@@ -9,7 +9,7 @@ import {
   ModalProps,
   ModalFooter,
   ModalHeader,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { ReactNode } from "react";
 
 type LocalModalProps = {

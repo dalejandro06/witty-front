@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { CircularProgress } from "@nextui-org/react";
+import { CircularProgress } from "@heroui/react";
 
 import { getSupplierLocations } from "@/repositories/ApiRepository";
 import { SupplierLocation } from "@/types/ApiTypes";
