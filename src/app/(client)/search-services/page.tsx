@@ -1,12 +1,15 @@
 "use client";
 import { useFormik } from "formik";
 import { Button, Select, SelectItem } from "@heroui/react";
+import { useRouter } from "next/navigation";
 
 import TitleInfo from "@/components/TitleInfo";
 import { useDepartments } from "@/hooks/useDepartments";
 import { useCategories } from "@/hooks/useCategories";
 
 function SearchServices() {
+  const router = useRouter();
+
   const {
     departments,
     loadingDepartments,
@@ -24,7 +27,15 @@ function SearchServices() {
       city: "",
       category: "",
     },
-    onSubmit() {},
+    onSubmit(values) {
+      const params = new URLSearchParams();
+
+      params.set("department", values.department);
+      params.set("city", values.city);
+      params.set("category", values.category);
+
+      router.push(`/search-services/list-services?${params.toString()}`);
+    },
   });
 
   return (

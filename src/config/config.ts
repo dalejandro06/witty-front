@@ -5,7 +5,7 @@ export const getNavigationItems = (isSupplier: boolean) => {
   const baseItems = [
     {
       id: 1,
-      href: "/supplier",
+      href: isSupplier ? "/supplier" : "/client",
       icon: "home",
     },
     {

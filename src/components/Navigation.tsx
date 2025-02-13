@@ -1,10 +1,4 @@
-import {
-  Navbar,
-  NavbarContent,
-  NavbarItem,
-  Link,
-  Button,
-} from "@heroui/react";
+import { Navbar, NavbarContent, NavbarItem, Link, Button } from "@heroui/react";
 import FeatherIcon from "feather-icons-react";
 
 import { getNavigationItems } from "@/config/config";
