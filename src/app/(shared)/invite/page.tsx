@@ -24,6 +24,7 @@ function Invite() {
     },
   });
 
+  // TODO: traer datos reales del servicio en serviceInfo
   return (
     <>
       <WBreadcrumb items={breadcrumbItems} />
@@ -32,7 +33,21 @@ function Invite() {
           infoText="Envía invitaciones a tus clientes por correo y comparte el acceso a este servicio."
           title="Invitar a un servicio"
         />
-        <ServiceCard />
+        <ServiceCard
+          serviceInfo={{
+            id: "1",
+            title: "Servicio",
+            description: "Descripcion",
+            category: {
+              color: "",
+              icon: "",
+              id: 1,
+              title: "Peluqueria",
+            },
+            rates: [],
+            location: { id: 1, name: "Bogotá" },
+          }}
+        />
         <form className="grid gap-3" onSubmit={formik.handleSubmit}>
           <Input
             isRequired
