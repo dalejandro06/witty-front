@@ -3,7 +3,7 @@ import { Button, Card, CardBody } from "@heroui/react";
 import FeatherIcon from "feather-icons-react";
 import { useSearchParams } from "next/navigation";
 
-import ServiceCard from "@/components/ServiceCard";
+import ServiceCardClient from "@/app/modules/client/ServiceCardClient";
 
 function ListServices() {
   const params = useSearchParams();
@@ -37,7 +37,16 @@ function ListServices() {
           </Button>
         </CardBody>
       </Card>
-      <ServiceCard />
+      <ServiceCardClient
+        serviceInfo={{
+          id: "1",
+          title: "Peluqueria",
+          description: "Description",
+          category: { id: 1, title: "Peluqueria", color: "1", icon: "1" },
+          rates: [{ name: "General", estimatedTime: 1, cost: 1 }],
+          location: { id: 1, name: "Bogotá" },
+        }}
+      />
     </div>
   );
 }

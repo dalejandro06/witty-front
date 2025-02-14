@@ -9,6 +9,7 @@ import {
   RateFields,
 } from "@/context/CreateServiceContext";
 import { rangeSpanOptions } from "@/utils/rangeSpanOptions";
+import { currencyFormat } from "@/utils/formats";
 
 type Props = {
   rateData: RateFields;
@@ -56,10 +57,7 @@ function RateCard({ rateData }: Props) {
               {rateData.name}
             </h4>
             <h5 className="text-small tracking-tight text-default-400">
-              {new Intl.NumberFormat("es-CO", {
-                currency: "COP",
-                style: "currency",
-              }).format(rateData.cost)}
+              {currencyFormat(rateData.cost)}
             </h5>
             <p className="text-small tracking-tight text-default-500">
               {`${estimatedTime?.description}`}

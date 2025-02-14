@@ -5,7 +5,50 @@ import NoLocation from "@/assets/no-services-yet.png";
 import EmptyStateLayout from "@/components/EmptyStateLayout";
 import ServiceCard from "@/components/ServiceCard";
 
-const services = [{}];
+const services = [
+  {
+    id: "1",
+    title: "Peluquería",
+    description:
+      " Nuestro servicio de peluquería ofrece cortes modernos y personalizados, realizados por estilistas expertos en un ambiente relajante. ¡Renueva tu look y luce siempre impecable!",
+    category: {
+      color: "",
+      icon: "",
+      id: 1,
+      title: "Peluquería",
+    },
+    rates: [
+      {
+        name: "General",
+        estimatedTime: "0",
+        cost: 10000,
+      },
+    ],
+    location: { id: 1, name: "Bogotá" },
+    isActive: true,
+  },
+  {
+    id: "2",
+    title: "Corte de cabello mujer",
+    description:
+      "Nuestro servicio de peluquería ofrece cortes modernos y personalizados, realizados por estilistas expertos en un ambiente relajante. ¡Renueva tu look y luce siempre impecable!",
+    category: {
+      color: "",
+      icon: "",
+      id: 1,
+      title: "Peluquería",
+    },
+    rates: [
+      {
+        name: "General",
+        estimatedTime: "0",
+        cost: 15000,
+      },
+    ],
+    location: { id: 1, name: "Mosquera" },
+    isActive: false,
+  },
+];
 
 function ListServices() {
   return (
@@ -16,9 +59,9 @@ function ListServices() {
           title="Tu lista de servicios"
         />
         {services.length > 0 ? (
-          <>
-            <ServiceCard />
-          </>
+          services.map((service) => (
+            <ServiceCard key={service.title} serviceInfo={service} />
+          ))
         ) : (
           <EmptyStateLayout
             image={NoLocation}

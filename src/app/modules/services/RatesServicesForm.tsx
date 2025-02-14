@@ -7,6 +7,7 @@ import {
   RateFields,
 } from "@/context/CreateServiceContext";
 import { rangeSpanOptions } from "@/utils/rangeSpanOptions";
+import { currencyFormat } from "@/utils/formats";
 
 type Props = {
   showForm: boolean;
@@ -71,11 +72,7 @@ function RatesServicesForm({ showForm, setShowForm, rateData }: Props) {
                 className="h-12"
                 classNames={{ inputWrapper: "h-full" }}
                 placeholder="$00,00"
-                value={
-                  values.cost
-                    ? new Intl.NumberFormat("es-CO").format(values.cost)
-                    : undefined
-                }
+                value={values.cost ? currencyFormat(values.cost) : undefined}
                 onValueChange={(val) => {
                   // Replace format number for a clean one
                   // const regex = /^[0-9.,]+$/;
