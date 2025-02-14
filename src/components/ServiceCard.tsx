@@ -60,9 +60,7 @@ function ServiceCard({ serviceInfo }: Props) {
 
   return (
     <>
-      <Card
-        className={`p-4 ${!serviceInfo.isDisabled ? "filter grayscale" : ""}`}
-      >
+      <Card className={`p-4 ${serviceInfo.isDisabled ? "grayscale" : ""}`}>
         <CardHeader className="flex gap-3 justify-between">
           <div className="flex gap-3">
             <Avatar
