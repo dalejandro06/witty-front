@@ -26,7 +26,7 @@ type SupplierServiceInfo = {
   category: Category;
   rates: RateFields[];
   location: State;
-  isActive?: boolean;
+  isDisabled?: boolean;
 };
 
 type Props = {
@@ -61,7 +61,7 @@ function ServiceCard({ serviceInfo }: Props) {
   return (
     <>
       <Card
-        className={`p-4 ${!serviceInfo.isActive ? "filter grayscale" : ""}`}
+        className={`p-4 ${!serviceInfo.isDisabled ? "filter grayscale" : ""}`}
       >
         <CardHeader className="flex gap-3 justify-between">
           <div className="flex gap-3">

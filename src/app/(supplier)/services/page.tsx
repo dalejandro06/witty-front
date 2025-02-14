@@ -25,7 +25,6 @@ const services = [
       },
     ],
     location: { id: 1, name: "Bogotá" },
-    isActive: true,
   },
   {
     id: "2",
@@ -46,7 +45,6 @@ const services = [
       },
     ],
     location: { id: 1, name: "Mosquera" },
-    isActive: false,
   },
 ];
 
