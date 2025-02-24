@@ -14,6 +14,7 @@ import {
   SubCategoriesParams,
   SubCategory,
   SupplierLocation,
+  SupplierServiceInfo,
   UpdateDataParams,
   UpdatePasswordParams,
   UserData,
@@ -169,10 +170,18 @@ export async function updateUserData(payload: UpdateDataParams) {
 }
 
 export async function updatePassword(payload: UpdatePasswordParams) {
-  const data = ApiClient.patch<StatusResponse>(
+  const data = await ApiClient.patch<StatusResponse>(
     "/v1/accounts/update-password",
     payload,
   );
 
-  return (await data).data;
+  return data.data;
+}
+
+export async function getSupplierServices() {
+  const data = await ApiClient.get<SupplierServiceInfo[]>(
+    "/v1/services/service",
+  );
+
+  return data.data;
 }

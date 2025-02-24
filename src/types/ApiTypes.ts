@@ -142,3 +142,31 @@ export type StatusResponse = {
   status: boolean;
   message?: string;
 };
+
+export type SupplierServiceInfo = {
+  id: number;
+  name: string;
+  description: string;
+  category: {
+    id: number;
+    category_line_item: Category;
+    title: string;
+    description: string;
+  };
+  costs: ServiceCosts[];
+  allowed_locations: Departaments[];
+  active: boolean;
+  deleted_by_user: boolean;
+  supplier_profile: number;
+};
+
+export type ServiceCosts = {
+  id: number;
+  emoji: string;
+  name: string;
+  value: number;
+  type_duration: number;
+  duration: number;
+  service: number;
+  currency: number;
+};
