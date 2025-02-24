@@ -35,17 +35,25 @@ function Invite() {
         />
         <ServiceCard
           serviceInfo={{
-            id: "1",
-            title: "Servicio",
+            id: 1,
+            name: "Servicio",
             description: "Descripcion",
             category: {
-              color: "",
-              icon: "",
               id: 1,
-              title: "Peluqueria",
+              title: "Restauración de computadores",
+              description: "",
+              category_line_item: {
+                color: "",
+                icon: "",
+                id: 1,
+                title: "Peluqueria",
+              },
             },
-            rates: [],
-            location: { id: 1, name: "Bogotá" },
+            costs: [],
+            allowed_locations: [{ id: 1, name: "Bogotá" }],
+            active: true,
+            deleted_by_user: false,
+            supplier_profile: 1,
           }}
         />
         <form className="grid gap-3" onSubmit={formik.handleSubmit}>
